@@ -10,7 +10,7 @@ project(gui)
 ##############################################################################
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
-find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport)
+find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport ros_video_components)
 set(QML_IMPORT_PATH "${QML_IMPORT_PATH};${CATKIN_GLOBAL_LIB_DESTINATION}" )
 set(QML_IMPORT_PATH2 "${QML_IMPORT_PATH};${CATKIN_GLOBAL_LIB_DESTINATION}" )
 include_directories(${catkin_INCLUDE_DIRS})
@@ -51,5 +51,6 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 add_executable(gui ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
 qt5_use_modules(gui Quick Core)
 target_link_libraries(gui ${QT_LIBRARIES} ${catkin_LIBRARIES})
-target_include_directories(gui PUBLIC include)
+target_include_directories(gui PUBLIC include ${catkin_INCLUDE_DIRS})
+add_dependencies(gui ${catkin_EXPORTED_TARGETS})
 install(TARGETS gui RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
