@@ -32,18 +32,30 @@ Window {
         anchors.bottomMargin: 0
         ROSVideoComponent {
             // @disable-check M16
-           objectName: "videoStream"
-           id: videoStream
-           // @disable-check M16`
-           anchors.bottom: parent.bottom
-           // @disable-check M16
-           anchors.bottomMargin: 0
-           // @disable-check M16
-           anchors.top: parent.top
-           // @disable-check M16
-           anchors.left: parent.left
-           // @disable-check M16
-           anchors.right: parent.right
+            objectName: "videoStream"
+            id: videoStream
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: topic.text
         }
+    }
+
+    TextInput {
+        id: topic
+        x: 40
+        y: 335
+        width: 80
+        height: 20
+        text: qsTr("/cam0")
+        font.pixelSize: 12
     }
 }
