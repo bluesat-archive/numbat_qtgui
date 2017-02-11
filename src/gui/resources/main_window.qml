@@ -30,7 +30,7 @@ Window {
         anchors.topMargin: 83
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
-        ROSVideoComponent {
+        ROSSignalStrength {
             // @disable-check M16
             objectName: "videoStream"
             id: videoStream
