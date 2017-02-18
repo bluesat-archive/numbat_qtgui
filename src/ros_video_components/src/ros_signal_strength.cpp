@@ -95,7 +95,7 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		num = MAXNUM;
 	}else if(data <= TOO_WEAK){
 		num = 0;
-		linearGradient.setColorAt(0.0, Qt::black);
+		linearGradient.setColorAt(0.0, Qt::white);
 		painter->setBrush(linearGradient);	
 	}else{
 		num = (data/hash) +1;
