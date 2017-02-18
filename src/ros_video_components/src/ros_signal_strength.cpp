@@ -1,4 +1,7 @@
 #include "ros_video_components/ros_signal_strength.hpp"
+/*#include <QLabel>
+#include <QMainWindow>
+#include <QApplication>*/
 
 #define RECT_X 5
 #define RECT_Y 100
@@ -17,7 +20,6 @@ ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     topic_value("/cam0"),
     ros_ready(false),
     img_trans(NULL) {
-
 }
 
 void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
@@ -93,12 +95,10 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		linearGradient.setColorAt(0.0, Qt::black);
 		painter->setBrush(linearGradient);	
 	}else{
-		//ROS_INFO("Data is %d, Hash is %d, %d/%d = %d\n",data, HASH, data,HASH, ( data/HASH));
 		num = (data/hash) +1;
-		//ROS_INFO("num is %d, data is %d and HASH is %d\n",num,data,HASH);
 	}
 	painter->drawRect(x, y, width, height); //draw the main rectangle
-	int i = 0;
+	//int i = 0;
 	//y -= x;
 	//int barWidth = width/numBars;
 	int barWidth = width/MAXNUM;
@@ -107,9 +107,13 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 	const int increment = height/MAXNUM;
 	//ROS_INFO("y is %d, barHeight is %d\n",y, barHeight);
 	if(num == 0){
-		
+		//print flashing "NO SIGNAL" on the screen
+		/*QLabel * label = new QLabel(&mainWindow);
+		label->setText("NO SIGNAL\n");
+		mainWindow.show();*/
+		ROS_INFO("NO SIGNAL\n");
 	}else{
-		for(i = 1; i <= num; i++){
+		for(int i = 1; i <= num; i++){
 		    
 		    if(num >= 8/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
 			    linearGradient.setColorAt(0.2, Qt::green);
