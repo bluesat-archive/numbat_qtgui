@@ -10,6 +10,9 @@
 #define MAXDATA 100
 #define MAXNUM 10
 #define NUMCOLOR 3
+#define GREEN 8
+#define YELLOW 4
+#define RED 1
 #define HASH MAXDATA/MAXNUM
 #define TOO_WEAK MAXDATA/20
 
@@ -115,9 +118,9 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 	}else{
 		for(int i = 1; i <= num; i++){
 		    
-		    if(num >= 8/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
+		    if(num >= GREEN/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
 			    linearGradient.setColorAt(0.2, Qt::green);
-		    }else if(num >= 4/*(MAXNUM/NUMCOLOR)*/){
+		    }else if(num >= YELLOW/*(MAXNUM/NUMCOLOR)*/){
 			    linearGradient.setColorAt(0.2, Qt::yellow);        	
 		    }else{
 		    	linearGradient.setColorAt(0.2, Qt::red);
