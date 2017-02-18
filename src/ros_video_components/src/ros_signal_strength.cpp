@@ -1,11 +1,14 @@
 #include "ros_video_components/ros_signal_strength.hpp"
 
-#define RECT_X
-#define RECT_Y
-#define RECT_WIDTH
-#define RECT_HEIGHT
-#define HASH 20
-#define MAX_STRENGTH 100
+#define RECT_X 5
+#define RECT_Y 100
+#define RECT_WIDTH RECT_X*40
+#define RECT_HEIGHT 150
+#define MAXDATA 100
+#define MAXNUM 10
+#define NUMCOLOR 3
+#define HASH MAXDATA/MAXNUM
+#define TOO_WEAK MAXDATA/20
 
 ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     QQuickPaintedItem(parent),
@@ -68,33 +71,60 @@ void ROS_Signal_Strength::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
-	int data = 70;
+	int data = 2; //int data = getSignalStrength
      //painter->drawImage(QPoint(5,0), *(this->current_image));
-    //ROS_INFO("DRAW FUNCTION IS BEING CALLED\n");
     //painter->drawArc(0, 0, 100, 10, 3, 10);
-	int x = 5;
-	int y = 100;
-	int width = 200;
-	int height = 150;
+	int x = RECT_X;
+	int y = RECT_Y;
+	int width = RECT_WIDTH;
+	int height = RECT_HEIGHT;
 
 	//QPainter::drawRect(x, y, width, height);
-	painter->drawRect(x, y, width, height);
 	/*draw 4 more rectangles. the base of each would be
 	x+y. **MORE EXPERIMENTATION NEEDED ON THIS ONE**
 	num/25 rectangles*/
-	
-	int num = data/HASH;
-	ROS_INFO("num is %d\n",num);
+	QLinearGradient linearGradient(0, 0, 100, 100);
+	int num = 0;
+	float hash = HASH;
+	if(data >= MAXDATA){
+		num = MAXNUM;
+	}else if(data <= TOO_WEAK){
+		num = 0;
+		linearGradient.setColorAt(0.0, Qt::black);
+		painter->setBrush(linearGradient);	
+	}else{
+		//ROS_INFO("Data is %d, Hash is %d, %d/%d = %d\n",data, HASH, data,HASH, ( data/HASH));
+		num = (data/hash) +1;
+		//ROS_INFO("num is %d, data is %d and HASH is %d\n",num,data,HASH);
+	}
+	painter->drawRect(x, y, width, height); //draw the main rectangle
 	int i = 0;
 	//y -= x;
 	//int barWidth = width/numBars;
-	int barWidth = width/4;
-	int barHeight = height/4;
-	for(i = 0; i < num; i++){
-		painter->drawRect(x, y, barWidth, barHeight);
-		x += barWidth;
-		//width += 5;
-		barHeight += 20;
+	int barWidth = width/MAXNUM;
+	int barHeight = height/MAXNUM;
+	y += ((MAXNUM-1) * height) /MAXNUM;
+	const int increment = height/MAXNUM;
+	//ROS_INFO("y is %d, barHeight is %d\n",y, barHeight);
+	if(num == 0){
+		
+	}else{
+		for(i = 1; i <= num; i++){
+		    
+		    if(num >= 8/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
+			    linearGradient.setColorAt(0.2, Qt::green);
+		    }else if(num >= 4/*(MAXNUM/NUMCOLOR)*/){
+			    linearGradient.setColorAt(0.2, Qt::yellow);        	
+		    }else{
+		    	linearGradient.setColorAt(0.2, Qt::red);
+		    }
+		    //linearGradient.setColorAt(1.0, Qt::black);
+		    painter->setBrush(linearGradient);
+			painter->drawRect(x, y, barWidth, barHeight);
+			x += barWidth; //move x along
+			barHeight += increment; //increase height
+			y -= increment; //decrease height
+		}
 	}
 	
     //if(current_image) {
