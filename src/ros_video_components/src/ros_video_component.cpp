@@ -63,6 +63,7 @@ void ROS_Video_Component::paint(QPainter * painter) {
     if(current_image) {
         painter->drawImage(QPoint(0,0), *(this->current_image));
     }
+    painter->drawRect(0,0,1,10);
 }
 
 void ROS_Video_Component::set_topic(const QString & new_value) {

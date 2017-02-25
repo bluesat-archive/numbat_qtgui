@@ -9,14 +9,29 @@
 #ifndef PROJECT_JOYSTICK_RECEIVER_NODE_HPP
 #define PROJECT_JOYSTICK_RECEIVER_NODE_HPP
 
-#include <std_msgs/float64.h>
-#include <geometry_msgs/twist.hpp>
+#include <std_msgs/Float32.h>
+#include <geometry_msgs/Twist.h>
+#include <ros/ros.h>
 
 class Joystick_Receiver_Node {
     public:
-        Joystick_Receiver_Node(NodeHandle nh);
+        Joystick_Receiver_Node(ros::NodeHandle nh);
+        void spin();
+
     private:
-        ros::publisher twistPub;
+        bool open_arduino();
+        fd_set uart_set;
+        struct timeval timeout;
+        int port_fd;
+
+        ros::Publisher twist_pub;
+        ros::Publisher claw_rotate;
+        ros::Publisher claw_grip;
+        ros::Publisher arm_base_rotate;
+        ros::Publisher arm_lower_extension;
+        ros::Publisher arm_upper_extension;
+        bool comm(void *message, int message_len, void *resp, int resp_len);
+
 };
 
 
