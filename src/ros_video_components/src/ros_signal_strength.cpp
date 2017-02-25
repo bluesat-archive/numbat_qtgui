@@ -77,17 +77,12 @@ void ROS_Signal_Strength::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
 	int data = 3; //int data = getSignalStrength();
-     //painter->drawImage(QPoint(5,0), *(this->current_image));
-    //painter->drawArc(0, 0, 100, 10, 3, 10);
+
 	int x = RECT_X;
 	int y = RECT_Y;
 	int width = RECT_WIDTH;
 	int height = RECT_HEIGHT;
 
-	//QPainter::drawRect(x, y, width, height);
-	/*draw 4 more rectangles. the base of each would be
-	x+y. **MORE EXPERIMENTATION NEEDED ON THIS ONE**
-	num/25 rectangles*/
 	QLinearGradient linearGradient(0, 0, 100, 100);
 	int num = 0;
 	float hash = HASH;
@@ -101,9 +96,9 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		num = (data/hash) +1;
 	}
 	painter->drawRect(x, y, width, height); //draw the main rectangle
-	//int i = 0;
-	//y -= x;
-	//int barWidth = width/numBars;
+	
+	int i = 0;
+	
 	int barWidth = width/MAXNUM;
 	int barHeight = height/MAXNUM;
 	y += ((MAXNUM-1) * height) /MAXNUM;
@@ -116,7 +111,7 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		mainWindow.show();*/
 		ROS_INFO("NO SIGNAL\n");
 	}else{
-		for(int i = 1; i <= num; i++){
+		for(i = 1; i <= num; i++){
 		    
 		    if(num >= GREEN/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
 			    linearGradient.setColorAt(0.2, Qt::green);
@@ -125,7 +120,6 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		    }else{
 		    	linearGradient.setColorAt(0.2, Qt::red);
 		    }
-		    //linearGradient.setColorAt(1.0, Qt::black);
 		    painter->setBrush(linearGradient);
 			painter->drawRect(x, y, barWidth, barHeight);
 			x += barWidth; //move x along
@@ -134,9 +128,6 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		}
 	}
 	
-    //if(current_image) {
-    //    painter->drawImage(QPoint(0,0), *(this->current_image));
-    //}
 }
 
 void ROS_Signal_Strength::set_topic(const QString & new_value) {
