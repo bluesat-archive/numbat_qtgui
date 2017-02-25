@@ -8,10 +8,10 @@
 #define RECT_WIDTH RECT_X*40
 #define RECT_HEIGHT 150
 #define MAXDATA 100
-#define MAXNUM 10
+#define MAXNUM 5
 #define NUMCOLOR 3
-#define GREEN 8
-#define YELLOW 4
+#define GREEN 4
+#define YELLOW 2
 #define RED 1
 #define HASH MAXDATA/MAXNUM
 #define TOO_WEAK MAXDATA/20
@@ -76,7 +76,7 @@ void ROS_Signal_Strength::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
-	int data = 2; //int data = getSignalStrength
+	int data = 3; //int data = getSignalStrength();
      //painter->drawImage(QPoint(5,0), *(this->current_image));
     //painter->drawArc(0, 0, 100, 10, 3, 10);
 	int x = RECT_X;
