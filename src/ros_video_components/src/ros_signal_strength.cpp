@@ -1,7 +1,4 @@
 #include "ros_video_components/ros_signal_strength.hpp"
-/*#include <QLabel>
-#include <QMainWindow>
-#include <QApplication>*/
 
 #define RECT_X 5
 #define RECT_Y 100
@@ -18,29 +15,16 @@
 
 ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     QQuickPaintedItem(parent),
-    current_image(NULL),
-    current_buffer(NULL),
-    topic_value("/cam0"),
+    topic_value("/rover/signal"),
     ros_ready(false),
-    data(15),
-    img_trans(NULL) {
+    data(50) {
 }
 
 void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
-
-    img_trans = new image_transport::ImageTransport(*nh);
-    //TODO: make these parameters of the component
-    image_sub = img_trans->subscribe(
-          topic_value.toStdString(),
-          1,
-          &ROS_Signal_Strength::receive_image,
-          this,
-          image_transport::TransportHints("compressed")
-    );
     
     signal_sub = nh->subscribe(
-    	"SOMETHING", //TODO
-    	1000,
+    	"/rover/signal", //TODO
+    	100000,
     	&ROS_Signal_Strength::receive_signal,
     	this
     );
@@ -49,38 +33,7 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
     ROS_INFO("Setup of video component complete");
 }
 
-void ROS_Signal_Strength::receive_image(const sensor_msgs::Image::ConstPtr &msg) {
-    // check to see if we already have an image frame, if we do then we need to
-    // delete it to avoid memory leaks
-    if( current_image ) {
-        delete current_image;
-    }
 
-    // allocate a buffer of sufficient size to contain our video frame
-    uchar * temp_buffer = (uchar *) malloc(sizeof(uchar) * msg->data.size());
-
-    // and copy the message into the buffer
-    // we need to do this because QImage api requires the buffer we pass in to
-    // continue to exist whilst the image is in use, but the msg and it's data will
-    // be lost once we leave this context
-    current_image = new QImage(
-          temp_buffer,
-          msg->width,
-          msg->height,
-          QImage::Format_RGB888 // TODO: detect the type from the message
-    );
-
-    ROS_INFO("Recieved Message");
-
-    // We then swap out of bufer to avoid memory leaks
-    if(current_buffer) {
-        delete current_buffer;
-        current_buffer = temp_buffer;
-    }
-
-    // finally we need to re-render the component to display the new image
-    update();
-}
 
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
@@ -139,17 +92,17 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 }
 
 void ROS_Signal_Strength::set_topic(const QString & new_value) {
+	ROS_INFO("set_topic");
     if(topic_value != new_value) {
         topic_value = new_value;
         if(ros_ready) {
-            image_sub.shutdown();
-            image_sub = img_trans->subscribe(
-                  topic_value.toStdString(),
-                  1,
-                  &ROS_Signal_Strength::receive_image,
-                  this,
-                  image_transport::TransportHints("compressed")
-            );
+            signal_sub.shutdown();
+            signal_sub = nh->subscribe(
+				topic_value.toStdString(), //TODO
+				100000,
+				&ROS_Signal_Strength::receive_signal,
+				this
+			);
         }
         emit topic_changed();
     }
@@ -161,4 +114,5 @@ QString ROS_Signal_Strength::get_topic() const {
 
 void ROS_Signal_Strength::receive_signal(const std_msgs::Float32::ConstPtr & msg){
 	data = msg->data;
+	ROS_INFO("Received signal message");
 }
