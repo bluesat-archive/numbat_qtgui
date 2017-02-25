@@ -22,6 +22,7 @@ ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     current_buffer(NULL),
     topic_value("/cam0"),
     ros_ready(false),
+    data(15),
     img_trans(NULL) {
 }
 
@@ -35,6 +36,13 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
           &ROS_Signal_Strength::receive_image,
           this,
           image_transport::TransportHints("compressed")
+    );
+    
+    signal_sub = nh->subscribe(
+    	"SOMETHING", //TODO
+    	1000,
+    	&ROS_Signal_Strength::receive_signal,
+    	this
     );
 
     ros_ready = true;
@@ -76,7 +84,7 @@ void ROS_Signal_Strength::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
-	int data = 3; //int data = getSignalStrength();
+	//int data = 82; //int data = getSignalStrength();
 
 	int x = RECT_X;
 	int y = RECT_Y;
@@ -149,4 +157,8 @@ void ROS_Signal_Strength::set_topic(const QString & new_value) {
 
 QString ROS_Signal_Strength::get_topic() const {
     return topic_value;
+}
+
+void ROS_Signal_Strength::receive_signal(const std_msgs::Float32::ConstPtr & msg){
+	data = msg->data;
 }

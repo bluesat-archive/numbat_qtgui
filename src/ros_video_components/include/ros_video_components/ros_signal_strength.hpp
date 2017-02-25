@@ -10,6 +10,7 @@
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
+#include <std_msgs/Float32.h>
 
 
 class ROS_Signal_Strength : public QQuickPaintedItem {
@@ -34,18 +35,21 @@ class ROS_Signal_Strength : public QQuickPaintedItem {
 
     private:
         void receive_image(const sensor_msgs::Image::ConstPtr & msg);
+        void receive_signal(const std_msgs::Float32::ConstPtr & msg);
 
         // ROS
         ros::NodeHandle * nh;
         image_transport::ImageTransport * img_trans;
         image_transport::Subscriber image_sub;
+        ros::Subscriber signal_sub;
         QString topic_value;
         bool ros_ready;
 
         // Used for buffering the image
         QImage * current_image;
         uchar * current_buffer;
-
+        
+		int data;
 };
 
 #endif // ROS_SIGNAL_STRENGTH_H
