@@ -38,4 +38,8 @@ typedef struct _frm_arduino {
 
 } Frm_Arduino;
 
+typedef struct _to_arduino {
+  const int magic = 0xBEEF;
+} To_Arduino;
+
 #endif // COMMUNICATION_STRUCTS_HPP

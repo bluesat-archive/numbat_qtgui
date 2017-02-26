@@ -16,6 +16,7 @@
 #include <unistd.h>
 
 #include "owr_arduino_joystick/joystick_receiver_node.hpp"
+#include "owr_arduino_joystick/communication_structs.hpp"
 
 #define DODGY_USB_CONNECTION 100
 
@@ -32,7 +33,7 @@ int main(int argc, char ** argv) {
 
 Joystick_Receiver_Node::Joystick_Receiver_Node(ros::NodeHandle nh) {
     twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
-    arm_base_rotate = nh.advertise<std_msgs::Float32>("/arm_base_rotate_controller/command", 1, false);
+    arm_base_rotation = nh.advertise<std_msgs::Float32>("/arm_base_rotate_controller/command", 1, false);
     arm_upper_extension = nh.advertise<std_msgs::Float32>("/upper_arm_act_controller/command", 1, false);
     arm_lower_extension = nh.advertise<std_msgs::Float32>("/lower_arm_act_controller/command", 1, false);
     claw_grip = nh.advertise<std_msgs::Float32>("/claw_grip_controller/command", 1, false);
@@ -42,9 +43,39 @@ Joystick_Receiver_Node::Joystick_Receiver_Node(ros::NodeHandle nh) {
 
 
 void Joystick_Receiver_Node::spin() {
-    while(!open_arduino()) {}
+    bool ok;
+    Frm_Arduino frm_arduino;
+    To_Arduino to_arduino;
     while(ros::ok()) {
-        ros::spinOnce();
+        while(!open_arduino()) {}
+        while(ros::ok()) {
+            ok = comm(&to_arduino, sizeof(To_Arduino), &frm_arduino, sizeof(Frm_Arduino));
+            if(ok) {
+                geometry_msgs::Twist twst;
+                twst.linear.x = frm_arduino.drive_direction.x;
+                twst.linear.y = frm_arduino.drive_direction.y;
+                twist_pub.publish(twst);
+
+                std_msgs::Float32 msg;
+                msg.data = frm_arduino.arm_base_rotation;
+                arm_base_rotation.publish(msg);
+
+                msg.data = frm_arduino.arm_upper_extension;
+                arm_upper_extension.publish(msg);
+
+                msg.data = frm_arduino.arm_lower_extension;
+                arm_lower_extension.publish(msg);
+
+                msg.data = frm_arduino.claw_grip_position;
+                claw_grip.publish(msg);
+
+                msg.data = frm_arduino.claw_rotation_speed;
+                claw_rotate.publish(msg);
+            } else {
+                break;
+            }
+            ros::spinOnce();
+        }
     }
 }
 

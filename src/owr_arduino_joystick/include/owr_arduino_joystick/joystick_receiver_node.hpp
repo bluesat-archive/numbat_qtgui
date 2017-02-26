@@ -27,7 +27,7 @@ class Joystick_Receiver_Node {
         ros::Publisher twist_pub;
         ros::Publisher claw_rotate;
         ros::Publisher claw_grip;
-        ros::Publisher arm_base_rotate;
+        ros::Publisher arm_base_rotation;
         ros::Publisher arm_lower_extension;
         ros::Publisher arm_upper_extension;
         bool comm(void *message, int message_len, void *resp, int resp_len);
