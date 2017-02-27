@@ -33,8 +33,8 @@ int main(int argc, char ** argv) {
 Joystick_Receiver_Node::Joystick_Receiver_Node(ros::NodeHandle nh) {
     twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
     arm_base_rotation = nh.advertise<std_msgs::Float32>("/arm_base_rotate_controller/command", 1, false);
-    arm_upper_extension = nh.advertise<std_msgs::Float32>("/upper_arm_act_controller/command", 1, false);
-    arm_lower_extension = nh.advertise<std_msgs::Float32>("/lower_arm_act_controller/command", 1, false);
+    arm_upper_pwm = nh.advertise<std_msgs::Float32>("/upper_arm_act_controller/command", 1, false);
+    arm_lower_pwm = nh.advertise<std_msgs::Float32>("/lower_arm_act_controller/command", 1, false);
     claw_grip = nh.advertise<std_msgs::Float32>("/claw_grip_controller/command", 1, false);
     claw_rotate = nh.advertise<std_msgs::Float32>("/claw_rotate_controller/command", 1, false);
 
@@ -60,11 +60,11 @@ void Joystick_Receiver_Node::spin() {
                 msg.data = frm_arduino.arm_base_rotation;
                 arm_base_rotation.publish(msg);
 
-                msg.data = frm_arduino.arm_upper_extension;
-                arm_upper_extension.publish(msg);
+                msg.data = frm_arduino.arm_upper_pwm;
+                arm_upper_pwm.publish(msg);
 
-                msg.data = frm_arduino.arm_lower_extension;
-                arm_lower_extension.publish(msg);
+                msg.data = frm_arduino.arm_lower_pwm;
+                arm_lower_pwm.publish(msg);
 
                 msg.data = frm_arduino.claw_grip_position;
                 claw_grip.publish(msg);

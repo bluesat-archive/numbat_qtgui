@@ -25,9 +25,10 @@ typedef struct _frm_arduino {
 
     // the rotation of the arm (rads)
     float arm_base_rotation;
-    // the extension of the upper and lower parts of the arm (m)
-    float arm_lower_extension;
-    float arm_upper_extension;
+    // the extension speed of the upper and lower parts of the arm
+    // (pwm. 1500 is stop, 2000 is full outwards, 1000 is full backwards)
+    float arm_lower_pwm;
+    float arm_upper_pwm;
 
     /* Claw Related Functions */
 
