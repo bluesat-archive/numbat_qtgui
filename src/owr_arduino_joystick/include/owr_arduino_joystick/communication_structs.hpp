@@ -9,37 +9,39 @@
 #ifndef COMMUNICATION_STRUCTS_HPP
 #define COMMUNICATION_STRUCTS_HPP
 
+#include <inttypes.h>
+
 typedef struct _frm_arduino {
 
-    const int magic1 = 0xBEEF;
+    uint16_t magic1;
 
     // the drive direction command
     struct _vector {
-        double x;
-        double y;
-    } drive_direction;
+        float x;
+        float y;
+    }  __attribute__((packed)) drive_direction;
 
     /* Arm Related Functions */
 
     // the rotation of the arm (rads)
-    double arm_base_rotation;
+    float arm_base_rotation;
     // the extension of the upper and lower parts of the arm (m)
-    double arm_lower_extension;
-    double arm_upper_extension;
+    float arm_lower_extension;
+    float arm_upper_extension;
 
     /* Claw Related Functions */
 
     // the rotation speed of the claw (rads/s)
-    double claw_rotation_speed;
+    float claw_rotation_speed;
     // the grip postion of the claw (pwm)
-    double claw_grip_position;
+    float claw_grip_position;
 
-    const int magic2 = 0xF00D;
+    uint16_t magic2;
 
-} Frm_Arduino;
+} __attribute__((packed)) Frm_Arduino;
 
 typedef struct _to_arduino {
-  const int magic = 0xBEEF;
-} To_Arduino;
+    uint16_t magic = 0xBEEF;
+} __attribute__((packed)) To_Arduino;
 
 #endif // COMMUNICATION_STRUCTS_HPP

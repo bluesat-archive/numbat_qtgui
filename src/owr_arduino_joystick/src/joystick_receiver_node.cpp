@@ -23,7 +23,6 @@
 int main(int argc, char ** argv) {
     //init ros
     ros::init(argc, argv, "owr_position_node");
-
     ros::NodeHandle nh;
     Joystick_Receiver_Node p(nh);
     p.spin();
@@ -48,6 +47,7 @@ void Joystick_Receiver_Node::spin() {
     To_Arduino to_arduino;
     while(ros::ok()) {
         while(!open_arduino()) {}
+        ROS_INFO("Open Succesfully");
         while(ros::ok()) {
             ok = comm(&to_arduino, sizeof(To_Arduino), &frm_arduino, sizeof(Frm_Arduino));
             if(ok) {
@@ -71,7 +71,9 @@ void Joystick_Receiver_Node::spin() {
 
                 msg.data = frm_arduino.claw_rotation_speed;
                 claw_rotate.publish(msg);
+                ROS_INFO("Packet Received");
             } else {
+                ROS_ERROR("Connection failed");
                 break;
             }
             ros::spinOnce();
@@ -82,7 +84,7 @@ void Joystick_Receiver_Node::spin() {
 
 bool Joystick_Receiver_Node::open_arduino() {
     // TODO: write something to find arduinos
-    port_fd = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_NONBLOCK);
+    port_fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NONBLOCK);
 
     if(port_fd == -1) {
         ROS_ERROR("Error in open uart port");
@@ -165,6 +167,7 @@ bool Joystick_Receiver_Node::comm(void *message, int message_len, void *resp, in
     tcflush(port_fd, TCIOFLUSH);
     int empty_reads = 0;
     int readCount = 0;
+    bool first_read = false;
     do {
         int rv = select(port_fd + 1, &uart_set, NULL, NULL, &timeout);
         if(rv == -1) {
@@ -177,6 +180,14 @@ bool Joystick_Receiver_Node::comm(void *message, int message_len, void *resp, in
             int read_amount = read(port_fd, (int8_t*)resp + readCount, resp_len - readCount);
             readCount += read_amount;
             if (read_amount == 0) ++empty_reads;
+            if(!first_read) {
+                if (read_amount > 1 && *(uint16_t *) resp == 0xBEEF) {
+                    first_read = true;
+                } else {
+                    readCount = 0;
+                    continue;
+                }
+            }
             if (empty_reads > DODGY_USB_CONNECTION) {
                 ROS_ERROR("Dodgy usb connection detected");
                 return false;
