@@ -22,7 +22,7 @@
 
 int main(int argc, char ** argv) {
     //init ros
-    ros::init(argc, argv, "owr_position_node");
+    ros::init(argc, argv, "owr_joysticks_arduino");
     ros::NodeHandle nh;
     Joystick_Receiver_Node p(nh);
     p.spin();
@@ -32,11 +32,11 @@ int main(int argc, char ** argv) {
 
 Joystick_Receiver_Node::Joystick_Receiver_Node(ros::NodeHandle nh) {
     twist_pub = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
-    arm_base_rotation = nh.advertise<std_msgs::Float32>("/arm_base_rotate_controller/command", 1, false);
-    arm_upper_pwm = nh.advertise<std_msgs::Float32>("/upper_arm_act_controller/command", 1, false);
-    arm_lower_pwm = nh.advertise<std_msgs::Float32>("/lower_arm_act_controller/command", 1, false);
-    claw_grip = nh.advertise<std_msgs::Float32>("/claw_grip_controller/command", 1, false);
-    claw_rotate = nh.advertise<std_msgs::Float32>("/claw_rotate_controller/command", 1, false);
+    arm_base_rotation = nh.advertise<std_msgs::Float64>("/arm_base_rotate_controller/command", 1, false);
+    arm_upper_pwm = nh.advertise<std_msgs::Float64>("/upper_arm_act_controller/command", 1, false);
+    arm_lower_pwm = nh.advertise<std_msgs::Float64>("/lower_arm_act_controller/command", 1, false);
+    claw_grip = nh.advertise<std_msgs::Float64>("/claw_grip_controller/command", 1, false);
+    claw_rotate = nh.advertise<std_msgs::Float64>("/claw_rotate_controller/command", 1, false);
 
 }
 
@@ -56,7 +56,7 @@ void Joystick_Receiver_Node::spin() {
                 twst.linear.y = frm_arduino.drive_direction.y;
                 twist_pub.publish(twst);
 
-                std_msgs::Float32 msg;
+                std_msgs::Float64 msg;
                 msg.data = frm_arduino.arm_base_rotation;
                 arm_base_rotation.publish(msg);
 
