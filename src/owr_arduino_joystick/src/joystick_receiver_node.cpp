@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
+#include <dirent.h>
 
 #include "owr_arduino_joystick/joystick_receiver_node.hpp"
 #include "owr_arduino_joystick/communication_structs.hpp"
@@ -84,7 +85,30 @@ void Joystick_Receiver_Node::spin() {
 
 bool Joystick_Receiver_Node::open_arduino() {
     // TODO: write something to find arduinos
-    port_fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NONBLOCK);
+    std::vector<std::string> serial_devices;
+
+    DIR *dpdf;
+    struct dirent *epdf;
+    dpdf = opendir("/dev/");
+    if (dpdf != NULL){
+        while (epdf = readdir(dpdf)){
+            if(strstr(epdf->d_name,"ttyUSB") != NULL || strstr(epdf->d_name, "ttyACM")) {
+                serial_devices.push_back(epdf->d_name);
+                ROS_INFO("Found Serial %s",epdf->d_name);
+            }
+        }
+    }
+    if(serial_devices.size() == 0) {
+        ROS_ERROR("No Serial Devices Connected");
+        return false;
+    }
+
+    do {
+        std::string device = serial_devices.back();
+        serial_devices.pop_back();
+        ROS_INFO("Trying %s", device.c_str());
+        port_fd = open(("/dev/" + device).c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK);
+    } while(port_fd == -1 && serial_devices.size() > 0);
 
     if(port_fd == -1) {
         ROS_ERROR("Error in open uart port");
