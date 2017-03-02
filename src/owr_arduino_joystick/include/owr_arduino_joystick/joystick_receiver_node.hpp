@@ -9,7 +9,7 @@
 #ifndef PROJECT_JOYSTICK_RECEIVER_NODE_HPP
 #define PROJECT_JOYSTICK_RECEIVER_NODE_HPP
 
-#include <std_msgs/Float32.h>
+#include <std_msgs/Float64.h>
 #include <geometry_msgs/Twist.h>
 #include <ros/ros.h>
 
