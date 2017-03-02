@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.1.0, 2017-03-01T21:27:41. -->
+<!-- Written by QtCreator 4.1.0, 2016-12-26T15:39:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{c8044514-ab62-4680-a893-b414b499194d}</value>
+  <value type="QByteArray">{c4b94e68-9795-4497-900f-d14295903913}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -61,12 +61,12 @@
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{2ac28586-9d8c-493a-81b4-1c3d8769879a}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{757774ac-697e-4d58-91eb-6b232c21b800}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/hjed/Bluesat/owr-qtgui/build</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/ros/qt-gui/build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -105,7 +105,22 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/qt-gui/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/qt-gui/devel/lib:/opt/ros/kinetic/lib:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/qt-gui</value>
+     <value type="QString">PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/qt-gui/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/qt-gui/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">SHLVL=4</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Default</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Default</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
@@ -113,7 +128,7 @@
     <value type="QString" key="ROSProjectManager.ROSBuildConfiguration.InitialArguments"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/hjed/Bluesat/owr-qtgui/build</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/ros/qt-gui/build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -152,7 +167,22 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/qt-gui/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/qt-gui/devel/lib:/opt/ros/kinetic/lib:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/qt-gui</value>
+     <value type="QString">PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/qt-gui/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/qt-gui/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">SHLVL=5</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
@@ -160,7 +190,7 @@
     <value type="QString" key="ROSProjectManager.ROSBuildConfiguration.InitialArguments">-DCMAKE_BUILD_TYPE=Debug</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/hjed/Bluesat/owr-qtgui/build</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/ros/qt-gui/build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -199,7 +229,22 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/qt-gui/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/qt-gui/devel/lib:/opt/ros/kinetic/lib:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/qt-gui</value>
+     <value type="QString">PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/qt-gui/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/qt-gui/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">SHLVL=6</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
@@ -207,7 +252,7 @@
     <value type="QString" key="ROSProjectManager.ROSBuildConfiguration.InitialArguments">-DCMAKE_BUILD_TYPE=Release</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/hjed/Bluesat/owr-qtgui/build</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/ros/qt-gui/build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -246,7 +291,22 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/qt-gui/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/qt-gui/devel/lib:/opt/ros/kinetic/lib:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/qt-gui</value>
+     <value type="QString">PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/qt-gui/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/qt-gui/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">SHLVL=7</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
@@ -254,7 +314,7 @@
     <value type="QString" key="ROSProjectManager.ROSBuildConfiguration.InitialArguments">-DCMAKE_BUILD_TYPE=RelWithDebInfo</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.4">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/hjed/Bluesat/owr-qtgui/build</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/ros/qt-gui/build</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -293,7 +353,22 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/qt-gui/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/qt-gui/devel/lib:/opt/ros/kinetic/lib:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/opt/ros/kinetic/lib/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/qt-gui</value>
+     <value type="QString">PYTHONPATH=/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/qt-gui/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/qt-gui/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">SHLVL=8</value>
+     <value type="QString">_=/usr/bin/env</value>
+    </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
@@ -362,7 +437,17 @@
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Run</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSRunConfiguration.RunStepList</value>
-     <value type="int" key="ProjectExplorer.RunStepList.StepsCount">0</value>
+     <valuemap type="QVariantMap" key="ProjectExplorer.RunStepList.Step.0">
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName"></value>
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSRunStep</value>
+      <value type="bool" key="ProjectExplorer.RunStep.Enabled">true</value>
+      <value type="QString" key="ROSProjectManager.ROSGenericStep.Arguments"></value>
+      <value type="QString" key="ROSProjectManager.ROSGenericStep.Command">rosrun</value>
+      <value type="QString" key="ROSProjectManager.ROSGenericStep.Package">gui</value>
+      <value type="QString" key="ROSProjectManager.ROSGenericStep.Target">gui</value>
+     </valuemap>
+     <value type="int" key="ProjectExplorer.RunStepList.StepsCount">1</value>
     </valuemap>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>

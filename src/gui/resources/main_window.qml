@@ -7,6 +7,7 @@ Window {
     id: main_window
     width: 800
     height: 800
+    property alias cmd_vel_display: cmd_vel_display
     title: "BLUEsat OWR"
     visible: true
     minimumHeight: 600
@@ -59,9 +60,9 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
+    Item {
+        id: cmd_vel_display
 
-    Canvas {
-        id: pos
         anchors.right: video_pane.right
         anchors.rightMargin: 0
         anchors.left: video_pane.left
@@ -71,37 +72,60 @@ Window {
         anchors.top: video_pane.bottom
         anchors.topMargin: 10
 
-        property double inputX: RoverCmdState.drive_x
-        property double inputY: RoverCmdState.drive_y
-        property double scale: 50
-
-        Component.onCompleted: {
-            RoverCmdState.onCmd_vel_changed.connect(requestPaint)
+        Rectangle {
+            id: cmd_vel_border
+            border.color: "#0025df"
+            anchors.fill: parent
+            border.width: 3
         }
 
-        onPaint: {
-            console.log(RoverCmdState.drive_x);
-            var context = getContext("2d");
+        Canvas {
+            id: pos
 
-            //clear the canvas
-            context.beginPath();
-            context.clearRect(0,0,width,height);
-            context.fill();
+            property double inputX: RoverCmdState.drive_x
+            property double inputY: RoverCmdState.drive_y
+            property double scale: 50
+            clip: true
+            anchors.topMargin: 29
+            anchors.fill: parent
 
-            //draw the circle
-            context.beginPath();
-            context.strokeStyle = "black";
-            context.moveTo(width/2+scale, height/2);
-            context.arc(width/2, height/2, scale, 0, 2*Math.PI, true);
-            context.stroke();
+            Component.onCompleted: {
+                RoverCmdState.onCmd_vel_changed.connect(requestPaint)
+            }
 
-            //draw the line
-            context.beginPath();
-            context.lineWidth = 2;
-            context.moveTo(width/2, height/2);
-            context.strokeStyle = "red";
-            context.lineTo((width/2) + (inputX * scale), (height/2) + (inputY * scale));
-            context.stroke();
+            onPaint: {
+                console.log(RoverCmdState.drive_x);
+                var context = getContext("2d");
+
+                //clear the canvas
+                context.beginPath();
+                context.clearRect(0,0,width,height);
+                context.fill();
+
+                //draw the circle
+                context.beginPath();
+                context.strokeStyle = "black";
+                context.moveTo(width/2+scale, height/2);
+                context.arc(width/2, height/2, scale, 0, 2*Math.PI, true);
+                context.stroke();
+
+                //draw the line
+                context.beginPath();
+                context.lineWidth = 2;
+                context.moveTo(width/2, height/2);
+                context.strokeStyle = "red";
+                context.lineTo((width/2) + (inputX * scale), (height/2) + (inputY * scale));
+                context.stroke();
+            }
+
+        }
+
+        Text {
+            id: text1
+            x: 8
+            y: 9
+            text: qsTr("Rover Driver Direction/Velocity")
+            font.pixelSize: 14
         }
 
     }
