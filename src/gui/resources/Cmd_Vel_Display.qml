@@ -48,7 +48,7 @@ Item {
             context.lineWidth = 2;
             context.moveTo(width/2, height/2);
             context.strokeStyle = "red";
-            context.lineTo((width/2) + (inputX * scale), (height/2) + (inputY * scale));
+            context.lineTo((width/2) - (inputX * scale), (height/2) - (inputY * scale));
             context.stroke();
         }
         
