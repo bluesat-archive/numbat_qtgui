@@ -60,74 +60,86 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
-    Item {
+
+    Cmd_Vel_Display {
         id: cmd_vel_display
-
-        anchors.right: video_pane.right
-        anchors.rightMargin: 0
-        anchors.left: video_pane.left
-        anchors.leftMargin: 0
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 7
+        anchors.left: video_pane.left
+        anchors.leftMargin: -265
+        anchors.right: video_pane.right
+        anchors.rightMargin: 265
         anchors.top: video_pane.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 100
+    }
 
-        Rectangle {
-            id: cmd_vel_border
-            border.color: "#0025df"
-            anchors.fill: parent
-            border.width: 3
-        }
+    Item {
+        id: arm_acutator_display
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 7
+        anchors.left: cmd_vel_display.right
+        anchors.leftMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 205
+        anchors.top: video_pane.bottom
+        anchors.topMargin: 100
+        Arm_Acutator_Display {
+            id: arm_lower
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.top: parent.verticalCenter
+            anchors.topMargin: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
 
-        Canvas {
-            id: pos
-
-            property double inputX: RoverCmdState.drive_x
-            property double inputY: RoverCmdState.drive_y
-            property double scale: 50
-            clip: true
-            anchors.topMargin: 29
-            anchors.fill: parent
+            name_text: "Arm Lower"
 
             Component.onCompleted: {
-                RoverCmdState.onCmd_vel_changed.connect(requestPaint)
+                RoverCmdState.onArm_lower_changed.connect(stateChanged);
             }
 
-            onPaint: {
-                console.log(RoverCmdState.drive_x);
-                var context = getContext("2d");
+            function stateChanged() {
 
-                //clear the canvas
-                context.beginPath();
-                context.clearRect(0,0,width,height);
-                context.fill();
-
-                //draw the circle
-                context.beginPath();
-                context.strokeStyle = "black";
-                context.moveTo(width/2+scale, height/2);
-                context.arc(width/2, height/2, scale, 0, 2*Math.PI, true);
-                context.stroke();
-
-                //draw the line
-                context.beginPath();
-                context.lineWidth = 2;
-                context.moveTo(width/2, height/2);
-                context.strokeStyle = "red";
-                context.lineTo((width/2) + (inputX * scale), (height/2) + (inputY * scale));
-                context.stroke();
+                if(RoverCmdState.arm_lower == 1500) {
+                    extension_state = qsTr("Stop");
+                } else if (RoverCmdState.arm_lower > 1500) {
+                    extension_state = qsTr("Extend");
+                } else {
+                    extension_state = qsTr("Retract");
+                }
             }
 
         }
+        Arm_Acutator_Display {
+            id: arm_upper
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.bottom: arm_lower.top
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            name_text: "Arm Upper"
 
-        Text {
-            id: text1
-            x: 8
-            y: 9
-            text: qsTr("Rover Driver Direction/Velocity")
-            font.pixelSize: 14
+            Component.onCompleted: {
+                RoverCmdState.onArm_upper_changed.connect(stateChanged);
+                console.log("connected");
+            }
+
+            function stateChanged() {
+                console.log("changed");
+                if(RoverCmdState.arm_upper == 1500) {
+                    extension_state = qsTr("Stop");
+                } else if (RoverCmdState.arm_upper < 1500) {
+                    extension_state = qsTr("Extend");
+                } else {
+                    extension_state = qsTr("Retract");
+                }
+            }
         }
-
     }
 
 }

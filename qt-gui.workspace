@@ -4,17 +4,29 @@
         <Directory>src</Directory>
     </WatchDirectories>
     <IncludePaths>
-        <Directory>/home/ros/qt-gui/src/gui/include</Directory>
-        <Directory>/home/ros/qt-gui/build/gui/include</Directory>
-        <Directory>/home/ros/qt-gui/build/gui/CMakeFiles/gui.dir/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/src/owr_arduino_joystick/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/src/ros_video_components/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/src/gui/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/build/gui/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/build/gui/CMakeFiles/gui.dir/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/build/ros_video_components/include</Directory>
+        <Directory>/home/hjed/Bluesat/owr-qtgui/build/ros_video_components/CMakeFiles/RosVideoComponents.dir/include</Directory>
+        <Directory>/usr/include</Directory>
+        <Directory>/usr/include/c++/5</Directory>
+        <Directory>/usr/include/c++/5/backward</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/c++/5</Directory>
+        <Directory>/usr/lib/gcc/x86_64-linux-gnu/5/include</Directory>
+        <Directory>/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed</Directory>
+        <Directory>/usr/local/include</Directory>
         <Directory>/usr/src/gtest</Directory>
-        <Directory>/opt/qt57/./mkspecs/linux-g++</Directory>
-        <Directory>/opt/qt57/include</Directory>
-        <Directory>/opt/qt57/include/QtCore</Directory>
-        <Directory>/opt/qt57/include/QtGui</Directory>
-        <Directory>/opt/qt57/include/QtNetwork</Directory>
-        <Directory>/opt/qt57/include/QtQml</Directory>
-        <Directory>/opt/qt57/include/QtQuick</Directory>
         <Directory>/opt/ros/kinetic/include</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5/QtCore</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5/QtGui</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5/QtNetwork</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5/QtQml</Directory>
+        <Directory>/usr/include/x86_64-linux-gnu/qt5/QtQuick</Directory>
+        <Directory>/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64</Directory>
     </IncludePaths>
 </Workspace>
