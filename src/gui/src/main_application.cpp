@@ -21,9 +21,10 @@ void Main_Application::run() {
     timer->start(0);
 
     // setup the video component
-    //ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
-    ROS_Signal_Strength * video = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("videoStream"));
+    ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
     video->setup(&nh);
+    ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
+    signal_strength->setup(&nh);
     
 }
 
