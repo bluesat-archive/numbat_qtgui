@@ -45,7 +45,7 @@ Window {
             // @disable-check M16
             anchors.right: parent.right
             // @disable-check M16
-            topic: topic.text
+            topic: qsTr("/rover/signal")
         }
     }
 

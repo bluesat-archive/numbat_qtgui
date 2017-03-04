@@ -24,7 +24,7 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
     
     signal_sub = nh->subscribe(
     	"/rover/signal", //TODO
-    	100000,
+    	1,
     	&ROS_Signal_Strength::receive_signal,
     	this
     );
@@ -99,7 +99,7 @@ void ROS_Signal_Strength::set_topic(const QString & new_value) {
             signal_sub.shutdown();
             signal_sub = nh->subscribe(
 				topic_value.toStdString(), //TODO
-				100000,
+				1,
 				&ROS_Signal_Strength::receive_signal,
 				this
 			);
@@ -115,4 +115,5 @@ QString ROS_Signal_Strength::get_topic() const {
 void ROS_Signal_Strength::receive_signal(const std_msgs::Float32::ConstPtr & msg){
 	data = msg->data;
 	ROS_INFO("Received signal message");
+	update();
 }

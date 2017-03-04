@@ -23,7 +23,8 @@ void Main_Application::run() {
     // setup the video component
     //ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
     ROS_Signal_Strength * video = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("videoStream"));
-    //video->setup(&nh);
+    video->setup(&nh);
+    
 }
 
 void Main_Application::main_loop() {
