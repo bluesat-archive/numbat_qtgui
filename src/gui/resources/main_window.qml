@@ -4,12 +4,12 @@ import bluesat.owr 1.0
 
 Window {
     id: main_window
-    width: 800
-    height: 800
+    width: 400
+    height: 400
     title: "BLUEsat OWR"
     visible: true
-    minimumHeight: 600
-    minimumWidth: 600
+    minimumHeight: 300
+    minimumWidth: 300
     
     Image {
         id: logo
@@ -20,7 +20,35 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 
+    Item {
+        id: timer_widget
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: logo.bottom
+        anchors.topMargin: 83
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        Timer {
+            // @disable-check M16
+            objectName: "timerDisplay"
+            id: timer
 
+            // @disable-check M16
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: topic.text
+
+        }
+    }
+
+/*
     Item {
         id: video_pane
         x: 198
@@ -58,4 +86,5 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
+*/
 }

@@ -15,6 +15,7 @@ class Main_Application : public QQmlApplicationEngine {
     // this defines a slot that will be called when the application is idle
     public slots:
         void main_loop();
+        void handle();
 
     private:
         ros::NodeHandle nh;
