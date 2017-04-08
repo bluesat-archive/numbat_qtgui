@@ -2,28 +2,30 @@
 #define TIMER_HPP
 
 #include <QObject>
-#include <QWidget>
 #include <ros/ros.h>
 #include <QTime>
 #include <QTimer>
-#include <QLCDNumber>
+#include <QPainter>
+#include <QQuickPaintedItem>
 
-class Timer : public QLCDNumber {
+class Timer : public QQuickPaintedItem {
     Q_OBJECT
     public:
-        Timer(QWidget *parent = 0);
+        Timer(QQuickItem *parent = 0);
+        void paint(QPainter *painter);
         //void run();
         //void setup(ros::NodeHandle * nh);
 
     signals:
-        void valueChanged();
+        void valueChanged(QString text);
 
     private slots:
         void show();
 
-    private:
+    public:
         //int msElapsed;
-        QTime *time;
+        QTime time;
+        QString text;
         //ros::NodeHandle nh;
         //QString format(int milisecs);
 };

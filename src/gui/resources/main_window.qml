@@ -20,30 +20,22 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 
-    Item {
-        id: timer_widget
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: logo.bottom
-        anchors.topMargin: 83
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
         Timer {
             // @disable-check M16
             objectName: "timerDisplay"
-            id: timer
+            id: timerDisplay
 
             // @disable-check M16
             anchors.bottom: parent.bottom
             // @disable-check M16
             anchors.bottomMargin: 0
             // @disable-check M16
-            anchors.top: parent.top
+            anchors.top: logo.bottom
             // @disable-check M16
-            anchors.left: parent.left
+            anchors.topMargin: 10
             // @disable-check M16
-            anchors.right: parent.right
-            // @disable-check M16
-            topic: topic.text
+            width: 244
+            height: 116
 
         }
     }
@@ -87,4 +79,3 @@ Window {
         font.pixelSize: 12
     }
 */
-}

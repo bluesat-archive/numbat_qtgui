@@ -24,8 +24,8 @@ void Main_Application::run() {
     //ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
     //video->setup(&nh);
 
-    Timer * stopwatch = new Timer(this);
-    connect(stopwatch, SIGNAL(valueChanged()), this, SLOT(handle()));
+    Timer * stopwatch = this->rootObjects()[0]->findChild<Timer *>(QString("timerDisplay"));
+    connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
 }
 
 void Main_Application::main_loop() {
@@ -33,6 +33,6 @@ void Main_Application::main_loop() {
     ros::spinOnce();
 }
 
-void Main_Application::handle() {
-    qDebug() << "timer changing";
+void Main_Application::handle(QString str) {
+    qDebug() << str;
 }

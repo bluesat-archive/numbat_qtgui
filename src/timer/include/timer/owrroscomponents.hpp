@@ -10,7 +10,7 @@ class OwrRosComponents : public QQmlExtensionPlugin
   Q_PLUGIN_METADATA(IID "bluesat.owr")
 
   public:
-      void registerTypes(const char * url);
+      void registerTypes(const char * uri);
 };
 
 #endif // OWRROSCOMPONENTS_HPP

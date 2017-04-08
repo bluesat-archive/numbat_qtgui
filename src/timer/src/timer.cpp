@@ -1,25 +1,22 @@
 #include "timer/timer.hpp"
 
-Timer::Timer(QWidget *parent) : QLCDNumber(parent) {
-    setSegmentStyle(Filled);
-    time = new QTime(0, 0);
+Timer::Timer(QQuickItem *parent) : QQuickPaintedItem(parent) {
+    time.setHMS(0, 0, 0, 0);
     //msElapsed = 0;
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(show()));
     timer->start(1);
     show();
-    time->start();
 }
 
 void Timer::show() {
-    time->addMSecs(1);
-    QString text = time->toString("hh:mm:ss.z");
-    if ((time->second() % 2) == 0) {
+    time = time.addMSecs(1);
+    text = time.toString("hh:mm:ss.zzz");
+    if ((time.second() % 2) == 0) {
         text[2] = ' ';
         text[5] = ' ';
     }
-    display(text);
-    emit valueChanged();
+    emit valueChanged(text);
 /*
     time->start();
     QString text;
@@ -29,4 +26,10 @@ void Timer::show() {
         emit changed();
     }
 */
+}
+
+void Timer::paint(QPainter *painter) {
+    if (!text.isNull() && !text.isEmpty()) {
+        painter->drawText(QPoint(0,0), text);
+    }
 }
