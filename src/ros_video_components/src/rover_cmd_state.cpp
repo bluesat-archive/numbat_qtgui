@@ -18,6 +18,7 @@ Rover_Cmd_State::Rover_Cmd_State(QObject *parent) :
 void Rover_Cmd_State::setup(ros::NodeHandle *nh) {
     this->nh = nh;
 
+
     ros::TransportHints transportHints = ros::TransportHints().tcp();
     cmd_vel_sub = nh->subscribe<geometry_msgs::Twist>("/cmd_vel", 1, &Rover_Cmd_State::cmd_vel_callback, this, transportHints);
     arm_upper_sub = nh->subscribe<std_msgs::Float64>("/upper_arm_act_controller/command", 1, &Rover_Cmd_State::arm_upper_callback, this, transportHints);
