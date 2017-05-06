@@ -153,7 +153,7 @@ void ROS_Wheel_Visualize::receive_message(const std_msgs::Float32::ConstPtr & ms
 // QObject * Rover_Cmd_State::qml_instance(QQmlEngine *engine, QJSEngine *script_engine) {
 //     Q_UNUSED(engine);
 //     Q_UNUSED(script_engine);
-
+//
 //     if(instance == NULL) {
 //         instance = new Rover_Cmd_State();
 //     }
