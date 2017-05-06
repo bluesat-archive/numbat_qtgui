@@ -8,10 +8,12 @@
 #include <QPainter>
 #include <QQuickPaintedItem>
 
-class Timer : public QQuickPaintedItem {
+#define INTERVAL 21
+
+class Stopwatch : public QQuickPaintedItem {
     Q_OBJECT
     public:
-        Timer(QQuickItem *parent = 0);
+        Stopwatch(QQuickItem *parent = 0);
         void paint(QPainter *painter);
         //void run();
         //void setup(ros::NodeHandle * nh);

@@ -20,7 +20,7 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 
-        Timer {
+        Stopwatch {
             // @disable-check M16
             objectName: "timerDisplay"
             id: timerDisplay
@@ -35,6 +35,7 @@ Window {
             anchors.topMargin: 10
             // @disable-check M16
             width: 244
+            // @disable-check M16
             height: 116
 
         }

@@ -10,7 +10,7 @@ Main_Application::Main_Application() {
 
 void Main_Application::run() {
 
-    qmlRegisterType<Timer>("bluesat.owr", 1, 0, "Timer");
+    qmlRegisterType<Stopwatch>("bluesat.owr", 1, 0, "Stopwatch");
 
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
@@ -24,7 +24,8 @@ void Main_Application::run() {
     //ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
     //video->setup(&nh);
 
-    Timer * stopwatch = this->rootObjects()[0]->findChild<Timer *>(QString("timerDisplay"));
+    // setup the stopwatch
+    Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));
     connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
 }
 

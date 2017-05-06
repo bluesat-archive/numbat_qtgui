@@ -1,22 +1,24 @@
 #include "timer/timer.hpp"
 
-Timer::Timer(QQuickItem *parent) : QQuickPaintedItem(parent) {
+Stopwatch::Stopwatch(QQuickItem *parent) : QQuickPaintedItem(parent) {
     time.setHMS(0, 0, 0, 0);
     //msElapsed = 0;
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(show()));
-    timer->start(1);
-    show();
+    QTimer *stopwatch = new QTimer(this);
+    stopwatch->start(INTERVAL);
+    connect(stopwatch, SIGNAL(timeout()), this, SLOT(show()));
 }
 
-void Timer::show() {
-    time = time.addMSecs(1);
+void Stopwatch::show() {
+    //int elapsed = time.elapsed();
+    //text = QString::number(elapsed);
+    time = time.addMSecs(INTERVAL);
     text = time.toString("hh:mm:ss.zzz");
     if ((time.second() % 2) == 0) {
         text[2] = ' ';
         text[5] = ' ';
     }
     emit valueChanged(text);
+    update();
 /*
     time->start();
     QString text;
@@ -28,7 +30,7 @@ void Timer::show() {
 */
 }
 
-void Timer::paint(QPainter *painter) {
+void Stopwatch::paint(QPainter *painter) {
     if (!text.isNull() && !text.isEmpty()) {
         painter->drawText(QPoint(0,0), text);
     }
