@@ -10,7 +10,7 @@ Window {
     visible: true
     minimumHeight: 300
     minimumWidth: 300
-    
+/*
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
@@ -19,12 +19,16 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
     }
-
+*/
         Stopwatch {
             // @disable-check M16
             objectName: "timerDisplay"
             id: timerDisplay
-
+            // @disable-check M16
+            anchors.horizontalCenter: parent.horizontalCenter
+            // @disable-check M16
+            anchors.verticalCenter: parent.verticalCenter
+ /*
             // @disable-check M16
             anchors.bottom: parent.bottom
             // @disable-check M16
@@ -33,8 +37,9 @@ Window {
             anchors.top: logo.bottom
             // @disable-check M16
             anchors.topMargin: 10
+*/
             // @disable-check M16
-            width: 244
+            width: 300
             // @disable-check M16
             height: 116
 

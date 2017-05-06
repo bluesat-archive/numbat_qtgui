@@ -13,10 +13,13 @@ void Stopwatch::show() {
     //text = QString::number(elapsed);
     time = time.addMSecs(INTERVAL);
     text = time.toString("hh:mm:ss.zzz");
+
+    // blinking separator
     if ((time.second() % 2) == 0) {
         text[2] = ' ';
         text[5] = ' ';
     }
+
     emit valueChanged(text);
     update();
 /*
@@ -31,7 +34,9 @@ void Stopwatch::show() {
 }
 
 void Stopwatch::paint(QPainter *painter) {
+    QFont font("Sans Serif", 32, QFont::Normal);
     if (!text.isNull() && !text.isEmpty()) {
-        painter->drawText(QPoint(0,0), text);
+        painter->setFont(font);
+        painter->drawText(QPoint(0,60), text);
     }
 }
