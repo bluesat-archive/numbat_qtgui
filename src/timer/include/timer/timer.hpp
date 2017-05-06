@@ -9,12 +9,15 @@
 #include <QQuickPaintedItem>
 
 #define INTERVAL 21
+#define ON 1
+#define OFF 0
 
 class Stopwatch : public QQuickPaintedItem {
     Q_OBJECT
     public:
         Stopwatch(QQuickItem *parent = 0);
         void paint(QPainter *painter);
+        void keyPressEvent(QKeyEvent *k);
         //void run();
         //void setup(ros::NodeHandle * nh);
 
@@ -24,10 +27,12 @@ class Stopwatch : public QQuickPaintedItem {
     private slots:
         void show();
 
-    public:
+    private:
         //int msElapsed;
         QTime time;
         QString text;
+        QTimer *stopwatch;
+        int status;
         //ros::NodeHandle nh;
         //QString format(int milisecs);
 };

@@ -28,6 +28,8 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             // @disable-check M16
             anchors.verticalCenter: parent.verticalCenter
+            // @disable-check M16
+            focus:true;
  /*
             // @disable-check M16
             anchors.bottom: parent.bottom
