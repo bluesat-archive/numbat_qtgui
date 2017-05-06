@@ -43,19 +43,19 @@ void Stopwatch::keyPressEvent(QKeyEvent *k) {
         // press SPACE to pause/resume
         if (status == ON) {
             stopwatch->stop();
-            qDebug() << "paused";
+            qDebug() << "STOP";
         } else {
             stopwatch->start(INTERVAL);
-            qDebug() << "started";
+            qDebug() << "START";
         }
         status = 1 - status;  // flip status
-    } else if (k->key() == Qt::Key_C) {
-        // press C to clear
+    } else if (k->key() == Qt::Key_R) {
+        // press R to reset
         stopwatch->stop();
         status = OFF;
         time.setHMS(0, 0, 0, 0);
         show();
-        qDebug() << "cleared";
+        qDebug() << "RESET";
     }
 }
 
