@@ -1,7 +1,7 @@
 #include "ros_video_components/ros_signal_strength.hpp"
 
-#define RECT_X 5
-#define RECT_Y 100
+#define RECT_X 0
+#define RECT_Y 0
 #define RECT_WIDTH RECT_X*40
 #define RECT_HEIGHT 150
 #define MAXDATA 100
@@ -30,7 +30,7 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
     );
 
     ros_ready = true;
-    ROS_INFO("Setup of video component complete");
+    //ROS_INFO("Setup of video component complete");
 }
 
 
@@ -38,12 +38,12 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
 	//int data = 82; //int data = getSignalStrength();
-
+	// http://doc.qt.io/qt-4.8/qpainter.html#setViewport
 	int x = RECT_X;
 	int y = RECT_Y;
-	int width = RECT_WIDTH;
-	int height = RECT_HEIGHT;
-
+	int widthV = width();// / RECT_WIDTH;
+	int heightV = height();// / RECT_HEIGHT;
+	
 	QLinearGradient linearGradient(0, 0, 100, 100);
 	int num = 0;
 	float hash = HASH;
@@ -56,14 +56,14 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 	}else{
 		num = (data/hash) +1;
 	}
-	painter->drawRect(x, y, width, height); //draw the main rectangle
+	painter->drawRect(x, y, widthV - 1, heightV - 1); //draw the main rectangle
 	
 	int i = 0;
 	
-	int barWidth = width/MAXNUM;
-	int barHeight = height/MAXNUM;
-	y += ((MAXNUM-1) * height) /MAXNUM;
-	const int increment = height/MAXNUM;
+	int barWidth = widthV/MAXNUM;
+	int barHeight = heightV/MAXNUM;
+	y += ((MAXNUM-1) * heightV) /MAXNUM;
+	const int increment = heightV/MAXNUM;
 	//ROS_INFO("y is %d, barHeight is %d\n",y, barHeight);
 	if(num == 0){
 		//print flashing "NO SIGNAL" on the screen
@@ -82,6 +82,7 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 		    	linearGradient.setColorAt(0.2, Qt::red);
 		    }
 		    painter->setBrush(linearGradient);
+		    //ROS_INFO("x is %d, y is %d, barWidth %d, barHeight %d", x ,y,barWidth, barHeight); 
 			painter->drawRect(x, y, barWidth, barHeight);
 			x += barWidth; //move x along
 			barHeight += increment; //increase height
