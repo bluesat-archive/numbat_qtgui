@@ -2,7 +2,7 @@
 
 Stopwatch::Stopwatch(QQuickItem *parent) : QQuickPaintedItem(parent) {
     time.setHMS(0, 0, 0, 0);
-    //msElapsed = 0;
+    ms_elapsed = 0;
     status = OFF;
     stopwatch = new QTimer(this);
     //stopwatch->start(INTERVAL);
@@ -12,10 +12,13 @@ Stopwatch::Stopwatch(QQuickItem *parent) : QQuickPaintedItem(parent) {
 }
 
 void Stopwatch::show() {
-    //int elapsed = time.elapsed();
+
     //text = QString::number(elapsed);
+
     if (status == ON) {
-        time = time.addMSecs(INTERVAL);
+        int elapsed = time_elapsed.elapsed();
+        time = time.addMSecs(elapsed - ms_elapsed);
+        ms_elapsed = elapsed;
     }
     text = time.toString("hh:mm:ss.zzz");
 
@@ -27,15 +30,6 @@ void Stopwatch::show() {
 
     emit valueChanged(text);
     update();
-/*
-    time->start();
-    QString text;
-    while (1) {
-        msElapsed = time->elapsed();
-        text = QString::number(msElapsed);
-        emit changed();
-    }
-*/
 }
 
 void Stopwatch::keyPressEvent(QKeyEvent *k) {
@@ -45,7 +39,9 @@ void Stopwatch::keyPressEvent(QKeyEvent *k) {
             stopwatch->stop();
             qDebug() << "STOP";
         } else {
-            stopwatch->start(INTERVAL);
+            stopwatch->start(1);
+            time_elapsed.start();
+            ms_elapsed = 0;
             qDebug() << "START";
         }
         status = 1 - status;  // flip status
@@ -54,15 +50,22 @@ void Stopwatch::keyPressEvent(QKeyEvent *k) {
         stopwatch->stop();
         status = OFF;
         time.setHMS(0, 0, 0, 0);
+        ms_elapsed = 0;
         show();
         qDebug() << "RESET";
     }
 }
 
 void Stopwatch::paint(QPainter *painter) {
-    QFont font("Sans Serif", 32, QFont::Normal);
+    QFont text_font("Sans Serif", 16, QFont::Normal);
+    QFont title_font("Sans Serif", 10, QFont::Normal);
     if (!text.isNull() && !text.isEmpty()) {
-        painter->setFont(font);
-        painter->drawText(QPoint(0,30), text);
+        QRect border = QRect(0, 0, 200, 120);
+        painter->setPen(Qt::green);
+        painter->setFont(text_font);
+        painter->drawText(border, Qt::AlignHCenter | Qt::AlignBottom, text);
+        painter->setFont(title_font);
+        painter->drawText(border, Qt::AlignTop, "TIMER\nSPACE to start/stop; R to reset");
+        painter->drawRect(border);
     }
 }

@@ -8,7 +8,6 @@
 #include <QPainter>
 #include <QQuickPaintedItem>
 
-#define INTERVAL 21
 #define ON 1
 #define OFF 0
 
@@ -28,8 +27,9 @@ class Stopwatch : public QQuickPaintedItem {
         void show();
 
     private:
-        //int msElapsed;
+        int ms_elapsed;
         QTime time;
+        QTime time_elapsed;
         QString text;
         QTimer *stopwatch;
         int status;
