@@ -4,8 +4,8 @@ import bluesat.owr 1.0
 
 Window {
     id: main_window
-    width: 400
-    height: 400
+    width: 800
+    height: 600
     title: "BLUEsat OWR"
     visible: true
     minimumHeight: 300
@@ -20,6 +20,7 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 */
+/*
         Stopwatch {
             // @disable-check M16
             objectName: "timerDisplay"
@@ -30,7 +31,7 @@ Window {
             anchors.verticalCenter: parent.verticalCenter
             // @disable-check M16
             focus:true;
- /*
+
             // @disable-check M16
             anchors.bottom: parent.bottom
             // @disable-check M16
@@ -39,22 +40,21 @@ Window {
             anchors.top: logo.bottom
             // @disable-check M16
             anchors.topMargin: 10
-*/
+
             // @disable-check M16
             width: 300
             // @disable-check M16
-            height: 116
+            height: 120
 
         }
-    }
+*/
 
-/*
+
     Item {
         id: video_pane
         x: 198
         width: 245
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: logo.bottom
         anchors.topMargin: 83
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
@@ -86,4 +86,4 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
-*/
+}

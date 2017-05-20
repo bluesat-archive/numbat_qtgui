@@ -63,6 +63,6 @@ void Stopwatch::paint(QPainter *painter) {
     QFont font("Sans Serif", 32, QFont::Normal);
     if (!text.isNull() && !text.isEmpty()) {
         painter->setFont(font);
-        painter->drawText(QPoint(0,60), text);
+        painter->drawText(QPoint(0,30), text);
     }
 }
