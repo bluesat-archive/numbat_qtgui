@@ -20,7 +20,7 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 */
-/*
+
     ROSVideoComponent {
         // @disable-check M16
         objectName: "videoStream"
@@ -36,7 +36,7 @@ Window {
         // @disable-check M16
         topic: topic.text
     }
-*/
+
         Stopwatch {
             // @disable-check M16
             objectName: "timerDisplay"
@@ -44,9 +44,11 @@ Window {
             // @disable-check M16
             anchors.bottom: videoStream.bottom
             // @disable-check M16
+            anchors.bottomMargin: 10
+            // @disable-check M16
             anchors.right: videoStream.right
             // @disable-check M16
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: 10
             // @disable-check M16
             focus:true;
 /*
@@ -60,9 +62,9 @@ Window {
             anchors.topMargin: 10
 */
             // @disable-check M16
-            width: 300
+            width: 210
             // @disable-check M16
-            height: 120
+            height: 90
 
         }
 

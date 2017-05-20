@@ -22,8 +22,8 @@ void Main_Application::run() {
     timer_idle->start(0);
 
     // setup the video component
-    //ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
-    //video->setup(&nh);
+    ROS_Video_Component * video = this->rootObjects()[0]->findChild<ROS_Video_Component*>(QString("videoStream"));
+    video->setup(&nh);
 
     // setup the stopwatch
     Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));

@@ -60,12 +60,12 @@ void Stopwatch::paint(QPainter *painter) {
     QFont text_font("Sans Serif", 16, QFont::Normal);
     QFont title_font("Sans Serif", 10, QFont::Normal);
     if (!text.isNull() && !text.isEmpty()) {
-        QRect border = QRect(0, 0, 200, 120);
+        QRect border = QRect(0, 0, 200, 80);
         painter->setPen(Qt::green);
         painter->setFont(text_font);
         painter->drawText(border, Qt::AlignHCenter | Qt::AlignBottom, text);
         painter->setFont(title_font);
-        painter->drawText(border, Qt::AlignTop, "TIMER\nSPACE to start/stop; R to reset");
+        painter->drawText(border, Qt::AlignTop, "TIMER\nSPACE=start/stop   R=reset");
         painter->drawRect(border);
     }
 }
