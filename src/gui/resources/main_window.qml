@@ -66,9 +66,9 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.left: logo.right
-        anchors.leftMargin: 50
+        anchors.leftMargin: 103
         anchors.bottom: video_pane.top
-        anchors.bottomMargin: 50
+        anchors.bottomMargin: 100
         ROSSignalStrength {
             // @disable-check M16
             objectName: "signal_strength"
