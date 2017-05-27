@@ -58,4 +58,33 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
+
+    Item {
+        id: signal_strength_container
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.left: logo.right
+        anchors.leftMargin: 103
+        anchors.bottom: video_pane.top
+        anchors.bottomMargin: 100
+        ROSSignalStrength {
+            // @disable-check M16
+            objectName: "signal_strength"
+            id: signal_strength
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/signal")
+        }
+    }
 }
