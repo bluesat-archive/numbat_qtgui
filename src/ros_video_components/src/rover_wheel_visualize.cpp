@@ -20,7 +20,7 @@ void ROS_Wheel_Visualize::setup(ros::NodeHandle * nh) {
     
     signal_sub = nh->subscribe("/rover/Wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
     ros_ready = true;
-    ROS_INFO("Setup of video component complete");
+    ROS_INFO("Setup of wheel video component complete");
 }
 
 
