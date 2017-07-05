@@ -18,7 +18,7 @@ ROS_Wheel_Visualize::ROS_Wheel_Visualize(QQuickItem * parent) :
 
 void ROS_Wheel_Visualize::setup(ros::NodeHandle * nh) {
     
-    signal_sub = nh->subscribe("/rover/Wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
+    wheel_sub = nh->subscribe("/rover/Wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
     ros_ready = true;
     ROS_INFO("Setup of wheel video component complete");
 }
@@ -27,20 +27,22 @@ void ROS_Wheel_Visualize::setup(ros::NodeHandle * nh) {
 
 void ROS_Wheel_Visualize::paint(QPainter * painter) {
     
-    int numOfWheelBox = 4;
+    	int numOfWheelBox = 4;
 	int x = RECT_X;
 	int y = RECT_Y;
 	int width = RECT_WIDTH;
 	int height = RECT_HEIGHT;
-    QPainter painter();//what parameter should in the pointer?
-    painter.setBrush(Qt::red);
-    painter.drawEclipse():
-    //painter.drawArc(x,y,150,50,0,16*360);
-    this->addItem(item);//what this represented?
+    	QPainter painter();//what parameter should in the pointer?
+    	painter.setBrush(Qt::red);
+	for(int i=0; i<numOfWheelBox;i++){
+    		painter.drawEclipse():
+		painter->drawRect(x, y, widthV - 1, heightV - 1); 
+	}
+    	this->addItem(item);
 
 	QLinearGradient linearGradient(0, 0, 100, 100);
-    //How to get the values from topic?
-    //How to set combined graph?
+	//which part can I get data from topic to choose poistion of triangle?
+   	//How to set combined graph?
 	
 }
 
