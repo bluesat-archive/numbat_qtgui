@@ -5,9 +5,6 @@
 #define RECT_WIDTH RECT_X*40
 #define RECT_HEIGHT 150
 
-#define HASH MAXDATA/MAXNUM
-#define TOO_WEAK MAXDATA/20
-
 ROS_Wheel_Visualize::ROS_Wheel_Visualize(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     //Should be /rover/Wheel or /rover/Wheel_Visualize? or whatever?
