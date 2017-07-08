@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main_window.qml</file>
+        <file>Sensor_Motor_Trim_Gui.qml</file>
     </qresource>
 </RCC>

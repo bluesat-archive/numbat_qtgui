@@ -60,6 +60,33 @@ Window {
     }
 
     Item {
+        id: smt_wrapper
+        width: 600
+        height: 250
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+
+        Loader {
+            source: "Sensor_Motor_Trim_Gui.qml"
+        }
+
+        /*Sensor_Motor_Trim {
+            id: sensor_motor_trim
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+        }*/
+    }
+
+    Item {
         id: signal_strength_container
         anchors.right: parent.right
         anchors.rightMargin: 0
