@@ -73,45 +73,6 @@ Window {
         anchors.topMargin: 100
     }
 
-    Item {
-        id: arm_acutator_display
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 7
-        anchors.left: cmd_vel_display.right
-        anchors.leftMargin: 10
-        anchors.right: parent.right
-        anchors.rightMargin: 205
-        anchors.top: video_pane.bottom
-        anchors.topMargin: 100
-        Arm_Acutator_Display {
-            id: arm_lower
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.top: parent.verticalCenter
-            anchors.topMargin: 0
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0
-
-            name_text: "Arm Lower"
-
-            Component.onCompleted: {
-                RoverCmdState.onArm_lower_changed.connect(stateChanged);
-            }
-
-            function stateChanged() {
-
-                if(RoverCmdState.arm_lower == 1500) {
-                    extension_state = qsTr("Stop");
-                } else if (RoverCmdState.arm_lower > 1500) {
-                    extension_state = qsTr("Extend");
-                } else {
-                    extension_state = qsTr("Retract");
-                }
-            }
-
-        }
         Arm_Acutator_Display {
             id: arm_upper
             anchors.right: parent.right
@@ -139,6 +100,35 @@ Window {
                     extension_state = qsTr("Retract");
                 }
             }
+        }
+    }
+
+    Item {
+        id: signal_strength_container
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.left: logo.right
+        anchors.leftMargin: 103
+        anchors.bottom: video_pane.top
+        anchors.bottomMargin: 100
+        ROSSignalStrength {
+            // @disable-check M16
+            objectName: "signal_strength"
+            id: signal_strength
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/signal")
         }
     }
 
