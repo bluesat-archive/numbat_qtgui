@@ -6,6 +6,8 @@
 #include <ros/ros.h>
 #include <QGuiApplication>
 
+#define MOTOR_LEFT_FRONT 0
+
 //Functions to make sure the Sensor_Motor_Trim QObject runs correctly
 Sensor_Motor_Trim::Sensor_Motor_Trim(QObject *parent) :
     QObject(parent),
@@ -17,28 +19,12 @@ void Sensor_Motor_Trim::setup(ros::NodeHandle *nh) {
       this->nh = nh;
 }
 
-double getCur(int i){
-    double values[3] = {9000, 90, 9}; //Subscribe to values when gui starts.
-    return values[i];
-}
-
 int Sensor_Motor_Trim::getIndex() const {
     return index;
 }
 
 void Sensor_Motor_Trim::setIndex(const int &new_value) {
     index = new_value;
-}
-
-int Sensor_Motor_Trim::getInit() const {
-    return init;
-}
-
-void Sensor_Motor_Trim::setInit(const int &new_value) {
-    init = new_value;
-    if (init == 1){
-        value = getCur(index);
-    }
 }
 
 bool Sensor_Motor_Trim::getPress() const {

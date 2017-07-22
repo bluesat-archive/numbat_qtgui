@@ -17,7 +17,6 @@ class Sensor_Motor_Trim : public QObject {
     Q_PROPERTY(int index READ getIndex WRITE setIndex NOTIFY indexChanged)
     Q_PROPERTY(bool press READ getPress WRITE setPress NOTIFY Pressed)
     Q_PROPERTY(double value READ getValue WRITE setValue NOTIFY valueChanged)
-    Q_PROPERTY(int init READ getInit WRITE setInit NOTIFY initChanged)
 
     public:
         Sensor_Motor_Trim(QObject *parent = 0);
@@ -29,9 +28,6 @@ class Sensor_Motor_Trim : public QObject {
         bool getPress() const;
         void setPress(const bool &new_value);
 
-        int getInit() const;
-        void setInit(const int &new_value);
-
         double getValue() const;
         void setValue(const double &new_value);
 
@@ -42,7 +38,6 @@ class Sensor_Motor_Trim : public QObject {
         void indexChanged();
         void valueChanged();
         void Pressed();
-        void initChanged();
 
     public slots:
 
@@ -51,7 +46,6 @@ class Sensor_Motor_Trim : public QObject {
         int index;
         double value;
         bool press;
-        int init;
 
 };
 

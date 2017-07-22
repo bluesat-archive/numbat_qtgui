@@ -29,9 +29,9 @@ Item {
     //Button for submitting
     Button {
         id: submit_button
-        x: 345
-        y: 148
-        height: 24
+        x: 396
+        y: 161
+        height: 20
         text: qsTr("Submit")
         onClicked: {
             if (value_text.acceptableInput) {
@@ -43,40 +43,104 @@ Item {
         }
     }
 
-    //Slider for value
-    Slider {
-        id: value_slider
-        x: 50
-        y: 149
+    //Warning message for out of bounds input
+    Text {
+        id: value_warning
+        x: 165
+        y: 82
+        width: 270
+        height: 20
+        color: "#ff0000"
+        text: qsTr(
+                   "Please enter a value between %1 and %2"
+        ).arg(
+                   component_list.model.get(component_list.currentIndex).minimum
+        ).arg(
+                   component_list.model.get(component_list.currentIndex).maximum
+        )
+        visible: true
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 12
+    }
+
+    //Component list - for choosing what element to edit
+    ComboBox {
+        id: component_list
+        x: 101
+        y: 115
         width: 200
-        height: 22
-        maximumValue: 1500
-        minimumValue: 500
-        value: 1000
-        onValueChanged: {
-            if (value_text != null && this.pressed) {
-                value_text.text = qsTr("%1").arg(this.value)
+        height: 20
+        editable: false
+        model: ListModel {
+            id: cbItems
+            ListElement {
+                minimum: -500
+                normal: 0
+                maximum: 500
+                text: "Banana"
             }
+            ListElement {
+                minimum: -50
+                normal: 0
+                maximum: 50
+                text: "Apple"
+            }
+            ListElement {
+                minimum: -5
+                normal: 0
+                maximum: 5
+                text: "Coconut"
+            }
+        }
+
+        onCurrentTextChanged: {
+            value_text.text = qsTr("%1").arg(this.model.get(this.currentIndex).normal)
+            if (value_text.acceptableInput){
+                value_warning.visible = false
+            } else {
+                value_warning.visible = true
+            }
+        }
+    }
+
+
+    //Button to override an out of bounds warning
+    Button {
+        id: override_button
+        x: 350
+        y: 115
+        width: 110
+        height: 20
+        visible: true
+        text: qsTr("Override warning")
+        onClicked: {
+            Sensor_Motor_Trim.value = value_text.text*1
+            Sensor_Motor_Trim.index = component_list.currentIndex
+            Sensor_Motor_Trim.press = 1
+            component_list.model.get(component_list.currentIndex).normal = value_text.text*1
         }
     }
 
     //Text box for value
     TextField {
         id: value_text
-        x: 265
-        y: 150
+        x: 207
+        y: 161
         width: 70
         height: 20
-        text: qsTr("1000")
+        text: qsTr("0")
         font.pixelSize: 12
-        validator: DoubleValidator {bottom: value_slider.minimumValue; top: value_slider.maximumValue;}
+        validator: DoubleValidator {bottom: component_list.model.get(component_list.currentIndex).minimum;
+                                    top: component_list.model.get(component_list.currentIndex).maximum;}
         onTextChanged: {
-            if (value_slider != null) {
-                value_slider.value = this.text*1
-            }
             if (value_warning != null) {
                 value_warning.visible = !this.acceptableInput
+            }
+            if (override_button != null){
                 override_button.visible = !this.acceptableInput
+            }
+            if (submit_button != null) {
                 submit_button.enabled = this.acceptableInput
             }
         }
@@ -89,100 +153,84 @@ Item {
         }
     }
 
-    //Warning message for out of bounds input
-    Text {
-        id: value_warning
-        x: 260
-        y: 115
-        width: 270
-        height: 20
-        color: "#ff0000"
-        text: qsTr("Please enter a value between %1 and %2").arg(value_slider.minimumValue).arg(value_slider.maximumValue)
-        visible: true
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 12
-    }
-
-    //Component list - for choosing what element to edit
-    ComboBox {
-        id: component_list
-        x: 50
-        y: 115
-        width: 200
-        height: 20
-        editable: false
-        model: ListModel {
-            id: cbItems
-            ListElement {
-                minimum: 500
-                normal: 1000
-                maximum: 1500
-                text: "Banana"
-            }
-            ListElement {
-                minimum: 50
-                normal: 100
-                maximum: 150
-                text: "Apple"
-            }
-            ListElement {
-                minimum: 5
-                normal: 10
-                maximum: 15
-                text: "Coconut"
-            }
-        }
-
-        //Code to initialise current values for list elements.
-        Component.onCompleted: {
-            Sensor_Motor_Trim.index = 0
-            Sensor_Motor_Trim.init = 1
-            while (Sensor_Motor_Trim.index < this.model.count){
-                this.model.get(Sensor_Motor_Trim.index).normal = Sensor_Motor_Trim.value
-                Sensor_Motor_Trim.index ++
-                Sensor_Motor_Trim.init = 1
-            }
-            Sensor_Motor_Trim.init = 0
-
-            value_slider.minimumValue = this.model.get(this.currentIndex).minimum
-            value_slider.maximumValue = this.model.get(this.currentIndex).maximum
-            value_slider.value = this.model.get(this.currentIndex).normal
-            value_text.text = qsTr("%1").arg(this.model.get(this.currentIndex).normal)
-            if (value_text.acceptableInput){
-                value_warning.visible = false
-            } else {
-                value_warning.visible = true
-            }
-        }
-
-        onCurrentTextChanged: {
-            value_slider.minimumValue = this.model.get(this.currentIndex).minimum
-            value_slider.maximumValue = this.model.get(this.currentIndex).maximum
-            value_slider.value = this.model.get(this.currentIndex).normal
-            value_text.text = qsTr("%1").arg(this.model.get(this.currentIndex).normal)
-            if (value_text.acceptableInput){
-                value_warning.visible = false
-            } else {
-                value_warning.visible = true
-            }
-        }
-    }
-
-    //Button to override an out of bounds warning
     Button {
-        id: override_button
-        x: 420
-        y: 148
-        width: 110
-        visible: false
-        text: qsTr("Override warning")
+        id: button_down10
+        x: 101
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("-10")
         onClicked: {
-            Sensor_Motor_Trim.value = value_text.text*1
-            Sensor_Motor_Trim.index = component_list.currentIndex
-            Sensor_Motor_Trim.press = 1
-            component_list.model.get(component_list.currentIndex).normal = value_text.text*1
+            value_text.text = (value_text.text - 10).toFixed(1)
         }
+    }
+
+    Button {
+        id: button_down1
+        x: 135
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("-1")
+        onClicked: {
+            value_text.text = (value_text.text - 1).toFixed(1)
+        }
+    }
+
+    Button {
+        id: button_downTenth
+        x: 169
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("-0.1")
+        onClicked: {
+            value_text.text = (value_text.text - 0.1).toFixed(1)
+        }
+    }
+
+    Button {
+        id: button_upTenth
+        x: 285
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("+0.1")
+        onClicked: {
+            value_text.text = (value_text.text*1 + 0.1).toFixed(1)
+        }
+    }
+
+    Button {
+        id: button_up1
+        x: 319
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("+1")
+        onClicked: {
+            value_text.text = (value_text.text*1 + 1).toFixed(1)
+        }
+    }
+
+    Button {
+        id: button_up10
+        x: 353
+        y: 161
+        width: 30
+        height: 20
+        text: qsTr("+10")
+        onClicked: {
+            value_text.text = (value_text.text*1 + 10).toFixed(1)
+        }
+    }
+
+    Text {
+        id: current_value_text
+        x: 101
+        y: 141
+        text: qsTr("Current Value: %1").arg(component_list.model.get(component_list.currentIndex).normal)
+        font.pixelSize: 12
     }
 
 }
