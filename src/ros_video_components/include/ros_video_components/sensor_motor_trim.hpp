@@ -9,6 +9,8 @@
 
 #include <ros/ros.h>
 
+
+//Sensor/Motor Trim QObject for interfacing between qml and c++
 class Sensor_Motor_Trim : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(Sensor_Motor_Trim)

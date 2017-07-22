@@ -4,6 +4,9 @@ import QtQuick.Controls 1.1
 //import bluesat.owr 1.0
 import bluesat.owr.singleton 1.0
 
+//Gui widget for trimming sensors/motor values
+//Fixed size of 600x250p
+
 Item {
     id: sensor_motor_trim
     visible:true
@@ -11,29 +14,36 @@ Item {
     height: 250
 
     Component.onCompleted: {
-        console.log("It worked")
+        console.log("Sensor/Motor Trim started")
     }
 
-    Canvas {
-        id: canvas
-        Button {
-            id: value_button
-            x: 345
-            y: 148
-            height: 24
-            text: qsTr("Submit")
-            onClicked: {
-                if (value_text.acceptableInput) {
-                    //console.log("Button has been pressed...")
-                    Sensor_Motor_Trim.value = value_text.text*1
-                    Sensor_Motor_Trim.index = comboBox.currentIndex
-                    Sensor_Motor_Trim.press = 1
-                    comboBox.model.get(comboBox.currentIndex).normal = value_text.text*1
-                }
+    //Title
+    Text {
+        id: title
+        x: 146
+        y: 38
+        text: qsTr("Trim Sensors/Joints")
+        font.pixelSize: 32
+    }
+
+    //Button for submitting
+    Button {
+        id: submit_button
+        x: 345
+        y: 148
+        height: 24
+        text: qsTr("Submit")
+        onClicked: {
+            if (value_text.acceptableInput) {
+                Sensor_Motor_Trim.value = value_text.text*1
+                Sensor_Motor_Trim.index = component_list.currentIndex
+                Sensor_Motor_Trim.press = 1
+                component_list.model.get(component_list.currentIndex).normal = value_text.text*1
             }
         }
     }
 
+    //Slider for value
     Slider {
         id: value_slider
         x: 50
@@ -50,6 +60,7 @@ Item {
         }
     }
 
+    //Text box for value
     TextField {
         id: value_text
         x: 265
@@ -66,20 +77,19 @@ Item {
             if (value_warning != null) {
                 value_warning.visible = !this.acceptableInput
                 override_button.visible = !this.acceptableInput
-                value_button.enabled = this.acceptableInput
+                submit_button.enabled = this.acceptableInput
             }
-            //console.log(this.text);
         }
 
         onAccepted: {
-            //console.log("Text Submitted value")
             Sensor_Motor_Trim.value = this.text*1
-            Sensor_Motor_Trim.index = comboBox.currentIndex
+            Sensor_Motor_Trim.index = component_list.currentIndex
             Sensor_Motor_Trim.press = 1
-            comboBox.model.get(comboBox.currentIndex).normal = this.text*1
+            component_list.model.get(component_list.currentIndex).normal = this.text*1
         }
     }
 
+    //Warning message for out of bounds input
     Text {
         id: value_warning
         x: 260
@@ -94,8 +104,9 @@ Item {
         font.pixelSize: 12
     }
 
+    //Component list - for choosing what element to edit
     ComboBox {
-        id: comboBox
+        id: component_list
         x: 50
         y: 115
         width: 200
@@ -123,20 +134,16 @@ Item {
             }
         }
 
+        //Code to initialise current values for list elements.
         Component.onCompleted: {
-            console.log("Starting up...")
             Sensor_Motor_Trim.index = 0
             Sensor_Motor_Trim.init = 1
             while (Sensor_Motor_Trim.index < this.model.count){
-                //console.log("Assigning %1 to index %2".arg(Sensor_Motor_Trim.value).arg(Sensor_Motor_Trim.index))
                 this.model.get(Sensor_Motor_Trim.index).normal = Sensor_Motor_Trim.value
                 Sensor_Motor_Trim.index ++
-                if (Sensor_Motor_Trim.index > this.model.count - 1){
-                    Sensor_Motor_Trim.init = 0
-                } else {
-                    Sensor_Motor_Trim.init = 1
-                }
+                Sensor_Motor_Trim.init = 1
             }
+            Sensor_Motor_Trim.init = 0
 
             value_slider.minimumValue = this.model.get(this.currentIndex).minimum
             value_slider.maximumValue = this.model.get(this.currentIndex).maximum
@@ -147,13 +154,9 @@ Item {
             } else {
                 value_warning.visible = true
             }
-            console.log("Done")
         }
 
         onCurrentTextChanged: {
-
-            //console.log("Thing changed")
-            //console.log(this.model.get(this.currentIndex).minimum)
             value_slider.minimumValue = this.model.get(this.currentIndex).minimum
             value_slider.maximumValue = this.model.get(this.currentIndex).maximum
             value_slider.value = this.model.get(this.currentIndex).normal
@@ -166,6 +169,7 @@ Item {
         }
     }
 
+    //Button to override an out of bounds warning
     Button {
         id: override_button
         x: 420
@@ -174,20 +178,11 @@ Item {
         visible: false
         text: qsTr("Override warning")
         onClicked: {
-            //console.log("Submitted out of range")
             Sensor_Motor_Trim.value = value_text.text*1
-            Sensor_Motor_Trim.index = comboBox.currentIndex
+            Sensor_Motor_Trim.index = component_list.currentIndex
             Sensor_Motor_Trim.press = 1
-            comboBox.model.get(comboBox.currentIndex).normal = value_text.text*1
+            component_list.model.get(component_list.currentIndex).normal = value_text.text*1
         }
-    }
-
-    Text {
-        id: title
-        x: 146
-        y: 38
-        text: qsTr("Trim Sensors/Joints")
-        font.pixelSize: 32
     }
 
 }

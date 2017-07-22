@@ -5,8 +5,8 @@
 #include "ros_video_components/sensor_motor_trim.hpp"
 #include <ros/ros.h>
 #include <QGuiApplication>
-//#include <gui/MainApplication.hpp>
 
+//Functions to make sure the Sensor_Motor_Trim QObject runs correctly
 Sensor_Motor_Trim::Sensor_Motor_Trim(QObject *parent) :
     QObject(parent),
     nh(NULL){
