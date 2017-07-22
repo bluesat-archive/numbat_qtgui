@@ -75,31 +75,79 @@ Item {
         model: ListModel {
             id: cbItems
             ListElement {
+                minimum: -250
+                normal: 0
+                maximum: 250
+                text: "Front Left Wheel"
+            }
+            ListElement {
+                minimum: -250
+                normal: 0
+                maximum: 250
+                text: "Front Right Wheel"
+            }
+            ListElement {
+                minimum: -250
+                normal: 0
+                maximum: 250
+                text: "Back Left Wheel"
+            }
+            ListElement {
+                minimum: -250
+                normal: 0
+                maximum: 250
+                text: "Back Right Wheel"
+            }
+            ListElement {
                 minimum: -500
                 normal: 0
                 maximum: 500
-                text: "Banana"
+                text: "Front Left Swerve"
             }
             ListElement {
-                minimum: -50
+                minimum: -500
                 normal: 0
-                maximum: 50
-                text: "Apple"
+                maximum: 500
+                text: "Front Right Swerve"
             }
             ListElement {
-                minimum: -5
+                minimum: -500
                 normal: 0
-                maximum: 5
-                text: "Coconut"
+                maximum: 500
+                text: "Back Left Swerve"
+            }
+            ListElement {
+                minimum: -500
+                normal: 0
+                maximum: 500
+                text: "Back Right Swerve"
+            }
+            ListElement {
+                minimum: -300
+                normal: 0
+                maximum: 300
+                text: "Arm Base Rotate"
+            }
+            ListElement {
+                minimum: -500
+                normal: 0
+                maximum: 500
+                text: "Arm Upper Act."
+            }
+            ListElement {
+                minimum: -500
+                normal: 0
+                maximum: 500
+                text: "Arm Lower Act."
             }
         }
 
         onCurrentTextChanged: {
             value_text.text = qsTr("%1").arg(this.model.get(this.currentIndex).normal)
             if (value_text.acceptableInput){
-                value_warning.visible = false
+                value_warning.color = "#000000"
             } else {
-                value_warning.visible = true
+                value_warning.color = "#ff0000"
             }
         }
     }
@@ -135,7 +183,13 @@ Item {
                                     top: component_list.model.get(component_list.currentIndex).maximum;}
         onTextChanged: {
             if (value_warning != null) {
-                value_warning.visible = !this.acceptableInput
+                if (this.acceptableInput){
+                    value_warning.color = "#000000"
+                } else {
+                    value_warning.color = "#ff0000"
+                }
+
+                //value_warning.visible = !this.acceptableInput
             }
             if (override_button != null){
                 override_button.visible = !this.acceptableInput

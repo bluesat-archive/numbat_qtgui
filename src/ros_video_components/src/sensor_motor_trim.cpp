@@ -6,6 +6,7 @@
 #include <ros/ros.h>
 #include <QGuiApplication>
 
+
 #define MOTOR_LEFT_FRONT 0
 
 //Functions to make sure the Sensor_Motor_Trim QObject runs correctly
