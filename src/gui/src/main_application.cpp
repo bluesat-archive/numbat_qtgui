@@ -1,10 +1,9 @@
-
+#include <QTimer>
 #include "ros_video_components/ros_video_component.hpp"
+#include "gui/main_application.hpp"
 
 #include "ros_video_components/ros_wheel_visualize.hpp"
-#include <QTimer>
 #include "ros_video_components/ros_signal_strength.hpp"
-#include "gui/main_application.hpp"
 
 Main_Application::Main_Application() {
 
@@ -17,7 +16,7 @@ void Main_Application::run() {
 	qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
     
 	//this loads the qml file we are about to create
-    this->load(QUrl(QStringLiteral("qrc:/window1.qml")));
+    this->load(QUrl(QStringLiteral("qrc:/window.qml")));
 
     //Setup a timer to get the application's idle loop
     QTimer *timer = new QTimer(this);

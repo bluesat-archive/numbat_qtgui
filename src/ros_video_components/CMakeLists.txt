@@ -10,21 +10,16 @@ project(ros_video_components)
 ##############################################################################
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
-find_package(catkin REQUIRED COMPONENTS 
-				qt_build 
-				roscpp 
-				sensor_msgs 
-				image_transport
-				ros_video_component)#<----add here
+find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport)
 include_directories(include ${catkin_INCLUDE_DIRS})
 # Use this to define what the package will export (e.g. libs, headers).
 # Since the default here is to produce only a binary, we don't worry about
 # exporting anything.
 catkin_package(
-    CATKIN_DEPENDS qt_build roscpp sensor_msgs image_transport ros_video_component
+    CATKIN_DEPENDS qt_build roscpp sensor_msgs image_transport
     INCLUDE_DIRS include
     LIBRARIES RosVideoComponents
-)#add rosvideo
+)
 
 ##############################################################################
 # Qt Environment

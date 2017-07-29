@@ -1,19 +1,17 @@
 #ifndef ROS_WHEEL_VISUALIZE_H
 #define ROS_WHEEL_VISUALIZE_H
 
+
 //QT
-#include <QObject>
 #include <QQuickPaintedItem>
 #include <QPainter>
-#include <QQmlEngine>
-#include <QJSEngine>
 
 //ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
 
 
-class ROS_Signal_Strength : public QQuickPaintedItem {
+class ROS_Wheel_Visualize : public QQuickPaintedItem {
     //make this a Qt Widget
     Q_OBJECT
     // defines a qml value for the topic
@@ -30,7 +28,7 @@ class ROS_Signal_Strength : public QQuickPaintedItem {
         void set_topic(const QString &new_value);
         QString get_topic() const;
 
-    message://back to check the type
+    signals://back to check the type
         void topic_changed();
 
     private:
@@ -43,8 +41,8 @@ class ROS_Signal_Strength : public QQuickPaintedItem {
         bool ros_ready;
         
 		int data; //the wheel data
-
-#endif //ROS_WHEEL_VISUALIZE
+};
+#endif //ROS_WHEEL_VISUALIZE_H
 
 
 

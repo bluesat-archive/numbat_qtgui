@@ -7,39 +7,38 @@
 
 ROS_Wheel_Visualize::ROS_Wheel_Visualize(QQuickItem * parent) :
     QQuickPaintedItem(parent),
-    //Should be /rover/Wheel or /rover/Wheel_Visualize? or whatever?
-    topic_value("/rover/Wheel"),
+    topic_value("/rover/wheel"),
     ros_ready(false),
     data(50) {
 }
 
 void ROS_Wheel_Visualize::setup(ros::NodeHandle * nh) {
     
-    wheel_sub = nh->subscribe("/rover/Wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
+    wheel_sub = nh->subscribe("/rover/wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
     ros_ready = true;
     ROS_INFO("Setup of wheel video component complete");
 }
 
 
-
+//ROS_Wheel_Visualize::
 void ROS_Wheel_Visualize::paint(QPainter * painter) {
     
-    	int numOfWheelBox = 4;
+	int numOfWheelBox = 4;
 	int x = RECT_X;
 	int y = RECT_Y;
 	int width = RECT_WIDTH;
 	int height = RECT_HEIGHT;
-    	QPainter painter();//what parameter should in the pointer?
-    	painter.setBrush(Qt::red);
+    QLinearGradient linearGradient(0, 0, 100, 100);
+	painter->setBrush(linearGradient);
 	for(int i=0; i<numOfWheelBox;i++){
-    		painter.drawEclipse():
-		painter->drawRect(x, y, widthV - 1, heightV - 1); 
+        painter->setBrush(QBrush(Qt::green, Qt::SolidPattern));
+        painter->drawEllipse(80+i, 80+i, 240, 240);//int x int y width and height
+        painter->drawRect(x, y, width - 1, height - 1);
 	}
-    	this->addItem(item);
+    QPolygon polygon;   // Using Polygon class, to draw the triangle
+    polygon << QPoint(0,-40) << QPoint(25,40) << QPoint(-25,40);
+    painter->drawPolygon(polygon);  // Draw a triangle on a polygonal model
 
-	QLinearGradient linearGradient(0, 0, 100, 100);
-	//which part can I get data from topic to choose poistion of triangle?
-   	//How to set combined graph?
 	
 }
 
