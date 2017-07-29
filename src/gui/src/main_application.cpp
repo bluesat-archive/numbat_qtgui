@@ -1,6 +1,7 @@
 #include <QTimer>
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
+#include "ros_video_components/ros_signal_strength.hpp"
 #include "gui/main_application.hpp"
 #include "coord_bearing_readout/coord_bearing_readout.hpp"
 
@@ -13,6 +14,7 @@ void Main_Application::run() {
     // TODO: modify
     //qmlRegisterType<Stopwatch>("bluesat.owr", 1, 0, "Stopwatch");
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
+    qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
 
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
@@ -29,6 +31,10 @@ void Main_Application::run() {
     // TODO: coord bearing
     //Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));
     //connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
+    
+    ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
+    signal_strength->setup(&nh);
+    
 }
 
 void Main_Application::main_loop() {
