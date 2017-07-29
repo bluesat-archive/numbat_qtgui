@@ -53,8 +53,8 @@
     <run_depend>sensor_msgs</run_depend>
     <run_depend>roscpp</run_depend>
     <run_depend>libqt4-dev</run_depend>
-    <build_depend>coord_bearing_readout</build_depend>
-    <run_depend>coord_bearing_readout</run_depend>
+    <build_depend>ros_coord_bearing</build_depend>
+    <run_depend>ros_coord_bearing</run_depend>
 
     <!-- The export tag contains other, unspecified, tags -->
     <export>
