@@ -28,12 +28,8 @@ void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
     	&ROS_Signal_Strength::receive_signal,
     	this
     );
-
     ros_ready = true;
-    //ROS_INFO("Setup of video component complete");
 }
-
-
 
 void ROS_Signal_Strength::paint(QPainter * painter) {
 	
@@ -47,14 +43,14 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 	QLinearGradient linearGradient(0, 0, 100, 100);
 	int num = 0;
 	float hash = HASH;
-	if(data >= MAXDATA){
+	if(data >= MAXDATA) {
 		num = MAXNUM;
-	}else if(data <= TOO_WEAK){
+	}else if(data <= TOO_WEAK) {
 		num = 0;
 		linearGradient.setColorAt(0.0, Qt::white);
 		painter->setBrush(linearGradient);	
 	}else{
-		num = (data/hash) +1;
+		num = (data/hash) + 1;
 	}
 	painter->drawRect(x, y, widthV - 1, heightV - 1); //draw the main rectangle
 	
@@ -64,32 +60,24 @@ void ROS_Signal_Strength::paint(QPainter * painter) {
 	int barHeight = heightV/MAXNUM;
 	y += ((MAXNUM-1) * heightV) /MAXNUM;
 	const int increment = heightV/MAXNUM;
-	//ROS_INFO("y is %d, barHeight is %d\n",y, barHeight);
-	if(num == 0){
-		//print flashing "NO SIGNAL" on the screen
-		/*QLabel * label = new QLabel(&mainWindow);
-		label->setText("NO SIGNAL\n");
-		mainWindow.show();*/
+	if(num == 0) {
 		ROS_INFO("NO SIGNAL\n");
-	}else{
-		for(i = 1; i <= num; i++){
-		    
-		    if(num >= GREEN/*(MAXNUM - (MAXNUM/NUMCOLOR))*/){
+	}else {
+		for(i = 1; i <= num; i++) {
+		    if(num >= GREEN) {
 			    linearGradient.setColorAt(0.2, Qt::green);
-		    }else if(num >= YELLOW/*(MAXNUM/NUMCOLOR)*/){
+		    }else if(num >= YELLOW) {
 			    linearGradient.setColorAt(0.2, Qt::yellow);        	
-		    }else{
+		    }else {
 		    	linearGradient.setColorAt(0.2, Qt::red);
 		    }
-		    painter->setBrush(linearGradient);
-		    //ROS_INFO("x is %d, y is %d, barWidth %d, barHeight %d", x ,y,barWidth, barHeight); 
+		    painter->setBrush(linearGradient); 
 			painter->drawRect(x, y, barWidth, barHeight);
 			x += barWidth; //move x along
 			barHeight += increment; //increase height
 			y -= increment; //decrease height
 		}
 	}
-	
 }
 
 void ROS_Signal_Strength::set_topic(const QString & new_value) {
@@ -113,7 +101,7 @@ QString ROS_Signal_Strength::get_topic() const {
     return topic_value;
 }
 
-void ROS_Signal_Strength::receive_signal(const std_msgs::Float32::ConstPtr & msg){
+void ROS_Signal_Strength::receive_signal(const std_msgs::Float32::ConstPtr & msg) {
 	data = msg->data;
 	ROS_INFO("Received signal message");
 	update();
