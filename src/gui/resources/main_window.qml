@@ -37,39 +37,6 @@ Window {
         topic: topic.text
     }
 
-    // TODO: modify
-        Stopwatch {
-            // @disable-check M16
-            objectName: "timerDisplay"
-            id: timerDisplay
-            // @disable-check M16
-            anchors.bottom: videoStream.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 10
-            // @disable-check M16
-            anchors.right: videoStream.right
-            // @disable-check M16
-            anchors.rightMargin: 10
-            // @disable-check M16
-            focus:true;
-/*
-            // @disable-check M16
-            anchors.bottom: parent.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 0
-            // @disable-check M16
-            anchors.top: logo.bottom
-            // @disable-check M16
-            anchors.topMargin: 10
-*/
-            // @disable-check M16
-            width: 210
-            // @disable-check M16
-            height: 90
-
-        }
-
-
     TextInput {
         id: topic
         x: 72
@@ -79,6 +46,7 @@ Window {
         text: qsTr("/cam0")
         font.pixelSize: 12
     }
+
 
     Item {
         id: signal_strength_container
@@ -107,5 +75,24 @@ Window {
             // @disable-check M16
             topic: qsTr("/rover/signal")
         }
+    }
+
+    ROSCoordBearing {
+        // @disable-check M16
+        objectName: "coord_bearing"
+        id: coord_bearing
+        // @disable-check M16
+        anchors.bottom: videoStream.bottom
+        // @disable-check M16
+        anchors.bottomMargin: 10
+        // @disable-check M16
+        anchors.left: videoStream.left
+        // @disable-check M16
+        anchors.leftMargin: 10
+        // @disable-check M16
+        width: 210
+        // @disable-check M16
+        height: 100
+
     }
 }

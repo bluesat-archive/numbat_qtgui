@@ -11,10 +11,9 @@ Main_Application::Main_Application() {
 
 void Main_Application::run() {
 
-    // TODO: modify
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
-    qmlRegisterType<ROS_Coord_Bearing>("bluesat.owr", 1, 0, "ROSCoordBearing");
+    qmlRegisterType<ROSCoordBearing>("bluesat.owr", 1, 0, "ROSCoordBearing");
 
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
@@ -31,9 +30,8 @@ void Main_Application::run() {
     ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
     signal_strength->setup(&nh);
 
-    // TODO: coord bearing
-    //Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));
-    //connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
+    // coordinates and bearing readouts
+    ROSCoordBearing * cbreads = this->rootObjects()[0]->findChild<ROSCoordBearing *>(QString("coord_bearing"));
     
 }
 

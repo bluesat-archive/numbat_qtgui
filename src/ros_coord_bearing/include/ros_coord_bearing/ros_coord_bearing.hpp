@@ -4,6 +4,7 @@
 #include <QObject>
 #include <ros/ros.h>
 #include <QPainter>
+#include <QString>
 #include <QQuickPaintedItem>
 
 class ROSCoordBearing : public QQuickPaintedItem
