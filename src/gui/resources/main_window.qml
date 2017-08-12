@@ -84,15 +84,15 @@ Window {
         // @disable-check M16
         anchors.bottom: videoStream.bottom
         // @disable-check M16
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 5
         // @disable-check M16
         anchors.left: videoStream.left
         // @disable-check M16
         anchors.leftMargin: 10
         // @disable-check M16
-        width: 210
+        width: 145
         // @disable-check M16
-        height: 100
+        height: 65
 
     }
 }
