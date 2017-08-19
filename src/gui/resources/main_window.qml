@@ -8,25 +8,26 @@ Window {
     height: 600
     title: "BLUEsat OWR"
     visible: true
-    minimumHeight: 600
-    minimumWidth: 450
-/*
+    minimumHeight: 720
+    minimumWidth: 540
+
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
         width: 244
         height: 116
+        anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
     }
-*/
+
 
     ROSVideoComponent {
         // @disable-check M16
         objectName: "videoStream"
         id: videoStream
         // @disable-check M16
-        anchors.top: parent.top
+        anchors.top: logo.bottom
         // @disable-check M16
         anchors.horizontalCenter: parent.horizontalCenter
         // @disable-check M16
@@ -39,8 +40,9 @@ Window {
 
     TextInput {
         id: topic
-        x: 72
-        y: 500
+        anchors.top: videoStream.bottom
+        anchors.topMargin: 2
+        anchors.left: videoStream.left
         width: 80
         height: 20
         text: qsTr("/cam0")
@@ -56,7 +58,7 @@ Window {
         anchors.topMargin: 0
         anchors.left: logo.right
         anchors.leftMargin: 103
-        anchors.bottom: video_pane.top
+        anchors.bottom: videoStream.top
         anchors.bottomMargin: 100
         ROSSignalStrength {
             // @disable-check M16
