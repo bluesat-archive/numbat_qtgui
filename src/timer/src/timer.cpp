@@ -57,11 +57,21 @@ void Stopwatch::keyPressEvent(QKeyEvent *k) {
 }
 
 void Stopwatch::paint(QPainter *painter) {
-    QFont text_font("Sans Serif", 16, QFont::Normal);
-    QFont title_font("Sans Serif", 10, QFont::Normal);
+
+    // set font
+    QFont text_font("Sans Serif", 10, QFont::Bold);
+    QFont title_font("Sans Serif", 6, QFont::Bold);
+
     if (!text.isNull() && !text.isEmpty()) {
         QRect border = QRect(0, 0, 200, 80);
-        painter->setPen(Qt::green);
+
+        // draw background
+        QBrush brush(Qt::gray, Qt::SolidPattern);
+        painter->fillRect(border, brush);
+        painter->setPen(Qt::blue);
+        painter->drawRect(border);
+
+        // draw text
         painter->setFont(text_font);
         painter->drawText(border, Qt::AlignHCenter | Qt::AlignBottom, text);
         painter->setFont(title_font);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2017-05-21T01:12:59. -->
+<!-- Written by QtCreator 4.2.1, 2017-08-19T10:35:14. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -171,7 +171,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">66190128</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">1</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">0</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory"></value>
@@ -194,7 +194,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">66190128</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">2</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">0</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory"></value>
@@ -217,7 +217,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">66190128</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">3</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">0</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">4</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
