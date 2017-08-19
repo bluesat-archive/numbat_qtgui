@@ -44,11 +44,11 @@ Window {
             // @disable-check M16
             anchors.bottom: videoStream.bottom
             // @disable-check M16
-            anchors.bottomMargin: 10
+            anchors.bottomMargin: 5
             // @disable-check M16
             anchors.right: videoStream.right
             // @disable-check M16
-            anchors.rightMargin: 10
+            anchors.rightMargin: 5
             // @disable-check M16
             focus:true;
 /*
@@ -62,9 +62,9 @@ Window {
             anchors.topMargin: 10
 */
             // @disable-check M16
-            width: 210
+            width:145
             // @disable-check M16
-            height: 90
+            height: 55
 
         }
 

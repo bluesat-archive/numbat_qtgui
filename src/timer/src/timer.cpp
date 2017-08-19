@@ -63,7 +63,8 @@ void Stopwatch::paint(QPainter *painter) {
     QFont title_font("Sans Serif", 6, QFont::Bold);
 
     if (!text.isNull() && !text.isEmpty()) {
-        QRect border = QRect(0, 0, 200, 80);
+        QRect border = QRect(0, 0, 140, 50);
+        QRect text_bound = QRect(5, 5, 130, 40);
 
         // draw background
         QBrush brush(Qt::gray, Qt::SolidPattern);
@@ -73,9 +74,8 @@ void Stopwatch::paint(QPainter *painter) {
 
         // draw text
         painter->setFont(text_font);
-        painter->drawText(border, Qt::AlignHCenter | Qt::AlignBottom, text);
+        painter->drawText(text_bound, Qt::AlignHCenter | Qt::AlignBottom, text);
         painter->setFont(title_font);
-        painter->drawText(border, Qt::AlignTop, "TIMER\nSPACE=start/stop   R=reset");
-        painter->drawRect(border);
+        painter->drawText(text_bound, Qt::AlignTop, "TIMER\nSPACE=start/stop  R=reset");
     }
 }
