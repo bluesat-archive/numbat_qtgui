@@ -8,14 +8,15 @@ Window {
     height: 600
     title: "BLUEsat OWR"
     visible: true
-    minimumHeight: 600
-    minimumWidth: 450
+    minimumHeight: 720
+    minimumWidth: 540
 
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
         width: 244
         height: 116
+        anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
     }
@@ -26,7 +27,7 @@ Window {
         objectName: "videoStream"
         id: videoStream
         // @disable-check M16
-        anchors.top: parent.top
+        anchors.top: logo.bottom
         // @disable-check M16
         anchors.horizontalCenter: parent.horizontalCenter
         // @disable-check M16
@@ -37,42 +38,14 @@ Window {
         topic: topic.text
     }
 
-        Stopwatch {
-            // @disable-check M16
-            objectName: "timerDisplay"
-            id: timerDisplay
-            // @disable-check M16
-            anchors.bottom: videoStream.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 5
-            // @disable-check M16
-            anchors.right: videoStream.right
-            // @disable-check M16
-            anchors.rightMargin: 5
-            // @disable-check M16
-            focus:true;
-/*
-            // @disable-check M16
-            anchors.bottom: parent.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 0
-            // @disable-check M16
-            anchors.top: logo.bottom
-            // @disable-check M16
-            anchors.topMargin: 10
-*/
-            // @disable-check M16
-            width:145
-            // @disable-check M16
-            height: 55
-
-        }
-
 
     TextInput {
         id: topic
-        x: 72
-        y: 500
+        anchors.top: videoStream.bottom
+        anchors.topMargin: 2
+        anchors.left: videoStream.left
+        //x: 72
+        //y: 500
         width: 80
         height: 20
         text: qsTr("/cam0")
@@ -106,5 +79,35 @@ Window {
             // @disable-check M16
             topic: qsTr("/rover/signal")
         }
+    }
+    Stopwatch {
+            // @disable-check M16
+            objectName: "timerDisplay"
+            id: timerDisplay
+            // @disable-check M16
+            anchors.bottom: videoStream.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 5
+            // @disable-check M16
+            anchors.right: videoStream.right
+            // @disable-check M16
+            anchors.rightMargin: 5
+            // @disable-check M16
+            focus:true;
+/*
+            // @disable-check M16
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: logo.bottom
+            // @disable-check M16
+            anchors.topMargin: 10
+*/
+            // @disable-check M16
+            width:145
+            // @disable-check M16
+            height: 55
+
     }
 }
