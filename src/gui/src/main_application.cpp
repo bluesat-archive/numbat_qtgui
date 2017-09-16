@@ -1,7 +1,7 @@
 #include <QTimer>
-#include "ros_video_components/ros_video_component.hpp"
-#include "gui/main_application.hpp"
 
+#include "gui/main_application.hpp"
+#include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_wheel_visualize.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
 
