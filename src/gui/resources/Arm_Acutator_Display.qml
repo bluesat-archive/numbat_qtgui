@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
-import bluesat.owr.singleton 1.0
+//import bluesat.owr.singleton 1.0
 
 Item {
     id: arm_acutator_display
