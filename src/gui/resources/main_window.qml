@@ -87,4 +87,10 @@ Window {
             topic: qsTr("/rover/signal")
         }
     }
+    Item {
+        id: estop_general
+        visible:true
+        width: 600
+        height: 600
+    }
 }
