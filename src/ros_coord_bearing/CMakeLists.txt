@@ -6,11 +6,11 @@ project(ros_coord_bearing)
 ##############################################################################
 
 find_package(catkin REQUIRED COMPONENTS
-  qt_build roscpp
+    qt_build roscpp tf sensor_msgs geometry_msgs
 )
 include_directories(include ${catkin_INCLUDE_DIRS})
 catkin_package(
-    CATKIN_DEPENDS qt_build roscpp
+    CATKIN_DEPENDS qt_build roscpp tf sensor_msgs geometry_msgs
     INCLUDE_DIRS include
     LIBRARIES ROSCoordBearing
 )

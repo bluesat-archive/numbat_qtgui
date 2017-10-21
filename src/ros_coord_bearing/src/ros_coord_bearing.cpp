@@ -1,19 +1,21 @@
 #include "ros_coord_bearing/ros_coord_bearing.hpp"
 
-ROSCoordBearing::ROSCoordBearing(QQuickItem *parent) : QQuickPaintedItem(parent)
+ROSCoordBearing::ROSCoordBearing(QQuickItem *parent) : QQuickPaintedItem(parent),
+          nh(), mapSubscriber(nh, "map", 1), tfFilter(mapSubscriber, tfListener, "base_link", 1)
 {
-  x = y = 0.0;
-  bearing = -360.0;
+  latitude = longitude = 0.0;
+  bearing = 0.0;
+  tfFilter.registerCallback(boost::bind(&ROSCoordBearing::mapCallback, this, _1));
 }
 
 // display readouts
 void ROSCoordBearing::paint(QPainter *painter)
 {
   // generate text content
-  QString x_text = "X: " + QString::number(x, 'f', 3) + "\n";
-  QString y_text = "Y: " + QString::number(y, 'f', 3) + "\n";
+  QString lat_text = "X: " + QString::number(latitude, 'f', 3) + "\n";
+  QString long_text = "Y: " + QString::number(longitude, 'f', 3) + "\n";
   QString bearing_text = "Bearing: " + QString::number(bearing, 'f', 3);
-  QString text = x_text + y_text + bearing_text;
+  QString text = lat_text + long_text + bearing_text;
 
   // set font
   QFont text_font("Sans Serif", 10, QFont::Bold);
@@ -36,12 +38,21 @@ void ROSCoordBearing::paint(QPainter *painter)
   painter->drawText(text_bound, Qt::AlignLeft | Qt::AlignBottom, text);
 }
 
-// get coordinates and bearing input for display
-// intended for backend use
-void ROSCoordBearing::input(double coord_x, double coord_y, double degree)
+// convert a transform to coordinates and bearing for display
+void ROSCoordBearing::convert(tf::Transform curr)
 {
-  x = coord_x;
-  y = coord_y;
-  bearing = degree;
+  tf::Vector3 vector = curr.getOrigin();
+  latitude = (double) vector.getX();
+  longitude = (double) vector.getY();
+
+  double radian = (double) curr.getRotation().getAngle();
+  bearing = angles::to_degrees(radian);
+
   qDebug() << "Coordinates and bearing readings updated";
+}
+
+// assume "map" is the starting location, "base_link" is the current location
+void ROSCoordBearing::mapCallback(const nav_msgs::OccupancyGrid::ConstPtr& gridData) {
+  tfListener.lookupTransform("map","base_link", ros::Time(), currPosition);
+  ROSCoordBearing::convert(currPosition);
 }
