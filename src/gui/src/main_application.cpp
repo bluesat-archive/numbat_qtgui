@@ -12,7 +12,7 @@ void Main_Application::run() {
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
 
-    // this loads the qml file we are about to create
+    // this loads the QML file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
 
     // Setup a timer to get the application's idle loop
