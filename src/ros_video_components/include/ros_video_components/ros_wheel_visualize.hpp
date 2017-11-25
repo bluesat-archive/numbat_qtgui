@@ -9,7 +9,7 @@
 //ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
-
+#include "owr_messages/board.h"
 
 class ROS_Wheel_Visualize : public QQuickPaintedItem {
     //make this a Qt Widget
@@ -32,7 +32,7 @@ class ROS_Wheel_Visualize : public QQuickPaintedItem {
         void topic_changed();
 
     private:
-        void receive_message(const std_msgs::Float32::ConstPtr & msg);
+        void receive_message(const owr_messages::board::ConstPtr & msg);
 
         // ROS
         ros::NodeHandle * nh;
@@ -40,7 +40,8 @@ class ROS_Wheel_Visualize : public QQuickPaintedItem {
         QString topic_value;
         bool ros_ready;
         
-		int data; //the wheel data
+    double curr; //the wheel data
+    double targ;
 };
 #endif //ROS_WHEEL_VISUALIZE_H
 
