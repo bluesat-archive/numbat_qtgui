@@ -8,13 +8,23 @@
 #include <QQuickPaintedItem>
 
 #include <nav_msgs/OccupancyGrid.h>
+#include <std_msgs/Float32.h>
+
 #include <tf/transform_listener.h>
 #include <tf/message_filter.h>
 #include <geometry_msgs/Vector3.h>
 #include <message_filters/subscriber.h>
 #include <angles/angles.h>
 #include <time.h>
+#include <QTimer>
 
+/**
+ * GUI widget to display the current coordinates and bearing of the rover
+ * relevant to its starting position, using tf transform.
+ * Tested with: publishing an OccupancyGrid msg under "/map" topic in rqt
+ * 							and publishing tf transform with `static_transform_publisher`
+ * 							from "map" to "base_link"
+ */
 class ROSCoordBearing : public QQuickPaintedItem
 {
   Q_OBJECT
@@ -28,6 +38,8 @@ class ROSCoordBearing : public QQuickPaintedItem
     double longitude;
     double bearing;
 
+    QTimer *timer;
+
     // path subscriber
     ros::NodeHandle nh;
     //ros::Subscriber pathSubscriber;
@@ -35,15 +47,18 @@ class ROSCoordBearing : public QQuickPaintedItem
 
     // transform stuffs
     message_filters::Subscriber<nav_msgs::OccupancyGrid> mapSubscriber;
+    //message_filters::Subscriber<std_msgs::Float32> mapSubscriber;
     tf::TransformListener tfListener;
     //tf::StampedTransform transform;
     tf::MessageFilter<nav_msgs::OccupancyGrid> tfFilter;
+    //tf::MessageFilter<std_msgs::Float32> tfFilter;
     tf::StampedTransform currPosition;
 
     // convert a transform to coordinates and bearing for display
     void convert(tf::Transform curr);
     // Callback for the map updates
     void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr& gridData);
+    //void mapCallback(const std_msgs::Float32::ConstPtr& gridData);
 
 };
 

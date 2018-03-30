@@ -1,11 +1,14 @@
-#include "ros_coord_bearing/ros_coord_bearing.hpp"
+﻿#include "ros_coord_bearing/ros_coord_bearing.hpp"
 
 ROSCoordBearing::ROSCoordBearing(QQuickItem *parent) : QQuickPaintedItem(parent),
           nh(), mapSubscriber(nh, "map", 1), tfFilter(mapSubscriber, tfListener, "base_link", 1)
 {
   latitude = longitude = 0.0;
   bearing = 0.0;
+  timer = new QTimer(this);
   tfFilter.registerCallback(boost::bind(&ROSCoordBearing::mapCallback, this, _1));
+  connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+  timer->start();
 }
 
 // display readouts
@@ -41,18 +44,25 @@ void ROSCoordBearing::paint(QPainter *painter)
 // convert a transform to coordinates and bearing for display
 void ROSCoordBearing::convert(tf::Transform curr)
 {
+
   tf::Vector3 vector = curr.getOrigin();
   latitude = (double) vector.getX();
   longitude = (double) vector.getY();
 
-  double radian = (double) curr.getRotation().getAngle();
+  tf::Quaternion rotation = curr.getRotation();
+  double radian = tf::getYaw(rotation);
   bearing = angles::to_degrees(radian);
 
-  qDebug() << "Coordinates and bearing readings updated";
+  qDebug() << "lat = " << latitude;
+  qDebug() << "long = " << longitude;
+  qDebug() << "bearing = " << bearing << endl;
 }
 
 // assume "map" is the starting location, "base_link" is the current location
-void ROSCoordBearing::mapCallback(const nav_msgs::OccupancyGrid::ConstPtr& gridData) {
-  tfListener.lookupTransform("map","base_link", ros::Time(), currPosition);
+//void ROSCoordBearing::mapCallback(const std_msgs::Float32::ConstPtr& data) {
+void ROSCoordBearing::mapCallback(const nav_msgs::OccupancyGrid::ConstPtr& data) {
+  // map here is not topic, but frame id of target frame - where does it come from?
+  //qDebug() << "got into callback" << endl;
+  tfListener.lookupTransform("map", "base_link", ros::Time(), currPosition);
   ROSCoordBearing::convert(currPosition);
 }
