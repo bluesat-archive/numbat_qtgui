@@ -2,8 +2,9 @@
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_coord_bearing.hpp"
+#include "ros_video_components/ros_timer.hpp"
 #include "gui/main_application.hpp"
-#include "ros_coord_bearing/ros_coord_bearing.hpp"
 
 Main_Application::Main_Application() {
 
@@ -30,9 +31,12 @@ void Main_Application::run() {
     ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
     signal_strength->setup(&nh);
 
+    // setup the stopwatch
+    ROSTimer * stopwatch = this->rootObjects()[0]->findChild<ROSTimer *>(QString("timerDisplay"));
+    connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
+
     // coordinates and bearing readouts
     ROSCoordBearing * cbreads = this->rootObjects()[0]->findChild<ROSCoordBearing *>(QString("coord_bearing"));
-    
 }
 
 void Main_Application::main_loop() {

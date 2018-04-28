@@ -1,4 +1,4 @@
-﻿#include "ros_coord_bearing/ros_coord_bearing.hpp"
+﻿#include "ros_video_components/ros_coord_bearing.hpp"
 
 ROSCoordBearing::ROSCoordBearing(QQuickItem *parent) : QQuickPaintedItem(parent),
           nh(), mapSubscriber(nh, "map", 1), tfFilter(mapSubscriber, tfListener, "base_link", 1)
