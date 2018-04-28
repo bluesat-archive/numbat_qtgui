@@ -5,11 +5,11 @@ import bluesat.owr 1.0
 Window {
     id: main_window
     width: 800
-    height: 600
+    height: 800
     title: "BLUEsat OWR"
     visible: true
-    minimumHeight: 720
-    minimumWidth: 540
+    minimumHeight: 600
+    minimumWidth: 600
 
     Image {
         id: logo
@@ -21,7 +21,7 @@ Window {
         fillMode: Image.PreserveAspectFit
     }
 
-
+/*
     ROSVideoComponent {
         // @disable-check M16
         objectName: "videoStream"
@@ -37,13 +37,40 @@ Window {
         // @disable-check M16
         topic: topic.text
     }
-
+*/
+    Item {
+        id: video_pane
+        x: 198
+        width: 800
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: logo.bottom
+        anchors.topMargin: 83
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        ROSVideoComponent {
+            // @disable-check M16
+            objectName: "videoStream"
+            id: videoStream
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: topic.text
+        }
+    }
 
     TextInput {
         id: topic
-        anchors.top: videoStream.bottom
-        anchors.topMargin: 2
-        anchors.left: videoStream.left
+        anchors.bottom: video_pane.bottom
+        anchors.bottomMargin: 2
+        anchors.left: video_pane.left
         //x: 72
         //y: 500
         width: 80
@@ -59,9 +86,10 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.left: logo.right
-        anchors.leftMargin: 103
-        anchors.bottom: videoStream.top
-        anchors.bottomMargin: 100
+        anchors.leftMargin: 76
+        //anchors.bottom: videoStream.top
+        anchors.bottom: video_pane.top
+        anchors.bottomMargin: 90
         ROSSignalStrength {
             // @disable-check M16
             objectName: "signal_strength"
@@ -85,11 +113,11 @@ Window {
             objectName: "timerDisplay"
             id: timerDisplay
             // @disable-check M16
-            anchors.bottom: videoStream.bottom
+            anchors.bottom: video_pane.bottom
             // @disable-check M16
             anchors.bottomMargin: 5
             // @disable-check M16
-            anchors.right: videoStream.right
+            anchors.right: video_pane.right
             // @disable-check M16
             anchors.rightMargin: 5
             // @disable-check M16
@@ -105,9 +133,9 @@ Window {
             anchors.topMargin: 10
 */
             // @disable-check M16
-            width:145
+            width: 160
             // @disable-check M16
-            height: 55
+            height: 80
 
     }
 }
