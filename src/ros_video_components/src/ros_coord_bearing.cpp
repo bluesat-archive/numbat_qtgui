@@ -53,9 +53,7 @@ void ROSCoordBearing::convert(tf::Transform curr)
   double radian = tf::getYaw(rotation);
   bearing = angles::to_degrees(radian);
 
-  qDebug() << "lat = " << latitude;
-  qDebug() << "long = " << longitude;
-  qDebug() << "bearing = " << bearing << endl;
+  qDebug() << "lat = " << latitude << ", long = " << longitude << ", bearing = " << bearing << endl;
 }
 
 // assume "map" is the starting location, "base_link" is the current location

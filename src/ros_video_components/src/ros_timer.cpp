@@ -37,12 +37,12 @@ void ROSTimer::keyPressEvent(QKeyEvent *k) {
         // press SPACE to pause/resume
         if (status == ON) {
             stopwatch->stop();
-            qDebug() << "STOP";
+            qDebug() << "Timer: STOP";
         } else {
             stopwatch->start(1);
             time_elapsed.start();
             ms_elapsed = 0;
-            qDebug() << "START";
+            qDebug() << "Timer: START";
         }
         status = 1 - status;  // flip status
     } else if (k->key() == Qt::Key_R) {
@@ -52,7 +52,7 @@ void ROSTimer::keyPressEvent(QKeyEvent *k) {
         time.setHMS(0, 0, 0, 0);
         ms_elapsed = 0;
         show();
-        qDebug() << "RESET";
+        qDebug() << "Timer: RESET";
     }
 }
 

@@ -112,23 +112,23 @@ Window {
     }
 
     ROSTimer {
-            // @disable-check M16
-            objectName: "timerDisplay"
-            id: timerDisplay
-            // @disable-check M16
-            anchors.bottom: video_pane.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 5
-            // @disable-check M16
-            anchors.right: video_pane.right
-            // @disable-check M16
-            anchors.rightMargin: 5
-            // @disable-check M16
-            focus:true;
-            // @disable-check M16
-            width: 160
-            // @disable-check M16
-            height: 80
+        // @disable-check M16
+        objectName: "timerDisplay"
+        id: timerDisplay
+        // @disable-check M16
+        anchors.bottom: video_pane.bottom
+        // @disable-check M16
+        anchors.bottomMargin: 5
+        // @disable-check M16
+        anchors.right: video_pane.right
+        // @disable-check M16
+        anchors.rightMargin: 5
+        // @disable-check M16
+        focus:true;
+        // @disable-check M16
+        width: 160
+        // @disable-check M16
+        height: 80
 
     }
 }
