@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
-//import QtQuick.Controls 2.3 //added by me
 
 Window {
     id: main_window
@@ -12,9 +11,12 @@ Window {
     minimumHeight: 600
     minimumWidth: 600
 
+    //Battery indicator
     Rectangle {
-        height: 10
-        width: 50
+        id: battery_indicator
+        property var charge: 33
+        height: 15
+        width: charge
         color: "white"
         x : 20
         y : 20
@@ -26,23 +28,52 @@ Window {
             Qt.quit;
         }
         Rectangle {
+            width: 1
+            height: 15
+            x : battery_indicator.charge/3
+            color: "black"
+            border.width: 0
+            z: 1
+        }
+        Rectangle {
+            width: 1
+            height: 15
+            x : (battery_indicator.charge/3)*2
+            color: "black"
+            border.width: 0
+            z: 1
+        }
+        Rectangle {
+            x: battery_indicator.charge
+            y: 4
+            height:7
+            width: 3
+            color: "black"
+        }
+        Rectangle {
             id : rect
-            height: 10
-            width: 30
-            color: "green"
+            height: 15
+            width: battery_indicator.charge
+            //color: "green"
             border.width: 1
             Keys.enabled: true
             Keys.onPressed: {
                 switch(event.key)
                 {
                 case Qt.Key_Left: //when left is pressed, battery indicator decreases by 5
-                        width -= 5
+                        width -= (battery_indicator.charge)/10
                         break;
                 case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
-                       width += 5
+                       width += (battery_indicator.charge)/10
                         break;
                 }
             }
+            Text {
+                x: battery_indicator.charge + 5
+                text: "%d", Math.round((rect.width/battery_indicator.charge)*100)
+            }
+            color: "green"
+
         }
 }
     Image {
