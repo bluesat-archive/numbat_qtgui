@@ -2,6 +2,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
 
+
+
 Window {
     id: main_window
     width: 800
@@ -11,6 +13,7 @@ Window {
     minimumHeight: 600
     minimumWidth: 600
     
+
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
@@ -59,6 +62,7 @@ Window {
         font.pixelSize: 12
     }
 
+
     Item {
         id: signal_strength_container
         anchors.right: parent.right
@@ -86,5 +90,63 @@ Window {
             // @disable-check M16
             topic: qsTr("/rover/signal")
         }
+
+    }
+
+
+//below is the code for my task
+ Rectangle{
+   //draw a rectangle on the surface at x=40, y=50
+   //define its height and width
+   //no color filled inside
+        x:40
+        y:50
+        width:100
+        height:20
+
+
+    //set this rectangle focus on key strike
+    //enable processing of key press
+    //once key pressed, send the info to camera_switch_button
+        focus: true;
+        Keys.enabled: true;
+        Keys.forwardTo: [camera_switch_button];
+
+
+
+        Rectangle{
+            //basic info
+            x:40
+            y:50
+            width:100
+            height:20
+            id:camera_switch_button
+
+            //color is red
+            color:"red"
+
+            Keys.onPressed: {
+                        switch(event.key){
+                        //if g is pressed
+                        //change color to green
+                        case Qt.Key_G:
+                            color = "green";
+                            break;
+
+                        //if r is pressed
+                        //change color to red
+                        case Qt.Key_R:
+                            color = "red";
+                            break;
+
+                        default:
+                            return;
+                        }
+                        event.accepted = true;
+            }
+        }
+
+
+
     }
 }
