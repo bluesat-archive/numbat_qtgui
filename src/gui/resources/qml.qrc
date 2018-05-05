@@ -3,5 +3,6 @@
         <file>main_window.qml</file>
         <file>Cmd_Vel_Display.qml</file>
         <file>Arm_Acutator_Display.qml</file>
+        <file>E_Stop_Button.qml</file>
     </qresource>
 </RCC>
