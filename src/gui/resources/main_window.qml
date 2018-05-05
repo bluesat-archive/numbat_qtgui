@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+//import QtQuick.Controls 2.3 //added by me
 
 Window {
     id: main_window
@@ -11,6 +12,39 @@ Window {
     minimumHeight: 600
     minimumWidth: 600
 
+    Rectangle {
+        height: 10
+        width: 50
+        color: "white"
+        x : 20
+        y : 20
+        border.width: 1
+        focus: true
+        Keys.enabled: true
+        Keys.forwardTo: [rect]
+        Keys.onEscapePressed: {
+            Qt.quit;
+        }
+        Rectangle {
+            id : rect
+            height: 10
+            width: 30
+            color: "green"
+            border.width: 1
+            Keys.enabled: true
+            Keys.onPressed: {
+                switch(event.key)
+                {
+                case Qt.Key_Left: //when left is pressed, battery indicator decreases by 5
+                        width -= 5
+                        break;
+                case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
+                       width += 5
+                        break;
+                }
+            }
+        }
+}
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
