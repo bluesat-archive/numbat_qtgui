@@ -6,9 +6,14 @@ import bluesat.owr.singleton 1.0
 Button {
 
     id: e_stop_button
-    visible:true
     width: 100
     height: 100
-    text: qsTr("Emergency")
+    visible:true
+    text: qsTr("!!STOP!!")
+
+    onClicked:
+    {
+        E_Stop_Button.press = true;
+    }
 
 }

@@ -1,3 +1,11 @@
+/**
+* Date Started: 25/05/2018
+* Original Author: Yubai Jiang
+* ROS Node Name: e_stop_button
+* ROS Package: ros_video_components (to be changed later)
+* Purpose: Node that send a stop message when a gui e-stop button is pressed
+*/
+
 #include <QTimer>
 #include <QQmlEngine>
 #include <qqml.h>
@@ -11,8 +19,11 @@ E_Stop_Button::E_Stop_Button(QObject *parent) :
 
 }
 
+
 void E_Stop_Button::setup(ros::NodeHandle *nh) {
       this->nh = nh;
+
+      pub = nh->advertise<std_msgs::Float64>("/e_stop/test", 1, true);
 }
 
 
@@ -24,6 +35,20 @@ QObject * E_Stop_Button::qml_instance(QQmlEngine *engine, QJSEngine *script_engi
         instance = new E_Stop_Button();
     }
     return instance;
+}
+
+bool E_Stop_Button::getPress() const {
+    return press;
+}
+
+void E_Stop_Button::setPress(const bool &new_value) {
+    ROS_INFO("EMERGENCY STOP");
+
+    std_msgs::Float64 msg;
+    msg.data = 1000;
+    pub.publish(msg);
+
+    press = new_value;
 }
 
 // because C++ is retarded
