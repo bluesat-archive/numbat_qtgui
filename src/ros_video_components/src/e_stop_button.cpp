@@ -14,16 +14,13 @@
 #include <QGuiApplication>
 
 E_Stop_Button::E_Stop_Button(QObject *parent) :
-    QObject(parent),
-    nh(NULL){
+    QObject(parent){
 
 }
 
 
 void E_Stop_Button::setup(ros::NodeHandle *nh) {
-      this->nh = nh;
 
-      pub = nh->advertise<std_msgs::Float64>("/e_stop/test", 1, true);
 }
 
 
@@ -43,6 +40,9 @@ bool E_Stop_Button::getPress() const {
 
 void E_Stop_Button::setPress(const bool &new_value) {
     ROS_INFO("EMERGENCY STOP");
+
+    ros::NodeHandle nh;
+    pub = nh.advertise<std_msgs::Float64>("/e_stop/test", 1, true);
 
     std_msgs::Float64 msg;
     msg.data = 1000;

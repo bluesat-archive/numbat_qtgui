@@ -42,7 +42,6 @@ class E_Stop_Button : public QObject {
   public slots:
 
   private:
-    ros::NodeHandle * nh;
     ros::Publisher pub;
     bool press;
 };
