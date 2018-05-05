@@ -2,12 +2,15 @@
 #include <ros_video_components/rover_cmd_state.hpp>
 #include "ros_video_components/ros_video_component.hpp"
 #include "gui/main_application.hpp"
+#include "ros_video_components/e_stop_button.hpp"
 
 Main_Application::Main_Application() {
 
 }
 
 void Main_Application::run() {
+
+    qmlRegisterSingletonType<E_Stop_Button>("bluesat.owr.singleton", 1, 0, "E_Stop_Button",  &E_Stop_Button::qml_instance);
 
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterSingletonType<Rover_Cmd_State>("bluesat.owr.singleton", 1, 0, "RoverCmdState", &Rover_Cmd_State::qml_instance);
