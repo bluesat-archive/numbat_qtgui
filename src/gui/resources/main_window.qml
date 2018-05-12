@@ -17,7 +17,7 @@ Window {
         property var charge: 33
         height: 15
         width: charge
-        color: "white"
+        color: if (rect.width <= 0) {"Red"} else {"white"}
         x : 20
         y : 20
         border.width: 1
@@ -54,17 +54,17 @@ Window {
             id : rect
             height: 15
             width: battery_indicator.charge
-            color: if (width > 22) {"Green"} else if (width > 11) {"Yellow"} else {"Red"}
+            color: if(width > battery_indicator.charge) {"Red"} else if (width > 22) {"Green"} else if (width > 11) {"Yellow"} else {"Red"}
             border.width: 1
             Keys.enabled: true
             Keys.onPressed: {
                 switch(event.key)
                 {
-                case Qt.Key_Left: //when left is pressed, battery indicator decreases by 5
+                case Qt.Key_Left: //when left is pressed, battery indicator decreases by
                         width -= (battery_indicator.charge)/20
                         break;
                 case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
-                       width += (battery_indicator.charge)/20
+                        width += (battery_indicator.charge)/20
                         break;
                 }
             }
