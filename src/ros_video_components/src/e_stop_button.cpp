@@ -45,7 +45,18 @@ void E_Stop_Button::setPress(const bool &new_value) {
     pub = nh.advertise<std_msgs::Float64>("/e_stop/test", 1, true);
 
     std_msgs::Float64 msg;
-    msg.data = 1000;
+
+    if(hold)
+    {
+      hold = false;
+      msg.data = 10;
+    }
+    else
+    {
+      hold = true;
+      msg.data = 1000;
+    }
+
     pub.publish(msg);
 
     press = new_value;

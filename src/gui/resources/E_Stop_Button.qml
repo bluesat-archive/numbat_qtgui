@@ -11,8 +11,24 @@ Button {
     visible:true
     text: qsTr("!!STOP!!")
 
+    property var hold: false
+
     onClicked:
     {
+
+        if (!hold)
+        {
+            E_Stop_Button.hold = true;
+            hold = true;
+            text = "Click to release"
+        }
+        else
+        {
+            E_Stop_Button.hold = false;
+            hold = false;
+            text = "!!STOP!!";
+        }
+
         E_Stop_Button.press = true;
     }
 
