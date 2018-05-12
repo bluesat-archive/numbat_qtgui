@@ -54,25 +54,30 @@ Window {
             id : rect
             height: 15
             width: battery_indicator.charge
-            //color: "green"
+            color: if (width > 22) {"Green"} else if (width > 11) {"Yellow"} else {"Red"}
             border.width: 1
             Keys.enabled: true
             Keys.onPressed: {
                 switch(event.key)
                 {
                 case Qt.Key_Left: //when left is pressed, battery indicator decreases by 5
-                        width -= (battery_indicator.charge)/10
+                        width -= (battery_indicator.charge)/20
                         break;
                 case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
-                       width += (battery_indicator.charge)/10
+                       width += (battery_indicator.charge)/20
                         break;
                 }
             }
+
             Text {
-                x: battery_indicator.charge + 5
+                x: battery_indicator.charge + 15
                 text: "%d", Math.round((rect.width/battery_indicator.charge)*100)
             }
-            color: "green"
+            Text {
+                x: battery_indicator.charge + 5
+                text: "%"
+            }
+
 
         }
 }
