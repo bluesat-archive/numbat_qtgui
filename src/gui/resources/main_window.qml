@@ -12,22 +12,21 @@ Window {
     visible: true
     minimumHeight: 600
     minimumWidth: 600
-    
 
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
         width: 244
         height: 116
+        anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
     }
 
-
     Item {
         id: video_pane
         x: 198
-        width: 245
+        width: 800
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: logo.bottom
         anchors.topMargin: 83
@@ -54,8 +53,11 @@ Window {
 
     TextInput {
         id: topic
-        x: 40
-        y: 335
+        anchors.bottom: video_pane.bottom
+        anchors.bottomMargin: 2
+        anchors.left: video_pane.left
+        //x: 72
+        //y: 500
         width: 80
         height: 20
         text: qsTr("/cam0")
@@ -70,9 +72,10 @@ Window {
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.left: logo.right
-        anchors.leftMargin: 103
+        anchors.leftMargin: 76
+        //anchors.bottom: videoStream.top
         anchors.bottom: video_pane.top
-        anchors.bottomMargin: 100
+        anchors.bottomMargin: 90
         ROSSignalStrength {
             // @disable-check M16
             objectName: "signal_strength"
@@ -94,25 +97,24 @@ Window {
     }
 
 
-//below is the code for my task
- Rectangle{
-   //draw a rectangle on the surface at x=40, y=50
-   //define its height and width
-   //no color filled inside
+    // Left-over code, needs cleanup
+    /*
+    Rectangle{
+        //draw a rectangle on the surface at x=40, y=50
+        //define its height and width
+        //no color filled inside
         x:40
         y:50
         width:100
         height:20
 
 
-    //set this rectangle focus on key strike
-    //enable processing of key press
-    //once key pressed, send the info to camera_switch_button
+        //set this rectangle focus on key strike
+        //enable processing of key press
+        //once key pressed, send the info to camera_switch_button
         focus: true;
         Keys.enabled: true;
         Keys.forwardTo: [camera_switch_button];
-
-
 
         Rectangle{
             //basic info
@@ -146,7 +148,27 @@ Window {
             }
         }
 
+    }
+    */
 
+    ROSTimer {
+            // @disable-check M16
+            objectName: "timerDisplay"
+            id: timerDisplay
+            // @disable-check M16
+            anchors.bottom: video_pane.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 5
+            // @disable-check M16
+            anchors.right: video_pane.right
+            // @disable-check M16
+            anchors.rightMargin: 5
+            // @disable-check M16
+            focus:true;
+            // @disable-check M16
+            width: 160
+            // @disable-check M16
+            height: 80
 
     }
 }
