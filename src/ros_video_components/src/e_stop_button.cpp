@@ -39,22 +39,21 @@ bool E_Stop_Button::getPress() const {
 }
 
 void E_Stop_Button::setPress(const bool &new_value) {
-    ROS_INFO("EMERGENCY STOP");
 
     ros::NodeHandle nh;
     pub = nh.advertise<std_msgs::Float64>("/e_stop/test", 1, true);
 
     std_msgs::Float64 msg;
 
-    if(hold)
+    if(new_value)
     {
-      hold = false;
-      msg.data = 10;
+      msg.data = 1000;
+      ROS_INFO("EMERGENCY STOP");
     }
     else
     {
-      hold = true;
-      msg.data = 1000;
+      msg.data = 10;
+      ROS_INFO("OK TO RESUME");
     }
 
     pub.publish(msg);

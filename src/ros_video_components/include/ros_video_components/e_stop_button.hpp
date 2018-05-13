@@ -44,7 +44,6 @@ class E_Stop_Button : public QObject {
   private:
     ros::Publisher pub;
     bool press;
-    bool hold;
 };
 
 
