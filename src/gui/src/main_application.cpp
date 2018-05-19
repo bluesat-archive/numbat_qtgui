@@ -12,7 +12,7 @@ void Main_Application::run() {
 
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
-    qmlRegisterSingletonType<EStopGeneral>("bluesat.owr.singleton", 1, 0, "EStopGeneral",  &EStopGeneral::qml_instance);
+    qmlRegisterSingletonType<E_Stop_Button>("bluesat.owr.singleton", 1, 0, "E_Stop_Button",  &E_Stop_Button::qml_instance);
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
 

@@ -10,6 +10,21 @@ Window {
     visible: true
     minimumHeight: 600
     minimumWidth: 600
+
+    Item {
+                    id: e_stop_button_wrapper
+                    width: 100
+                    height: 100
+                    anchors.verticalCenterOffset: -334
+                    anchors.horizontalCenterOffset: 172
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Loader {
+                        source: "E_Stop_Button.qml"
+                    }
+
+    }
     
     Image {
         id: logo
@@ -86,11 +101,5 @@ Window {
             // @disable-check M16
             topic: qsTr("/rover/signal")
         }
-    }
-    Item {
-        id: estop_general
-        visible:true
-        width: 600
-        height: 600
     }
 }
