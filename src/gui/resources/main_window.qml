@@ -28,11 +28,12 @@ Window {
         id: video_pane
         x: 198
         width: 245
+        anchors.horizontalCenterOffset: 1
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: logo.bottom
-        anchors.topMargin: 83
+        anchors.topMargin: 75
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
+        anchors.bottomMargin: 8
         ROSVideoComponent {
             // @disable-check M16
             objectName: "videoStream"
@@ -68,11 +69,11 @@ Window {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.top: parent.top
-        anchors.topMargin: 0
+        anchors.topMargin: 85
         anchors.left: logo.right
         anchors.leftMargin: 103
         anchors.bottom: video_pane.top
-        anchors.bottomMargin: 100
+        anchors.bottomMargin: 16
         ROSSignalStrength {
             // @disable-check M16
             objectName: "signal_strength"
@@ -93,7 +94,7 @@ Window {
 
     }
 
-
+/*
 //below is the code for my task
  Rectangle{
    //draw a rectangle on the surface at x=40, y=50
@@ -116,8 +117,8 @@ Window {
 
         Rectangle{
             //basic info
-            x:40
-            y:50
+            x:43
+            y:124
             width:100
             height:20
             id:camera_switch_button
@@ -149,4 +150,142 @@ Window {
 
 
     }
+
+*/
+
+
+
+//below is the task for SV-13
+
+ Rectangle{
+    x:80
+    y:100
+    width:360
+    height:20
+    focus: true;
+    Keys.enabled: true;
+    Keys.forwardTo: [box_front,box_crab,box_four];
+
+
+
+
+    //rectangle for front wheel steering
+    Rectangle{
+        x:200
+        y:180
+        width:120
+        height:20
+        id: box_front
+        border.color: "black"
+        //focus:true
+        //
+        //Keys.enabled: true;
+        color:white
+        Text {
+            text: "front"
+                anchors.horizontalCenter:parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize:12
+                font.bold:true
+         }
+
+
+    }
+
+
+    Rectangle{
+        x:320
+        y:180
+        width:120
+        height:20
+        id: box_crab
+        border.color:"black"
+        //focus:true
+       // Keys.enabled: true;
+        color:white
+        Text {
+
+                text: "crab"
+                anchors.centerIn: parent
+                font.pointSize:12
+                font.bold:true
+         }
+
+
+    }
+
+
+    Rectangle{
+        x:440
+        y:180
+        width:120
+        height:20
+        id: box_four
+        border.color: "black"
+        //focus:true
+        //Keys.enabled: true;
+        color:white
+        Text {
+
+            text: "four"
+            anchors.horizontalCenter:parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            font.pointSize:12
+            font.bold:true
+         }
+
+
+
+    }
+
+
+
+
+
+
+
+    Keys.onPressed: {
+
+
+                switch(event.key){
+                //if A is pressed
+                //change color to red
+                case Qt.Key_A:
+                    box_front.color = "red"
+                    box_crab.color = "white";
+                    box_four.color="white"
+                    break;
+
+                //if r is pressed
+                //change color to red
+                case Qt.Key_S:
+                    box_front.color = "white"
+                    box_crab.color = "red";
+                    box_four.color="white"
+                    break;
+
+                case Qt.Key_D:
+                    box_front.color="white"
+                    box_crab.color = "white"
+                    box_four.color = "red"
+                    break;
+                default:
+                    return;
+                }
+                event.accepted = true;
+
+  }
+
+
+
+
+
+
+
+}
+
+
+
+
+
 }
