@@ -22,7 +22,7 @@ Button {
             e_stop_button_background.border.width = 7;
             //e_stop_button_background.border.color = "yellow";
 
-            e_stop_button_text.font.pointSize = 11;
+            e_stop_button_text.font.pointSize = 16;
         }
         else
         {
@@ -31,7 +31,7 @@ Button {
             e_stop_button_background.border.width = 3;
             //e_stop_button_background.border.color = "white";
 
-            e_stop_button_text.font.pointSize = 12;
+            e_stop_button_text.font.pointSize = 18;
         }
 
         E_Stop_Button.press = hold;
@@ -49,8 +49,8 @@ Button {
         {
 
             id: e_stop_button_text
-            text: "EMERGENCY"
-            font.pointSize: 12
+            text: "E-STOP"
+            font.pointSize: 18
             style: Text.Sunken
             font.bold: true
             font.family: "Courier"
