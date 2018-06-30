@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+//import bluesat.owr.singleton 1.0
 
 Window {
     id: main_window
@@ -15,8 +16,9 @@ Window {
     Rectangle {
         id: battery_indicator
         property var charge: 33
+        property var full_charge: 33
         height: 15
-        width: charge
+        width: full_charge
         color: if (rect.width <= 0) {"Red"} else {"white"}
         x : 20
         y : 20
@@ -26,11 +28,11 @@ Window {
         Keys.forwardTo: [rect]
         Keys.onEscapePressed: {
             Qt.quit;
-        }
+        } 
         Rectangle {
             width: 1
             height: 15
-            x : battery_indicator.charge/3
+            x : battery_indicator.full_charge/3
             color: "black"
             border.width: 0
             z: 1
@@ -38,7 +40,7 @@ Window {
         Rectangle {
             width: 1
             height: 15
-            x : (battery_indicator.charge/3)*2
+            x : (battery_indicator.full_charge/3)*2
             color: "black"
             border.width: 0
             z: 1

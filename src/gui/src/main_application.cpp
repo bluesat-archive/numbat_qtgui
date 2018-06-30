@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_battery_indicator.hpp" //added
 #include "gui/main_application.hpp"
 #include "timer/timer.hpp"
 
@@ -14,6 +15,8 @@ void Main_Application::run() {
     qmlRegisterType<Stopwatch>("bluesat.owr", 1, 0, "Stopwatch");
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
+    qmlRegisterType<ROS_Battery_Indicator>("bluesat.owr", 1, 0, "ROSBatteryIndicator"); //added
+    //qmlRegisterSingletonType<ROS_Battery_Indicator>("bluesat.owr.singleton", 1, 0, "ROSBatterryIndicator",  &ros_battery_indicator::qml_instance);
 
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
@@ -29,6 +32,9 @@ void Main_Application::run() {
 
     ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
     signal_strength->setup(&nh);
+
+    ROS_Battery_Indicator * battery_indicator = this->rootObjects()[0]->findChild<ROS_Battery_Indicator*>(QString("battery_indicator"));
+    battery_indicator->setup(&nh); //added
 
     // setup the stopwatch
     Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));
