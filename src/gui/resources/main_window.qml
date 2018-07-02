@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+import QtQuick.Controls 1.1
 
 Window {
     id: main_window
@@ -87,4 +88,19 @@ Window {
             topic: qsTr("/rover/signal")
         }
     }
+    Item {
+        id: e_stop_joints_widget_wrapper
+        anchors.rightMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.leftMargin: 0
+            anchors.bottomMargin: 20
+
+            Loader {
+                source: "E_Stop_Joints_Widget.qml"
+            }
+        }
 }

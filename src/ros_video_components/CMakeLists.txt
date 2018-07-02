@@ -52,3 +52,11 @@ add_library(RosVideoComponents ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP}
 qt5_use_modules(RosVideoComponents Quick Core)
 target_link_libraries(RosVideoComponents ${QT_LIBRARIES} ${catkin_LIBRARIES})
 target_include_directories(RosVideoComponents PUBLIC include)
+
+##############################################################################
+#New Additions
+##############################################################################
+#add_executable(e_stop_joints_widget src/e_stop_joints_widget.cpp)
+#add_dependencies(e_stop_joints_widget ${${PROJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
+#target_link_libraries(e_stop_joints_widget ${catkin_LIBRARIES})
+

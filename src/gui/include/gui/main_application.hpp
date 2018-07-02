@@ -3,6 +3,7 @@
 
 #include <ros/ros.h>
 #include <QQmlApplicationEngine>
+#include "ros_video_components/e_stop_joints_widget.hpp"
 
 class Main_Application : public QQmlApplicationEngine {
     Q_OBJECT
