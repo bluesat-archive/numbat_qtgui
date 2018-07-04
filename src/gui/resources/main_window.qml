@@ -95,11 +95,14 @@ Window {
         }
 
     }
-
+   /* Item{
+        id: video_component_container
+        a
+    }*/
 
     // Left-over code, needs cleanup
-    /*
-    Rectangle{
+
+  /* Rectangle{
         //draw a rectangle on the surface at x=40, y=50
         //define its height and width
         //no color filled inside
@@ -114,18 +117,23 @@ Window {
         //once key pressed, send the info to camera_switch_button
         focus: true;
         Keys.enabled: true;
-        Keys.forwardTo: [camera_switch_button];
+        Keys.forwardTo: [cam_0];
 
         Rectangle{
             //basic info
-            x:40
+            x:0
             y:50
-            width:100
-            height:20
-            id:camera_switch_button
+            width:50
+            height:50
+            radius: 8
+            id:cam_0
 
-            //color is red
-            color:"red"
+            //color is orange
+            color:"orange"
+            Text {
+                    anchors.centerIn: parent
+                    text: "0"
+                }
 
             Keys.onPressed: {
                         switch(event.key){
@@ -148,8 +156,132 @@ Window {
             }
         }
 
-    }
-    */
+        Rectangle{
+            //basic info
+            x:0
+            y:130
+            width:50
+            height:50
+            radius: 8
+            id:cam_1
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "1"
+                }
+        }
+        Rectangle{
+            //basic info
+            x:0
+            y:210
+            width:50
+            height:50
+            radius: 8
+            id:cam_2
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "2"
+                }
+        }
+        Rectangle{
+            //basic info
+            x:0
+            y:290
+            width:50
+            height:50
+            radius: 8
+            id:cam_3
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "3"
+                }
+        }
+
+        Rectangle{
+            //basic info
+            x:0
+            y:370
+            width:50
+            height:50
+            radius: 8
+            id:cam_4
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "4"
+                }
+        }
+
+        Rectangle{
+            //basic info
+            x:0
+            y:450
+            width:50
+            height:50
+            radius: 8
+            id:cam_5
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "5"
+                }
+        }
+
+        Rectangle{
+            //basic info
+            x:0
+            y:530
+            width:50
+            height:50
+            radius: 8
+            id:cam_6
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "6"
+                }
+        }
+
+        Rectangle{
+            //basic info
+            x:0
+            y:610
+            width:50
+            height:50
+            radius: 8
+            id:cam_7
+
+            //color is orange
+            color:"orange"
+
+            Text {
+                    anchors.centerIn: parent
+                    text: "7"
+                }
+        }
+
+    }*/
+
 
     ROSTimer {
             // @disable-check M16

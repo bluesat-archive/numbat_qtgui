@@ -63,6 +63,45 @@ void ROS_Video_Component::paint(QPainter * painter) {
     if(current_image) {
         painter->drawImage(QPoint(0,0), *(this->current_image));
     }
+    //BRUSH COLOURS
+    QBrush YELLOW(Qt::yellow, Qt::SolidPattern);    //YELLOW indicates camera is connected
+    QBrush RED(Qt::red, Qt::SolidPattern);          //RED indicate camera is not connected
+    QBrush GREEN(Qt::green, Qt::SolidPattern);      //GREEN indicates camera is turned on
+                                                    //Note: Only the camera you can currently see is turned on (GREEN)
+    //Rectangle for cam 0
+    QRectF cam0(0, 50, 50, 50);
+    //Qpainter->drawRoundedRect(cam0, 8, 8);
+    painter->fillRect(cam0,RED);
+    painter->drawText(cam0,Qt::AlignCenter,tr("0"));
+    //Rectangle for cam 1
+    QRectF cam1(0, 130, 50, 50);
+    //painter->drawRoundedRect(cam1, 8, 8);
+    painter->drawText(cam1,Qt::AlignCenter,tr("1"));
+    //Rectangle for cam 2
+    QRectF cam2(0, 210, 50, 50);
+    //painter->drawRoundedRect(cam2, 8, 8);
+    painter->drawText(cam2,Qt::AlignCenter,tr("2"));
+    //Rectangle for cam 3
+    QRectF cam3(0, 290, 50, 50);
+    //painter->drawRoundedRect(cam3, 8, 8);
+    painter->drawText(cam3,Qt::AlignCenter,tr("3"));
+    //Rectangle for cam 4
+    QRectF cam4(0, 370, 50, 50);
+    //painter->drawRoundedRect(cam4, 8, 8);
+    painter->drawText(cam4,Qt::AlignCenter,tr("4"));
+    //Rectangle for cam 5
+    QRectF cam5(0, 450, 50, 50);
+    //painter->drawRoundedRect(cam5, 8, 8);
+    painter->drawText(cam5,Qt::AlignCenter,tr("5"));
+    //Rectangle for cam 6
+    QRectF cam6(0, 530, 50, 50);
+    //painter->drawRoundedRect(cam6, 8, 8);
+    painter->drawText(cam6,Qt::AlignCenter,tr("6"));
+    //Rectangle for cam 7
+    QRectF cam7(0, 610, 50, 50);
+    //painter->drawRoundedRect(cam7, 8, 8);
+    painter->drawText(cam7,Qt::AlignCenter,tr("7"));
+
 }
 
 void ROS_Video_Component::set_topic(const QString & new_value) {
