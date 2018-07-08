@@ -1,5 +1,5 @@
-#ifndef ROS_VIDEO_COMPONENT_H
-#define ROS_VIDEO_COMPONENT_H
+#ifndef ROS_CAMERA_SWITCHING_H
+#define ROS_CAMERA_SWITCHING_H
 
 //QT
 #include <QQuickPaintedItem>
@@ -10,10 +10,11 @@
 
 //ROS
 #include <ros/ros.h>
-#include <image_transport/image_transport.h>
-#include <sensor_msgs/Image.h>
+#include "owr_messages/activeCameras.h"
 
-class ROS_Video_Component : public QQuickPaintedItem {
+#define NUM_CAMERAS 8
+
+class ROS_Camera_Switching : public QQuickPaintedItem {
     //make this a Qt Widget
     Q_OBJECT
     // defines a qml value for the topic
@@ -21,11 +22,11 @@ class ROS_Video_Component : public QQuickPaintedItem {
 
     public:
         // Constructor, takes parent widget, which defaults to null
-        ROS_Video_Component(QQuickItem * parent = 0);
+        ROS_Camera_Switching(QQuickItem * parent = 0);
 
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
-        //void keyPressEvent(QKeyEvent *k);
+        void keyPressEvent(QKeyEvent *k);
 
         //getters and setters
         void set_topic(const QString &new_value);
@@ -35,18 +36,16 @@ class ROS_Video_Component : public QQuickPaintedItem {
         void topic_changed();
 
     private:
-        void receive_image(const sensor_msgs::Image::ConstPtr & msg);
+        void receive_feeds(const owr_messages::activeCameras::ConstPtr & msg);
 
         // ROS
         ros::NodeHandle * nh;
-        image_transport::ImageTransport * img_trans;
-        image_transport::Subscriber image_sub;
+        ros::Subscriber available_feeds;
         QString topic_value;
         bool ros_ready;
 
-        // Used for buffering the image
-        QImage * current_image;
-        uchar * current_buffer;
-};
+        // Used changing camera colours
+        QColor cam_colours[NUM_CAMERAS];
 
-#endif // ROS_VIDEO_COMPONENT_H
+};
+#endif // ROS_CAMERA_SWITCHING_H

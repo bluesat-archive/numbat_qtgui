@@ -95,10 +95,39 @@ Window {
         }
 
     }
-   /* Item{
-        id: video_component_container
-        a
-    }*/
+   Item{
+       id: camera_switching_container
+       width: 50
+       height: 660
+       anchors.topMargin: 0
+       anchors.leftMargin: 0
+       anchors.rightMargin: -800
+       anchors.bottom: parent.top
+       anchors.right: parent.left
+       anchors.left: parent.left
+       anchors.top: parent.top
+       anchors.bottomMargin: -800
+
+        ROSCameraSwitching {
+           // @disable-check M16
+           objectName: "camera_switching"
+           id: camera_switching
+           // @disable-check M16
+           anchors.bottom: parent.bottom
+           // @disable-check M16
+           anchors.bottomMargin: 0
+           // @disable-check M16
+           anchors.top: parent.top
+           // @disable-check M16
+           anchors.topMargin: 0
+           // @disable-check M16
+           anchors.left: parent.left
+           // @disable-check M16
+           anchors.right: parent.right
+           // @disable-check M16
+           topic: qsTr("/owr/control/availableFeeds")
+        }
+    }
 
     // Left-over code, needs cleanup
 
