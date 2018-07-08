@@ -30,11 +30,13 @@ void ROS_Video_Component::receive_image(const sensor_msgs::Image::ConstPtr &msg)
     // check to see if we already have an image frame, if we do then we need to
     // delete it to avoid memory leaks
     if( current_image ) {
+
         delete current_image;
     }
 
     // allocate a buffer of sufficient size to contain our video frame
     uchar * temp_buffer = (uchar *) malloc(sizeof(uchar) * msg->data.size());
+    memcpy(temp_buffer, msg->data.data(), msg->data.size());
 
     // and copy the message into the buffer
     // we need to do this because QImage api requires the buffer we pass in to
