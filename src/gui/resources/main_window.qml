@@ -11,6 +11,11 @@ Window {
     minimumHeight: 600
     minimumWidth: 600
 
+    Keyboard_Event_Capture {
+        id: keyboard_event_capture
+        focus: true
+    }
+
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
@@ -121,7 +126,7 @@ Window {
             // @disable-check M16
             anchors.rightMargin: 5
             // @disable-check M16
-            focus:true;
+            focus:false
 /*
             // @disable-check M16
             anchors.bottom: parent.bottom
