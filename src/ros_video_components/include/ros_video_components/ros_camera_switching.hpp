@@ -26,7 +26,7 @@ class ROS_Camera_Switching : public QQuickPaintedItem {
 
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
-        void keyPressEvent(QKeyEvent *k);
+        void change_feed();
 
         //getters and setters
         void set_topic(const QString &new_value);
@@ -46,6 +46,8 @@ class ROS_Camera_Switching : public QQuickPaintedItem {
 
         // Used changing camera colours
         QColor cam_colours[NUM_CAMERAS];
+    protected:
+        //void keyPressEvent(QKeyEvent *k) override;
 
 };
 #endif // ROS_CAMERA_SWITCHING_H
