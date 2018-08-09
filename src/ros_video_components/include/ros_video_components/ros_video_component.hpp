@@ -12,6 +12,7 @@
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
+#include "owr_messages/activeCameras.h"
 
 class ROS_Video_Component : public QQuickPaintedItem {
     //make this a Qt Widget
@@ -25,7 +26,8 @@ class ROS_Video_Component : public QQuickPaintedItem {
 
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
-        //void keyPressEvent(QKeyEvent *k);
+
+    protected:
 
         //getters and setters
         void set_topic(const QString &new_value);
@@ -33,6 +35,7 @@ class ROS_Video_Component : public QQuickPaintedItem {
 
     signals:
         void topic_changed();
+
 
     private:
         void receive_image(const sensor_msgs::Image::ConstPtr & msg);

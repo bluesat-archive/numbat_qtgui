@@ -1,5 +1,5 @@
 #include "ros_video_components/ros_camera_switching.hpp"
-
+#include <QKeyEvent>
 
 ROS_Camera_Switching::ROS_Camera_Switching(QQuickItem * parent) :
     QQuickPaintedItem(parent),
@@ -21,7 +21,11 @@ void ROS_Camera_Switching::setup(ros::NodeHandle * nh) {
     }
 
     ros_ready = true;
+
+    //pub = node.advertise<owr_messages::hea>("/owr/heading",1,true);
+    change_feed();
     ROS_INFO("Setup of camera switching component is complete");
+
 }
 
 void ROS_Camera_Switching::receive_feeds(const owr_messages::activeCameras::ConstPtr &msg){
@@ -46,11 +50,9 @@ void ROS_Camera_Switching::receive_feeds(const owr_messages::activeCameras::Cons
 
     update();
 }
-void ROS_Camera_Switching::keyPressEvent(QKeyEvent *k){
-    if (k->key() == Qt::Key_1){
-        ROS_INFO("I PRESSED NUMBER 1");
-    }
-
+void ROS_Camera_Switching::change_feed(){
+    ROS_INFO("I GOT HERE!");
+   // pub.publish
 }
 
 void ROS_Camera_Switching::paint(QPainter * painter) {
@@ -103,6 +105,7 @@ void ROS_Camera_Switching::paint(QPainter * painter) {
     painter->fillRect(cam_7,cam_colours[7]);
     painter->drawText(cam_7,Qt::AlignCenter,tr("7"));
 }
+
 void ROS_Camera_Switching::set_topic(const QString & new_value) {
     if(topic_value != new_value) {
         topic_value = new_value;

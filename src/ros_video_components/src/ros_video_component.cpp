@@ -1,6 +1,5 @@
 #include "ros_video_components/ros_video_component.hpp"
 
-
 ROS_Video_Component::ROS_Video_Component(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     current_image(NULL),
