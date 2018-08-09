@@ -1,10 +1,11 @@
 #include "ros_video_components/ros_video_component.hpp"
+#include <iostream>
 
 ROS_Video_Component::ROS_Video_Component(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     current_image(NULL),
     current_buffer(NULL),
-    topic_value("/cam0"),
+    topic_value(),
     ros_ready(false),
     img_trans(NULL) {
 
@@ -13,14 +14,16 @@ ROS_Video_Component::ROS_Video_Component(QQuickItem * parent) :
 void ROS_Video_Component::setup(ros::NodeHandle * nh) {
 
     img_trans = new image_transport::ImageTransport(*nh);
-    //TODO: make these parameters of the component
-    image_sub = img_trans->subscribe(
-          topic_value.toStdString(),
-          1,
-          &ROS_Video_Component::receive_image,
-          this,
-          image_transport::TransportHints("compressed")
-    );
+    //TODO: make these parameters of the componen
+    if(!topic_value.isEmpty()) {
+        image_sub = img_trans->subscribe(
+              topic_value.toStdString(),
+              1,
+              &ROS_Video_Component::receive_image,
+              this,
+              image_transport::TransportHints("compressed")
+        );
+    }
 
     ros_ready = true;
     ROS_INFO("Setup of video component complete");
@@ -48,7 +51,6 @@ void ROS_Video_Component::receive_image(const sensor_msgs::Image::ConstPtr &msg)
           msg->height,
           QImage::Format_RGB888 // TODO: detect the type from the message
     );
-    ROS_INFO("Recieved Message");
 
     // We then swap out of bufer to avoid memory leaks
     if(current_buffer) {
@@ -62,22 +64,32 @@ void ROS_Video_Component::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 
 void ROS_Video_Component::paint(QPainter * painter) {
     if(current_image) {
-        painter->drawImage(QPoint(0,0), *(this->current_image));
+//        painter->drawImage(QPoint(0,0), *(this->current_image), QRect(0,0, width(), height()));
+        painter->drawImage(QRect(0,0, width(), height()), *(this->current_image));
+//        painter->drawImage(this->boundingRect(), *(this->current_image));
+    } else if (topic_value.isEmpty()) {
+        painter->drawText(QPoint(10,10), "No Topic Selected");
     }
 }
 
 void ROS_Video_Component::set_topic(const QString & new_value) {
+    ROS_INFO("new value %s", new_value.toStdString().c_str());
     if(topic_value != new_value) {
         topic_value = new_value;
-        if(ros_ready) {
+        if(!topic_value.isEmpty()) {
+            if(ros_ready) {
+                ROS_INFO("new value %s", new_value.toStdString().c_str());
+                image_sub.shutdown();
+                image_sub = img_trans->subscribe(
+                      topic_value.toStdString(),
+                      1,
+                      &ROS_Video_Component::receive_image,
+                      this,
+                      image_transport::TransportHints("compressed")
+                );
+            }
+        } else {
             image_sub.shutdown();
-            image_sub = img_trans->subscribe(
-                  topic_value.toStdString(),
-                  1,
-                  &ROS_Video_Component::receive_image,
-                  this,
-                  image_transport::TransportHints("compressed")
-            );
         }
         emit topic_changed();
     }

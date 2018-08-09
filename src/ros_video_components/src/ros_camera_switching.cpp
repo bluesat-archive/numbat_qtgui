@@ -4,7 +4,10 @@
 ROS_Camera_Switching::ROS_Camera_Switching(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     topic_value("/owr/control/availableFeeds"),
-    ros_ready(false){
+    camera_topic_value(),
+    ros_ready(false),
+    camera_number(NO_CAMERA_SELECTED)
+    {
 
 }
 
@@ -22,7 +25,7 @@ void ROS_Camera_Switching::setup(ros::NodeHandle * nh) {
 
     ros_ready = true;
 
-    //pub = node.advertise<owr_messages::hea>("/owr/heading",1,true);
+    control_feeds = nh->advertise<owr_messages::stream>("/owr/control/activateFeeds", 1);
     change_feed();
     ROS_INFO("Setup of camera switching component is complete");
 
@@ -53,6 +56,30 @@ void ROS_Camera_Switching::receive_feeds(const owr_messages::activeCameras::Cons
 void ROS_Camera_Switching::change_feed(){
     ROS_INFO("I GOT HERE!");
    // pub.publish
+}
+
+void ROS_Camera_Switching::set_camera_number(int cam) {
+    ROS_INFO("Camera change to %d", cam);
+    // disable existing feed
+    owr_messages::stream msg;
+    if(camera_number != NO_CAMERA_SELECTED && ros_ready) {
+        msg.stream = camera_number;
+        msg.on = false;
+        control_feeds.publish(msg);
+    }
+    camera_number = cam;
+
+    if(camera_number != NO_CAMERA_SELECTED && ros_ready) {
+        msg.stream = camera_number;
+        msg.on = true;
+        control_feeds.publish(msg);
+    }
+
+    std::ostringstream topic_in;
+    topic_in << "/cam" << cam;
+    camera_topic_value = QString(topic_in.str().c_str());
+    emit camera_topic_changed();
+    emit camera_number_changed();
 }
 
 void ROS_Camera_Switching::paint(QPainter * painter) {
@@ -124,4 +151,12 @@ void ROS_Camera_Switching::set_topic(const QString & new_value) {
 
 QString ROS_Camera_Switching::get_topic() const {
     return topic_value;
+}
+
+QString ROS_Camera_Switching::get_camera_topic() const {
+    return camera_topic_value;
+}
+
+int ROS_Camera_Switching::get_camera_number() const {
+    return camera_number;
 }
