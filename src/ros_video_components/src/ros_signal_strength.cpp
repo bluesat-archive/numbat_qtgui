@@ -13,6 +13,7 @@
 #define HASH MAXDATA/MAXNUM
 #define TOO_WEAK MAXDATA/20
 
+
 ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     topic_value("/rover/signal"),

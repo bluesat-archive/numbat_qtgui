@@ -1,7 +1,17 @@
 import QtQuick 2.0
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+Item {
+        id: xmpl_widget_wrapper
+        width: 600
+        height: 600
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
 
+        Loader {
+            source: "PWM_Reader.qml"
+        }
+    }
 Window {
     id: main_window
     width: 800

@@ -11,7 +11,7 @@ Main_Application::Main_Application() {
 }
 
 void Main_Application::run() {
-  lRegisterSingletonType<PWM_Reader>("bluesat.owr.singleton", 1, 0, "PWM_Reader",  &PWM_Reader::qml_instance);
+    qmlRegisterSingletonType<PWM_Reader>("bluesat.owr.singleton", 1, 0, "PWM_Reader",  &PWM_Reader::qml_instance);
     qmlRegisterType<Stopwatch>("bluesat.owr", 1, 0, "Stopwatch");
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
