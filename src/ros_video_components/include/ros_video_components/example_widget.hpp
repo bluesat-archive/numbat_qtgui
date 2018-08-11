@@ -1,0 +1,4 @@
+#ifndef EXAMPLE_WIDGET_HPP
+#define EXAMPLE_WIDGET_HPP
+
+#endif // EXAMPLE_WIDGET_HPP
