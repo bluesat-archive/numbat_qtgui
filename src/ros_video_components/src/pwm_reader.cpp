@@ -12,7 +12,15 @@ PWM_Reader::PWM_Reader(QObject *parent) :
 }
 
 void PWM_Reader::setup(ros::NodeHandle *nh) {
+
       this->nh = nh;
+      pwm_sub = nh->subscribe(
+      "/front_left_wheel_axel_controller/command", //TODO
+      1,
+      &ROS_PWM_Reader::receive_signal,
+      this
+  );
+  ros_ready = true;
 }
 
 
