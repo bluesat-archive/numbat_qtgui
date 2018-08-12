@@ -26,36 +26,40 @@ void ROS_Camera_Switching::setup(ros::NodeHandle * nh) {
     ros_ready = true;
 
     control_feeds = nh->advertise<owr_messages::stream>("/owr/control/activateFeeds", 1);
-    change_feed();
     ROS_INFO("Setup of camera switching component is complete");
 
 }
 
+static const QColor RED = QColor::fromRgb(255, 0, 0);        //RED indicate camera is not connected
+static const QColor GREEN = QColor::fromRgb(128, 255, 0);    //GREEN indicates camera is in use by us
+static const QColor DARK_GREEN = QColor::fromRgb(0, 51, 0);    //GREEN indicates camera is in use
+static const QColor ORANGE = QColor::fromRgb(255, 165, 0);   //ORANGE indicates that a camera is connected
+
 void ROS_Camera_Switching::receive_feeds(const owr_messages::activeCameras::ConstPtr &msg){
-    QColor RED = QColor::fromRgb(255, 0, 0);        //RED indicate camera is not connected
-    QColor GREEN = QColor::fromRgb(128, 255, 0);    //GREEN indicates camera is turned on
-    QColor ORANGE = QColor::fromRgb(255, 165, 0);   //ORANGE indicates that a camera is connected
 
     for( int i = 0; i < NUM_CAMERAS; i++){
-        cam_colours[i] = QColor::fromRgb(255, 0, 0);
+        cam_colours[i] = RED;
     }
 
-   bool on;
-   for( int j = 0; j < NUM_CAMERAS ; j++){
+    bool on;
+    for( int j = 0; j < NUM_CAMERAS ; j++){
         for(int k = 0; k < msg->num; k++){
             if(msg->cameras[k].stream == j){
                 on = msg->cameras[k].on;
-                if(!on) cam_colours[j] = ORANGE;
-                if(on) cam_colours[j] = GREEN;
+                if(!on) {
+                    cam_colours[j] = ORANGE;
+                } else if(on) {
+                    if(j == camera_number) {
+                        cam_colours[j] = GREEN;
+                    } else {
+                        cam_colours[j] = DARK_GREEN;
+                    }
+                }
             }
         }
-   }
+    }
 
     update();
-}
-void ROS_Camera_Switching::change_feed(){
-    ROS_INFO("I GOT HERE!");
-   // pub.publish
 }
 
 void ROS_Camera_Switching::set_camera_number(int cam) {

@@ -64,9 +64,18 @@ void ROS_Video_Component::receive_image(const sensor_msgs::Image::ConstPtr &msg)
 
 void ROS_Video_Component::paint(QPainter * painter) {
     if(current_image) {
-//        painter->drawImage(QPoint(0,0), *(this->current_image), QRect(0,0, width(), height()));
-        painter->drawImage(QRect(0,0, width(), height()), *(this->current_image));
-//        painter->drawImage(this->boundingRect(), *(this->current_image));
+        // scale on the largest edge
+        // using the algorith here: https://stackoverflow.com/questions/6565703/math-algorithm-fit-image-to-screen-retain-aspect-ratio
+        float new_height, new_width;
+        // which one has the largest ration
+        if( (width()/height()) > (current_image->width()/current_image->height())) {
+            new_width = (current_image->width() * height())/ (float) current_image->height();
+            new_height = height();
+        } else {
+            new_width = width();
+            new_height = (current_image->height() * width())/ (float)current_image->width();
+        }
+        painter->drawImage(QRect((width()- new_width)/2 , (height()- new_height)/2, new_width, new_height), *(this->current_image));
     } else if (topic_value.isEmpty()) {
         painter->drawText(QPoint(10,10), "No Topic Selected");
     }

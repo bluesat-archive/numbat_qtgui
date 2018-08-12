@@ -42,7 +42,6 @@ class ROS_Camera_Switching : public QQuickPaintedItem {
 
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
-        void change_feed();
 
         //getters and setters
         void set_topic(const QString &new_value);

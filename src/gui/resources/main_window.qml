@@ -37,6 +37,7 @@ Window {
         ROSVideoComponent {
             objectName: "videoStream"
             id: videoStream
+            fillColor: qsTr("#000000")
             anchors.fill: parent
             anchors.bottom: parent.bottom
             anchors.top: parent.top
