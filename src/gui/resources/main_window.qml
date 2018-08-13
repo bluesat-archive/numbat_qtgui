@@ -152,6 +152,25 @@ Window {
                 sequence: "7"
                 onActivated: camera_switching.camera_number = 7
             }
+
+            ROSJoystickListener {
+                objectName: "bot_joystick"
+                topic: "/bot_joy"
+                onButton_down: {
+                    var start_number = camera_switching.camera_number;
+
+                    // handle the case where no camera is selected
+                    if(start_number < 0) {
+                        start_number = 0;
+                    }
+
+                    if(button === 4) { // Left Buffer
+                        camera_switching.camera_number = (start_number - 1) % 8;
+                    } else if(button === 5) { // Right Buffer
+                        camera_switching.camera_number = (start_number + 1) % 8;
+                    }
+                }
+            }
         }
     }
 

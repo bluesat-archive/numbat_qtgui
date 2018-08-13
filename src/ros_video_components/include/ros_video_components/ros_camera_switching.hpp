@@ -1,3 +1,10 @@
+/*
+ * Date Started: 8/07/18
+ * Original Author: Raghav Hariharan
+ * Editors: Harry J.E Day
+ * Purpose: Widget for selecting a camera topic
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2017
+ */
 #ifndef ROS_CAMERA_SWITCHING_H
 #define ROS_CAMERA_SWITCHING_H
 

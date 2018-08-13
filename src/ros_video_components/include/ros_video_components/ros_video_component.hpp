@@ -1,3 +1,10 @@
+/*
+ * Date Started: 25/12/16
+ * Original Author: Harry J.E Day
+ * Editors:
+ * Purpose: Widget that renders a video from a ROS sensor_msgs/Image stream.
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2018
+ */
 #ifndef ROS_VIDEO_COMPONENT_H
 #define ROS_VIDEO_COMPONENT_H
 

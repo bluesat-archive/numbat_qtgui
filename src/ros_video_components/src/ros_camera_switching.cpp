@@ -1,3 +1,10 @@
+/*
+ * Date Started: 8/07/18
+ * Original Author: Raghav Hariharan
+ * Editors: Harry J.E Day
+ * Purpose: Widget for selecting a camera topic
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2017
+ */
 #include "ros_video_components/ros_camera_switching.hpp"
 #include <QKeyEvent>
 
@@ -64,6 +71,9 @@ void ROS_Camera_Switching::receive_feeds(const owr_messages::activeCameras::Cons
 
 void ROS_Camera_Switching::set_camera_number(int cam) {
     ROS_INFO("Camera change to %d", cam);
+    if(camera_number < 0) {
+        camera_number = NO_CAMERA_SELECTED;
+    }
     // disable existing feed
     owr_messages::stream msg;
     if(camera_number != NO_CAMERA_SELECTED && ros_ready) {
@@ -79,9 +89,13 @@ void ROS_Camera_Switching::set_camera_number(int cam) {
         control_feeds.publish(msg);
     }
 
-    std::ostringstream topic_in;
-    topic_in << "/cam" << cam;
-    camera_topic_value = QString(topic_in.str().c_str());
+    if(camera_number != NO_CAMERA_SELECTED) {
+        std::ostringstream topic_in;
+        topic_in << "/cam" << cam;
+        camera_topic_value = QString(topic_in.str().c_str());
+    } else {
+        camera_topic_value = QString();
+    }
     emit camera_topic_changed();
     emit camera_number_changed();
 }
