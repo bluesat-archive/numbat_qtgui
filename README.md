@@ -19,3 +19,4 @@ This is BLUEsat's new QT gui repo.
   - resource - QML and image files for the GUI
 
   - src - C++ source files
+
