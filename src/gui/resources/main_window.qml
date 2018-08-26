@@ -15,7 +15,7 @@ Window {
 
     Image {
         id: logo
-        source: "bluesatLogo.png"
+        source: "/images/bluesatLogo.png"
         anchors.right: parent.left
         anchors.rightMargin: -200
         anchors.left: parent.left
