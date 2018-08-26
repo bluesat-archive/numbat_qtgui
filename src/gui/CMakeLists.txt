@@ -10,7 +10,7 @@ project(gui)
 ##############################################################################
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
-find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport ros_video_components timer)
+find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport ros_video_components owr_messages)
 set(QML_IMPORT_PATH "${QML_IMPORT_PATH};${CATKIN_GLOBAL_LIB_DESTINATION}" )
 set(QML_IMPORT_PATH2 "${QML_IMPORT_PATH};${CATKIN_GLOBAL_LIB_DESTINATION}" )
 include_directories(${catkin_INCLUDE_DIRS})

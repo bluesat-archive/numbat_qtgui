@@ -1,6 +1,6 @@
-#include "timer/timer.hpp"
+#include "ros_video_components/ros_timer.hpp"
 
-Stopwatch::Stopwatch(QQuickItem *parent) : QQuickPaintedItem(parent) {
+ROSTimer::ROSTimer(QQuickItem *parent) : QQuickPaintedItem(parent) {
     time.setHMS(0, 0, 0, 0);
     ms_elapsed = 0;
     status = OFF;
@@ -11,7 +11,7 @@ Stopwatch::Stopwatch(QQuickItem *parent) : QQuickPaintedItem(parent) {
 
 }
 
-void Stopwatch::show() {
+void ROSTimer::show() {
 
     //text = QString::number(elapsed);
 
@@ -32,17 +32,17 @@ void Stopwatch::show() {
     update();
 }
 
-void Stopwatch::keyPressEvent(QKeyEvent *k) {
+void ROSTimer::keyPressEvent(QKeyEvent *k) {
     if (k->key() == Qt::Key_Space) {
         // press SPACE to pause/resume
         if (status == ON) {
             stopwatch->stop();
-            qDebug() << "STOP";
+            qDebug() << "Timer: STOP";
         } else {
             stopwatch->start(1);
             time_elapsed.start();
             ms_elapsed = 0;
-            qDebug() << "START";
+            qDebug() << "Timer: START";
         }
         status = 1 - status;  // flip status
     } else if (k->key() == Qt::Key_R) {
@@ -52,11 +52,11 @@ void Stopwatch::keyPressEvent(QKeyEvent *k) {
         time.setHMS(0, 0, 0, 0);
         ms_elapsed = 0;
         show();
-        qDebug() << "RESET";
+        qDebug() << "Timer: RESET";
     }
 }
 
-void Stopwatch::paint(QPainter *painter) {
+void ROSTimer::paint(QPainter *painter) {
 
     // set font
     QFont text_font("Sans Serif", 10, QFont::Bold);

@@ -1,3 +1,10 @@
+/*
+ * Date Started: 11/02/17
+ * Original Author: Sajid Anower
+ * Editors:
+ * Purpose: Widget to display signal strength of the antenna
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2017
+ */
 #include "ros_video_components/ros_signal_strength.hpp"
 
 #define RECT_X 0

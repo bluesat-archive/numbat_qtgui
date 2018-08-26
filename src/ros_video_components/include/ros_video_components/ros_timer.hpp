@@ -1,5 +1,5 @@
-#ifndef TIMER_HPP
-#define TIMER_HPP
+#ifndef ROS_TIMER_HPP
+#define ROS_TIMER_HPP
 
 #include <QObject>
 #include <ros/ros.h>
@@ -11,10 +11,10 @@
 #define ON 1
 #define OFF 0
 
-class Stopwatch : public QQuickPaintedItem {
+class ROSTimer : public QQuickPaintedItem {
     Q_OBJECT
     public:
-        Stopwatch(QQuickItem *parent = 0);
+        ROSTimer(QQuickItem *parent = 0);
         void paint(QPainter *painter);
         void keyPressEvent(QKeyEvent *k);
         //void run();
@@ -37,4 +37,4 @@ class Stopwatch : public QQuickPaintedItem {
         //QString format(int milisecs);
 };
 
-#endif // TIMER_HPP
+#endif // ROS_TIMER_HPP
