@@ -15,21 +15,28 @@ Window {
 
     Image {
         id: logo
-        source: "/images/bluesatLogo.png"
-        width: 244
-        height: 116
+        source: "bluesatLogo.png"
+        anchors.right: parent.left
+        anchors.rightMargin: -200
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        z: 100
+        anchors.bottom: camera_switching_container.top
+        anchors.bottomMargin: -54
+        anchors.topMargin: 0
+        opacity: 0.5
         anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
     }
 
     Item {
         id: video_pane
+        z: -1
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-        anchors.top: logo.bottom
+        anchors.top: parent.top
         anchors.topMargin: 0
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
@@ -58,15 +65,15 @@ Window {
 
     Item {
         id: signal_strength_container
+        z: 4
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
-        anchors.left: logo.right
-        anchors.leftMargin: 76
-        //anchors.bottom: videoStream.top
-        anchors.bottom: video_pane.top
-        anchors.bottomMargin: 90
+        anchors.left: parent.right
+        anchors.leftMargin: -172
+        anchors.bottom: parent.top
+        anchors.bottomMargin: -100
         ROSSignalStrength {
             // @disable-check M16
             objectName: "signal_strength"
