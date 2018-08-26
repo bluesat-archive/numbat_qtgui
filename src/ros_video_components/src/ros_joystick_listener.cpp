@@ -38,6 +38,7 @@ QString Ros_Joystick_Listener::get_topic() const {
 void Ros_Joystick_Listener::setup(ros::NodeHandle * nh) {
     this->nh = nh;
     if(!topic_value.isEmpty()) {
+        ROS_INFO("Looking for joysticks at %s", topic_value.toStdString().c_str());
         joy_sub = nh->subscribe(
               topic_value.toStdString(),
               1,

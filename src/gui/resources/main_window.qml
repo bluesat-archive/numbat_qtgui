@@ -155,7 +155,7 @@ Window {
 
             ROSJoystickListener {
                 objectName: "bot_joystick"
-                topic: "/bot_joy"
+                topic: "/joy"
                 onButton_down: {
                     var start_number = camera_switching.camera_number;
 
