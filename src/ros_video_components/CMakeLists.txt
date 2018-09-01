@@ -11,6 +11,7 @@ project(ros_video_components)
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
 find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport owr_messages)
+
 include_directories(include ${catkin_INCLUDE_DIRS})
 # Use this to define what the package will export (e.g. libs, headers).
 # Since the default here is to produce only a binary, we don't worry about
@@ -27,7 +28,7 @@ catkin_package(
 
 # this comes from qt_build's qt-ros.cmake which is automatically
 # included via the dependency ca ll in package.xml
-find_package(Qt5 COMPONENTS Core Qml Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Qml Widgets Quick REQUIRED)
 
 ##############################################################################
 # Sections
@@ -49,6 +50,6 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 # Binaries
 ##############################################################################
 add_library(RosVideoComponents ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
-qt5_use_modules(RosVideoComponents Quick Core)
+qt5_use_modules(RosVideoComponents Quick Core Widgets)
 target_link_libraries(RosVideoComponents ${QT_LIBRARIES} ${catkin_LIBRARIES})
 target_include_directories(RosVideoComponents PUBLIC include)

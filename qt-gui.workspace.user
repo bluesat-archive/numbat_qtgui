@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2017-11-24T21:18:31. -->
+<!-- Written by QtCreator 4.2.1, 2018-09-01T16:30:25. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{dac2af9f-3026-419b-b2ad-36134f2d658e}</value>
+  <value type="QByteArray">{643a6988-023e-4bb1-a89b-37908ebfa0dc}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -54,21 +54,33 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.PluginSettings</variable>
-  <valuemap type="QVariantMap"/>
+  <valuemap type="QVariantMap">
+   <valuelist type="QVariantList" key="ClangStaticAnalyzer.SuppressedDiagnostics"/>
+  </valuemap>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{48bce10c-8a71-4671-b5e0-a54346435ea6}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{4b75cd94-3d61-4d5d-bd67-39d953f1f3be}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory"></value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
-     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>
+     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
+      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">CatkinMake Step</value>
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSCatkinMakeStep</value>
+      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.CMakeArguments"></value>
+      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.CatkinMakeArguments"></value>
+      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.MakeArguments"></value>
+      <value type="int" key="ROSProjectManager.ROSCatkinMakeStep.Target">0</value>
+     </valuemap>
+     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
@@ -82,72 +94,27 @@
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
-     <value type="QString">CLUTTER_BACKEND</value>
-     <value type="QString">CLUTTER_IM_MODULE</value>
-     <value type="QString">DBUS_SESSION_BUS_ADDRESS</value>
-     <value type="QString">DEFAULTS_PATH</value>
-     <value type="QString">DESKTOP_SESSION</value>
-     <value type="QString">DISPLAY</value>
-     <value type="QString">GDMSESSION</value>
-     <value type="QString">GDM_LANG</value>
-     <value type="QString">GLADE_CATALOG_PATH</value>
-     <value type="QString">GLADE_MODULE_PATH</value>
-     <value type="QString">GLADE_PIXMAP_PATH</value>
-     <value type="QString">GNOME_KEYRING_CONTROL</value>
-     <value type="QString">GNOME_KEYRING_PID</value>
-     <value type="QString">GPG_AGENT_INFO</value>
-     <value type="QString">GTK_IM_MODULE</value>
-     <value type="QString">GTK_OVERLAY_SCROLLING</value>
-     <value type="QString">HOME</value>
-     <value type="QString">IM_CONFIG_PHASE</value>
-     <value type="QString">INSTANCE</value>
-     <value type="QString">JOB</value>
-     <value type="QString">LANG</value>
-     <value type="QString">LANGUAGE</value>
-     <value type="QString">LD_LIBRARY_PATH</value>
-     <value type="QString">LOGNAME</value>
-     <value type="QString">MANDATORY_PATH</value>
-     <value type="QString">PATH</value>
-     <value type="QString">PKG_CONFIG_PATH</value>
-     <value type="QString">PWD=/home/ros/Flora/owr-qtgui</value>
-     <value type="QString">QT4_IM_MODULE</value>
-     <value type="QString">QTDIR</value>
-     <value type="QString">QT_ACCESSIBILITY</value>
-     <value type="QString">QT_IM_MODULE</value>
-     <value type="QString">QT_LINUX_ACCESSIBILITY_ALWAYS_ON</value>
-     <value type="QString">QT_STYLE_OVERRIDE</value>
-     <value type="QString">SESSION</value>
-     <value type="QString">SESSIONTYPE</value>
-     <value type="QString">SESSION_MANAGER</value>
-     <value type="QString">SHELL</value>
-     <value type="QString">SHLVL</value>
-     <value type="QString">SSH_AUTH_SOCK</value>
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/owr_software/gui/devel:/home/ros/owr-qtgui/devel:/home/ros/owr_software/rover/devel:/home/ros/ros_deps/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/owr_software/gui/devel/lib:/home/ros/owr-qtgui/devel/lib:/home/ros/owr_software/rover/devel/lib:/home/ros/ros_deps/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/home/ros/owr_software/gui/devel/lib/pkgconfig:/home/ros/owr-qtgui/devel/lib/pkgconfig:/home/ros/owr_software/rover/devel/lib/pkgconfig:/home/ros/ros_deps/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PWD=/home/ros/owr-qtgui</value>
+     <value type="QString">PYTHONPATH=/home/ros/owr_software/gui/devel/lib/python2.7/dist-packages:/home/ros/owr-qtgui/devel/lib/python2.7/dist-packages:/home/ros/owr_software/rover/devel/lib/python2.7/dist-packages:/home/ros/ros_deps/devel/lib/python2.7/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/owr_software/gui/devel/share/common-lisp:/home/ros/owr-qtgui/devel/share/common-lisp:/home/ros/owr_software/rover/devel/share/common-lisp:/home/ros/ros_deps/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/ros/owr_software/gui/src:/home/ros/owr-qtgui/src:/home/ros/owr_software/rover/src:/home/ros/ros_deps/src:/opt/ros/kinetic/share</value>
+     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
+     <value type="QString">ROS_VERSION=1</value>
+     <value type="QString">SHLVL=2</value>
      <value type="QString">TERM=xterm</value>
-     <value type="QString">UPSTART_EVENTS</value>
-     <value type="QString">UPSTART_INSTANCE</value>
-     <value type="QString">UPSTART_JOB</value>
-     <value type="QString">UPSTART_SESSION</value>
-     <value type="QString">USER</value>
-     <value type="QString">XAUTHORITY</value>
-     <value type="QString">XDG_CONFIG_DIRS</value>
-     <value type="QString">XDG_CURRENT_DESKTOP</value>
-     <value type="QString">XDG_DATA_DIRS</value>
-     <value type="QString">XDG_GREETER_DATA_DIR</value>
-     <value type="QString">XDG_MENU_PREFIX</value>
-     <value type="QString">XDG_RUNTIME_DIR</value>
-     <value type="QString">XDG_SEAT</value>
-     <value type="QString">XDG_SEAT_PATH</value>
-     <value type="QString">XDG_SESSION_DESKTOP</value>
-     <value type="QString">XDG_SESSION_ID</value>
-     <value type="QString">XDG_SESSION_PATH</value>
-     <value type="QString">XDG_SESSION_TYPE</value>
-     <value type="QString">XDG_VTNR</value>
-     <value type="QString">XMODIFIERS</value>
+     <value type="QString">_=/usr/bin/env</value>
     </valuelist>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">59706160</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">0</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">0</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
@@ -170,7 +137,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">59706160</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">34435152</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">1</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
@@ -193,7 +160,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">59706160</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">34435152</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">2</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
@@ -216,7 +183,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">59706160</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">34435152</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">3</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">4</value>
