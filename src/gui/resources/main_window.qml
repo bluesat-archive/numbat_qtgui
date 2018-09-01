@@ -181,6 +181,18 @@ Window {
         }
     }
 
+    Item {
+        RosDriveMode {
+            objectName: "drive_mode"
+            id: driveMode
+        }
+
+        Text {
+            id: driveModeText
+            text: driveMode.mode
+        }
+    }
+
     ROSTimer {
         // @disable-check M16
         objectName: "timerDisplay"
