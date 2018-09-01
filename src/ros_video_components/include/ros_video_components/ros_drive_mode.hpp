@@ -33,7 +33,7 @@ class Ros_Drive_Mode : public QQuickItem {
    public:
        Ros_Drive_Mode(QQuickItem * parent = 0) :
        topic_value(),
-       mode_sub(),
+       mode_value("not set"),
        ros_ready(false),
        QQuickItem(parent) {}
 

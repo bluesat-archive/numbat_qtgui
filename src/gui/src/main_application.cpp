@@ -43,6 +43,8 @@ void Main_Application::run() {
     Ros_Joystick_Listener * bot_joystick = this->rootObjects()[0]->findChild<Ros_Joystick_Listener*>(QString("bot_joystick"));
     bot_joystick->setup(&nh);
 
+    Ros_Drive_Mode * drive_mode = this->rootObjects()[0]->findChild<Ros_Drive_Mode*>(QString("drive_mode"));
+    drive_mode->setup(&nh);
 
     // setup the timer
     ROSTimer * stopwatch = this->rootObjects()[0]->findChild<ROSTimer *>(QString("timerDisplay"));
