@@ -213,6 +213,8 @@ Window {
             id: driveModeText
             color: "#d23a00"
             text: driveMode.mode
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 15
             font.bold: true
             anchors.fill: parent
         }
