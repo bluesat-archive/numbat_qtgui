@@ -13,7 +13,37 @@ Window {
     minimumWidth: 600
 
     //Battery indicator
-    Rectangle {
+    Item {
+        id: battery_indicator_container
+        anchors.left: parent.left
+        anchors.rightMargin: 76
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.right: logo.left
+        anchors.leftMargin: 0
+        //anchors.bottom: videoStream.top
+        anchors.bottom: video_pane.top
+        anchors.bottomMargin: 90
+        ROSBatteryIndicator {
+            // @disable-check M16
+            objectName: "battery_indicator"
+            id: battery_indicator
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/signal")
+        }
+    }
+
+    /*Rectangle {
         id: battery_indicator
         property var charge: 33
         property var full_charge: 33
@@ -82,7 +112,7 @@ Window {
 
 
         }
-}
+}*/
     Image {
         id: logo
         source: "/images/bluesatLogo.png"

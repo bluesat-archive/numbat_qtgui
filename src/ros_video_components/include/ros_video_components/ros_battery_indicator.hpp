@@ -4,7 +4,6 @@
 //QT
 #include <QQuickPaintedItem>
 #include <QPainter>
-#include <QObject>
 
 //ROS
 #include <ros/ros.h>
@@ -21,7 +20,7 @@ class  ROS_Battery_Indicator: public QQuickPaintedItem {
         // Constructor, takes parent widget, which defaults to null
         ROS_Battery_Indicator(QQuickItem * parent = 0);
 
-        //void paint(QPainter *painter);
+        void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
 
         //getters and setters
@@ -40,7 +39,7 @@ class  ROS_Battery_Indicator: public QQuickPaintedItem {
         QString topic_value;
         bool ros_ready;
 
-    int charge; //the battery charge
+    float charge; //the battery charge
 };
 
 
