@@ -11,6 +11,7 @@
 #include "ros_video_components/ros_camera_switching.hpp"
 #include "ros_video_components/ros_timer.hpp"
 #include "ros_video_components/ros_joystick_listener.hpp"
+#include "ros_video_components/ros_drive_mode.hpp"
 
 void OWR_ROS_Components::registerTypes(const char *uri) {
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
@@ -18,4 +19,5 @@ void OWR_ROS_Components::registerTypes(const char *uri) {
     qmlRegisterType<ROS_Camera_Switching>("bluesat.owr", 1, 0, "ROSCameraSwitching");
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");
     qmlRegisterType<Ros_Joystick_Listener>("bluesat.owr", 1, 0, "ROSJoystickListener");
+    qmlRegisterType<Ros_Drive_Mode>("bluesat.owr", 1, 0, "ROSDriveMode");
 }

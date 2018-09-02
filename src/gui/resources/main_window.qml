@@ -42,14 +42,22 @@ Window {
         anchors.bottomMargin: 0
 
         ROSVideoComponent {
+            // @disable-check M16
             objectName: "videoStream"
             id: videoStream
+            // @disable-check M16
             fillColor: qsTr("#000000")
+            // @disable-check M16
             anchors.fill: parent
+            // @disable-check M16
             anchors.bottom: parent.bottom
+            // @disable-check M16
             anchors.top: parent.top
+            // @disable-check M16
             anchors.left: parent.left
+            // @disable-check M16
             anchors.right: parent.right
+            // @disable-check M16
             topic: camera_switching.camera_topic
             Text {
                 id: text1
@@ -125,6 +133,7 @@ Window {
             // @disable-check M16
             topic: qsTr("/owr/control/availableFeeds")
 
+            // @disable-check M16
             focus: true
 
             Shortcut {
@@ -161,8 +170,11 @@ Window {
             }
 
             ROSJoystickListener {
+                // @disable-check M16
                 objectName: "bot_joystick"
+                // @disable-check M16
                 topic: "/joy"
+                // @disable-check M16
                 onButton_down: {
                     var start_number = camera_switching.camera_number;
 
@@ -179,6 +191,16 @@ Window {
                 }
             }
         }
+    }
+
+    DriveModeWidget {
+        id: drive_mode
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: signal_strength_container.left
+        anchors.leftMargin: 0
+        anchors.top: signal_strength_container.bottom
+        anchors.topMargin: 10
     }
 
     ROSTimer {
