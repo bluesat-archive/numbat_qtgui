@@ -31,6 +31,10 @@ class Ros_Drive_Mode : public QQuickItem {
 
 
    public:
+       /**
+        * Constructor for the ROS_Drive_Mode class, initialises default variables
+        * @param parent the parent widget
+        */
        Ros_Drive_Mode(QQuickItem * parent = 0) :
        topic_value(),
        mode_value("---- "),
@@ -38,17 +42,47 @@ class Ros_Drive_Mode : public QQuickItem {
        QQuickItem(parent) {}
 
         //getters and setters
+
+        /**
+         * Used to handle the topic being set in qml.
+         * Updates the subscriber
+         * @param new_value the new value for the topic.
+         */
         void set_topic(const QString &new_value);
+        /**
+         * Used to retrieve the topic from QML
+         * @return the value of the topic string
+         */
         QString get_topic() const;
+        /**
+         * Used to retrieve the string representing the driving mode
+         * @return the string of the mode
+         */
         QString get_mode() const;
+        /**
+         * Called to set the node handle.
+         * Initalises all of the ros functionality.
+         * @param nh the node handle
+         */
         void setup(ros::NodeHandle * nh);
 
     signals:
+        /**
+         * Emitted when the topic is channged
+         */
         void topic_changed();
+        /**
+         * Emitted when we receive a new mode callback
+         */
         void mode_changed();
 
     private:
+        /**
+         * Ros callback for the mode being changed
+         * @param msg the mode message
+         */
         void mode_callback(const std_msgs::Int16::ConstPtr & msg);
+
         QString topic_value;
         bool ros_ready;
         ros::Subscriber mode_sub;
