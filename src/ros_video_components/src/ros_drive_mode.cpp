@@ -59,13 +59,13 @@ void Ros_Drive_Mode::mode_callback(const std_msgs::Int16::ConstPtr & msg) {
 
     switch(msg->data) {
         case CRAB:
-            mode_value = QString("crab");
+            mode_value = QString("CRAB ");
             break;
         case FOUR:
-            mode_value = QString("four");
+            mode_value = QString("FOUR ");
             break;
         case SWERVE:
-            mode_value = QString("swerve");
+            mode_value = QString("SERVE");
             break;
     }
     emit mode_changed();

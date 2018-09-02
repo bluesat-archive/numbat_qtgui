@@ -1,4 +1,4 @@
-/*
+/**
  * Date Started: 01/09/18
  * Original Author: Harry J.E Day
  * Editors:
@@ -33,7 +33,7 @@ class Ros_Drive_Mode : public QQuickItem {
    public:
        Ros_Drive_Mode(QQuickItem * parent = 0) :
        topic_value(),
-       mode_value("not set"),
+       mode_value("---- "),
        ros_ready(false),
        QQuickItem(parent) {}
 

@@ -193,31 +193,14 @@ Window {
         }
     }
 
-    Item {
+    DriveModeWidget {
+        id: drive_mode
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: signal_strength_container.left
         anchors.leftMargin: 0
         anchors.top: signal_strength_container.bottom
         anchors.topMargin: 10
-        ROSDriveMode {
-            // @disable-check M16
-            objectName: "drive_mode"
-            id: driveMode
-            // @disable-check M16
-            topic: "/cmd_vel/mode"
-
-        }
-
-        Text {
-            id: driveModeText
-            color: "#d23a00"
-            text: driveMode.mode
-            horizontalAlignment: Text.AlignHCenter
-            font.pointSize: 15
-            font.bold: true
-            anchors.fill: parent
-        }
     }
 
     ROSTimer {
