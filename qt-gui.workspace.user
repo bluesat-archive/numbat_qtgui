@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2018-09-01T16:30:25. -->
+
+<!-- Written by QtCreator 4.2.1, 2018-08-28T22:56:34. -->
+
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -94,10 +96,12 @@
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
-     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/owr_software/gui/devel:/home/ros/owr-qtgui/devel:/home/ros/owr_software/rover/devel:/home/ros/ros_deps/devel:/opt/ros/kinetic</value>
-     <value type="QString">LD_LIBRARY_PATH=/home/ros/owr_software/gui/devel/lib:/home/ros/owr-qtgui/devel/lib:/home/ros/owr_software/rover/devel/lib:/home/ros/ros_deps/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
+
+     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/owr-qtgui/devel:/home/ros/owr_software/rover/devel:/home/ros/ros_deps/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/ros/owr-qtgui/devel/lib:/home/ros/owr_software/rover/devel/lib:/home/ros/ros_deps/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
      <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
-     <value type="QString">PKG_CONFIG_PATH=/home/ros/owr_software/gui/devel/lib/pkgconfig:/home/ros/owr-qtgui/devel/lib/pkgconfig:/home/ros/owr_software/rover/devel/lib/pkgconfig:/home/ros/ros_deps/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+     <value type="QString">PKG_CONFIG_PATH=/home/ros/owr-qtgui/devel/lib/pkgconfig:/home/ros/owr_software/rover/devel/lib/pkgconfig:/home/ros/ros_deps/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig:/opt/qt57/lib/pkgconfig</value>
+
      <value type="QString">PWD=/home/ros/owr-qtgui</value>
      <value type="QString">PYTHONPATH=/home/ros/owr_software/gui/devel/lib/python2.7/dist-packages:/home/ros/owr-qtgui/devel/lib/python2.7/dist-packages:/home/ros/owr_software/rover/devel/lib/python2.7/dist-packages:/home/ros/ros_deps/devel/lib/python2.7/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages</value>
      <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/owr_software/gui/devel/share/common-lisp:/home/ros/owr-qtgui/devel/share/common-lisp:/home/ros/owr_software/rover/devel/share/common-lisp:/home/ros/ros_deps/devel/share/common-lisp</value>
@@ -107,7 +111,8 @@
      <value type="QString">ROS_PACKAGE_PATH=/home/ros/owr_software/gui/src:/home/ros/owr-qtgui/src:/home/ros/owr_software/rover/src:/home/ros/ros_deps/src:/opt/ros/kinetic/share</value>
      <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
      <value type="QString">ROS_VERSION=1</value>
-     <value type="QString">SHLVL=2</value>
+
+     <value type="QString">SHLVL=3</value>
      <value type="QString">TERM=xterm</value>
      <value type="QString">_=/usr/bin/env</value>
     </valuelist>
