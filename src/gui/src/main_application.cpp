@@ -2,20 +2,19 @@
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_voltage_meter.hpp"
 #include "ros_video_components/ros_camera_switching.hpp"
 #include "ros_video_components/ros_timer.hpp"
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
 #include "gui/main_application.hpp"
 
-Main_Application::Main_Application() {
-
-}
+Main_Application::Main_Application() {}
 
 void Main_Application::run() {
-
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
+    qmlRegisterType<ROS_Voltage_Meter>("bluesat.owr", 1, 0, "ROSVoltageMeter");
     qmlRegisterType<ROS_Camera_Switching>("bluesat.owr", 1, 0, "ROSCameraSwitching");
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");
     qmlRegisterType<Ros_Joystick_Listener>("bluesat.owr", 1, 0, "ROSJoystickListener");
@@ -37,6 +36,9 @@ void Main_Application::run() {
     ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
     signal_strength->setup(&nh);
 
+    ROS_Voltage_Meter * voltage_meter = this->rootObjects()[0]->findChild<ROS_Voltage_Meter*>(QString("voltage_meter"));
+    voltage_meter->setup(&nh);
+
     ROS_Camera_Switching * camera_switching = this->rootObjects()[0]->findChild<ROS_Camera_Switching*>(QString("camera_switching"));
     camera_switching->setup(&nh);
 
@@ -57,7 +59,6 @@ void Main_Application::run() {
 }
 
 void Main_Application::main_loop() {
-
     ros::spinOnce();
 }
 
