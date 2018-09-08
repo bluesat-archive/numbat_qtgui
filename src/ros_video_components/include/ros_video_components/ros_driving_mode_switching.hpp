@@ -1,3 +1,18 @@
+/**
+ * Date Started: 28/07/18
+ * @author: [Linchuan YANG]
+ * @authors: (Editors) [Editor 1], [Editor 2]
+ * ROS Node Name: not applicable
+ * ROS Package: owr_qtgui
+ * @description: This code generates a publisher called signal_pub, which will make a variable called a increase by 1
+ * when keyA/S/D are pressed and print it out
+ * @copyright: This code is released under the MIT [GPL for embeded] License. Copyright BLUEsat UNSW, 2017
+ */
+
+
+
+
+
 #ifndef ROS_DRIVING_MODE_SWITCHNG_HPP
 #define ROS_DRIVING_MODE_SWITCHNG_HPP
 

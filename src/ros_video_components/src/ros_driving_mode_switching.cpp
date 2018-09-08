@@ -15,7 +15,7 @@
 
 ROS_Driving_Mode_Switching::ROS_Driving_Mode_Switching(QQuickItem * parent) :
     QQuickPaintedItem(parent),
-    topic_value("/rover/driving_mode_switching"),
+    topic_value("/rover/driving_mode_switching/"),
     ros_ready(false),
     a(0),
     data(50) {
@@ -24,7 +24,7 @@ ROS_Driving_Mode_Switching::ROS_Driving_Mode_Switching(QQuickItem * parent) :
 void ROS_Driving_Mode_Switching::setup(ros::NodeHandle * nh) {
 
     signal_pub = nh->advertise<std_msgs::Float32>(
-        "/rover/driving_mode_switching", //Post to this topic
+        "/rover/driving_mode_switching/", //Post to this topic
          1,
          true
     );
@@ -34,23 +34,19 @@ void ROS_Driving_Mode_Switching::setup(ros::NodeHandle * nh) {
 }
 
 
-
-void ROS_Driving_Mode_Switching::paint(QPainter * painter) {
-
-//=======================================================================================
-
-
+void ROS_Driving_Mode_Switching::paint(QPainter *painter){
+    //do nothing because gui is done in main_window.qml
 }
-
 
 void  ROS_Driving_Mode_Switching::sendmessage() {
    std_msgs::Float32 msg;
 
-       msg.data = 1000;
-       signal_pub.publish(msg);
-       a++;
-       ROS_INFO("value is %d",a);
-      // ros::spinOnce();
+    msg.data = 1000;
+    signal_pub.publish(msg);
+    //when the key 'A/S/D'pressed, a should add 1
+    a++;
+    ROS_INFO("value is %d",a);
+    // ros::spinOnce();
 
 
 }
@@ -68,7 +64,7 @@ void ROS_Driving_Mode_Switching::set_topic(const QString & new_value) {
         if(ros_ready) {
             signal_pub.shutdown();
             signal_pub = nh->advertise<std_msgs::Float32>(
-               "/rover/driving_mode_switching",
+               "/rover/driving_mode_switching/",
                 1,
                 true
             );

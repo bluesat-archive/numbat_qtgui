@@ -96,11 +96,8 @@ Window {
 
 
 
-//===================================================================================
 
-
-    //below is the task for SV-13
-
+//below is the task for SV-13
 
 
     Item {
@@ -131,321 +128,134 @@ Window {
             topic: qsTr("/rover/driving_mode_switching")
 
 
-//=====================================================================================================
-
-
-                 Rectangle{
-                    x:80
-                   y:100
-                   width:360
-                   height:20
-                   focus: true;
-                   Keys.enabled: true;
-                   Keys.forwardTo: [box_front,box_crab,box_four];
 
 
 
-
-                    //rectangle for front wheel steering
-                    Rectangle{
-                        x:200
-                        y:180
-                        width:120
-                        height:20
-                        id: box_front
-                        border.color: "black"
-                        //focus:true
-                        //
-                        //Keys.enabled: true;
-                        color:"white"
-                        Text {
-                            text: "front"
-                                anchors.horizontalCenter:parent.horizontalCenter
-                                anchors.verticalCenter: parent.verticalCenter
-                                font.pointSize:12
-                                font.bold:true
-                         }
-
-
-                    }
-
-
-                    Rectangle{
-                        x:320
-                        y:180
-                        width:120
-                        height:20
-                        id: box_crab
-                        border.color:"black"
-                        //focus:true
-                       // Keys.enabled: true;
-                       color:"white"
-                        Text {
-
-                                text: "crab"
-                                anchors.centerIn: parent
-                                font.pointSize:12
-                                font.bold:true
-                         }
-
-
-                    }
-
-
-                    Rectangle{
-                        x:440
-                        y:180
-                        width:120
-                        height:20
-                        id: box_four
-                        border.color: "black"
-                        //focus:true
-                        //Keys.enabled: true;
-                        color:"white"
-                        Text {
-
-                            text: "four"
-                            anchors.horizontalCenter:parent.horizontalCenter
-                            anchors.verticalCenter: parent.verticalCenter
-                            font.pointSize:12
-                            font.bold:true
-                         }
+    Rectangle{
+        x:80
+        y:100
+        width:360
+        height:20
+        focus: true;
+        Keys.enabled: true;
+        Keys.forwardTo: [box_front,box_crab,box_four];
 
 
 
-                    }
+
+        //rectangle for front wheel steering
+        Rectangle{
+            x:200
+            y:180
+            width:120
+            height:20
+            id: box_front
+            border.color: "black"
+            color:"white"
+            Text {
+                text: "front"
+                anchors.horizontalCenter:parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize:12
+                font.bold:true
+            }
+
+
+        }
+
+
+        //rectangle for crab wheel steering
+        Rectangle{
+            x:320
+            y:180
+            width:120
+            height:20
+            id: box_crab
+            border.color:"black"
+            color:"white"
+            Text {
+
+                text: "crab"
+                anchors.centerIn: parent
+                font.pointSize:12
+                font.bold:true
+            }
+
+
+        }
+
+
+        //rectangle for four wheel steering
+        Rectangle{
+            x:440
+            y:180
+            width:120
+            height:20
+            id: box_four
+            border.color: "black"
+            color:"white"
+            Text {
+
+                text: "four"
+                anchors.horizontalCenter:parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize:12
+                font.bold:true
+            }
+
+        }
 
 
 
 
 
 
-
-                    Keys.onPressed: {
-
-
-                                switch(event.key){
-                                //if A is pressed
-                                //change color to red
-
-                                case Qt.Key_A:
-                                    box_front.color = "red"
-                                    box_crab.color = "white";
-                                    box_four.color="white"
-                                    driving_mode_switching.sendmessage();
-                                    break;
-
-                                //if r is pressed
-                                //change color to red
-                                case Qt.Key_S:
-                                    box_front.color = "white"
-                                    box_crab.color = "red";
-                                    box_four.color="white"
-                                    driving_mode_switching.sendmessage();
-                                    break;
-
-                                case Qt.Key_D:
-                                    box_front.color="white"
-                                    box_crab.color = "white"
-                                    box_four.color = "red"
-                                    driving_mode_switching.sendmessage();
-                                    break;
-                                default:
-                                    return;
-                                }
-                                event.accepted = true;
-
-                  }
+        //key press response
+        Keys.onPressed: {
 
 
+            switch(event.key){
+                //if A is pressed
+                //change color to red
+
+            case Qt.Key_A:
+                box_front.color = "red"
+                box_crab.color = "white";
+                box_four.color="white"
+                driving_mode_switching.sendmessage();
+                break;
+
+                //if r is pressed
+                //change color to red
+            case Qt.Key_S:
+                box_front.color = "white"
+                box_crab.color = "red";
+                box_four.color="white"
+                driving_mode_switching.sendmessage();
+                break;
+
+            case Qt.Key_D:
+                box_front.color="white"
+                box_crab.color = "white"
+                box_four.color = "red"
+                driving_mode_switching.sendmessage();
+                break;
+            default:
+                return;
+            }
+            event.accepted = true;
+
+        }
 
 
+    }
 
-
-
-
-
-
-
-
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//========================================================================================================
 
         }
 
     }
 
 
-
-
-
-
-
-
-    /*
-         Rectangle{
-            x:80
-           y:100
-           width:360
-           height:20
-           focus: true;
-           Keys.enabled: true;
-           Keys.forwardTo: [box_front,box_crab,box_four];
-
-
-
-
-            //rectangle for front wheel steering
-            Rectangle{
-                x:200
-                y:180
-                width:120
-                height:20
-                id: box_front
-                border.color: "black"
-                //focus:true
-                //
-                //Keys.enabled: true;
-                color:"white"
-                Text {
-                    text: "front"
-                        anchors.horizontalCenter:parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.pointSize:12
-                        font.bold:true
-                 }
-
-
-            }
-
-
-            Rectangle{
-                x:320
-                y:180
-                width:120
-                height:20
-                id: box_crab
-                border.color:"black"
-                //focus:true
-               // Keys.enabled: true;
-               color:"white"
-                Text {
-
-                        text: "crab"
-                        anchors.centerIn: parent
-                        font.pointSize:12
-                        font.bold:true
-                 }
-
-
-            }
-
-
-            Rectangle{
-                x:440
-                y:180
-                width:120
-                height:20
-                id: box_four
-                border.color: "black"
-                //focus:true
-                //Keys.enabled: true;
-                color:"white"
-                Text {
-
-                    text: "four"
-                    anchors.horizontalCenter:parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pointSize:12
-                    font.bold:true
-                 }
-
-
-
-            }
-
-
-
-
-
-
-
-            Keys.onPressed: {
-
-
-                        switch(event.key){
-                        //if A is pressed
-                        //change color to red
-
-                        case Qt.Key_A:
-                            box_front.color = "red"
-                            box_crab.color = "white";
-                            box_four.color="white"
-
-                            break;
-
-                        //if r is pressed
-                        //change color to red
-                        case Qt.Key_S:
-                            box_front.color = "white"
-                            box_crab.color = "red";
-                            box_four.color="white"
-                            break;
-
-                        case Qt.Key_D:
-                            box_front.color="white"
-                            box_crab.color = "white"
-                            box_four.color = "red"
-                            break;
-                        default:
-                            return;
-                        }
-                        event.accepted = true;
-
-          }
-
-
-
-
-
-
-
-        //}
-
-
-
-
-
-        }
-
-
-
-    */
-
-
-
-
-
-
-
-
-
-//===================================================================================
 }
 
 
