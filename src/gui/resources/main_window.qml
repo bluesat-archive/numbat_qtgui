@@ -101,6 +101,35 @@ Window {
         }
 
     }
+    Item {
+        id: voltage_meter_container
+        z: 4
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.left: parent.right
+        anchors.leftMargin: -172
+        anchors.bottom: parent.top
+        anchors.bottomMargin: -100
+        ROSVoltageMeter {
+            // @disable-check M16
+            objectName: "voltage_meter"
+            id: voltage_meter
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 50
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/volt")
+        }
+    }
     Item{
         id: camera_switching_container
         width: 50
