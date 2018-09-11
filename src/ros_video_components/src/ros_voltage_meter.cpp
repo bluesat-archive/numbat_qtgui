@@ -9,12 +9,6 @@
  */
 #include "ros_video_components/ros_voltage_meter.hpp"
 
-ROS_Voltage_Meter::ROS_Voltage_Meter(QQuickItem * parent) :
-    QQuickPaintedItem(parent),
-    topic_value("/rover/volt"),
-    ros_ready(false),
-    data(50) {}
-
 void ROS_Voltage_Meter::setup(ros::NodeHandle * nh) {
     volt_sub = nh->subscribe(
         "/rover/volt",

@@ -25,7 +25,11 @@ class ROS_Voltage_Meter : public QQuickItem {
 
     public:
         // Constructor, takes parent widget, which defaults to null
-        ROS_Voltage_Meter(QQuickItem * parent = 0);
+        ROS_Voltage_Meter(QQuickItem * parent = 0):
+        topic_value("/rover/volt"),
+        volt_value(0.0),
+        ros_ready(false),
+        QQuickItem(parent) {}
 
         void setup(ros::NodeHandle * nh);
 
