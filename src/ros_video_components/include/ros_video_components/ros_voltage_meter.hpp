@@ -43,11 +43,9 @@ class ROS_Voltage_Meter : public QQuickItem {
         void volt_update();
 
     private:
-        void receive_volt_val(const std_msgs::Float32::ConstPtr & msg);
+        void receive_volt_callback(const std_msgs::Float32::ConstPtr & msg);
 
         // ROS
-        ros::NodeHandle * nh;
-        ros::Subscriber volt_sub;
         QString topic_value;
         bool ros_ready;
         ros::Subscriber volt_sub;
