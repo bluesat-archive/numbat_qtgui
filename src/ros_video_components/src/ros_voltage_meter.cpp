@@ -3,7 +3,9 @@
  * Original Author: Sajid Ibne Anower
  * Editors:
  * Purpose: Widget to display voltage of the batteries
- * This code is released under the MIT License. Copyright BLUEsat UNSW, 2017, 2018
+ * This code is released under the MIT License. Copyright BLUEsat UNSW 2018
+ * Trivia: This code was written on the plane from Sydney to Warsaw,
+ * on the way to participating in ERC2018
  */
 #include "ros_video_components/ros_voltage_meter.hpp"
 
