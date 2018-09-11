@@ -19,7 +19,6 @@ void ROS_Voltage_Meter::setup(ros::NodeHandle * nh) {
 }
 
 void ROS_Voltage_Meter::set_topic(const QString & new_value) {
-    // ROS_INFO("set_topic");
     if (topic_value != new_value) {
         topic_value = new_value;
         if (ros_ready) {
@@ -38,7 +37,7 @@ QString ROS_Voltage_Meter::get_topic() const {
     return topic_value;
 }
 
-float ROS_Voltage_Meter::get_volt() const {
+double ROS_Voltage_Meter::get_volt() const {
     return volt_value;
 }
 

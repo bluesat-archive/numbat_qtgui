@@ -21,7 +21,7 @@ class ROS_Voltage_Meter : public QQuickItem {
     Q_OBJECT
     // defines a qml value for the topic
     Q_PROPERTY(QString topic READ get_topic WRITE set_topic NOTIFY topic_changed)
-    Q_PROPERTY(float volt_value READ get_volt NOTIFY volt_update)
+    Q_PROPERTY(double volt_value READ get_volt NOTIFY volt_update)
 
     public:
         // Constructor, takes parent widget, which defaults to null
@@ -36,7 +36,7 @@ class ROS_Voltage_Meter : public QQuickItem {
         // getters and setters
         void set_topic(const QString &new_value);
         QString get_topic() const;
-        float get_volt() const;
+        double get_volt() const;
 
     signals:
         void topic_changed();
@@ -50,7 +50,7 @@ class ROS_Voltage_Meter : public QQuickItem {
         bool ros_ready;
         ros::Subscriber volt_sub;
         ros::NodeHandle * nh;
-        float volt_value;
+        double volt_value;
 };
 
 #endif // ROS_VOLTAGE_METER_H
