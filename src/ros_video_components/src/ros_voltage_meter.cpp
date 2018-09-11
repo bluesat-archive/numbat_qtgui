@@ -18,10 +18,6 @@ void ROS_Voltage_Meter::setup(ros::NodeHandle * nh) {
     ros_ready = true;
 }
 
-void ROS_Voltage_Meter::paint(QPainter * painter) {
-    // TODO(sajidanower23)
-}
-
 void ROS_Voltage_Meter::set_topic(const QString & new_value) {
     // ROS_INFO("set_topic");
     if (topic_value != new_value) {
