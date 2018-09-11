@@ -24,8 +24,7 @@ ROS_Signal_Strength::ROS_Signal_Strength(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     topic_value("/rover/signal"),
     ros_ready(false),
-    data(50) {
-}
+    data(50) {}
 
 void ROS_Signal_Strength::setup(ros::NodeHandle * nh) {
 
