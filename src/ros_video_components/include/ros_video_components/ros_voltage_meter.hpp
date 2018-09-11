@@ -9,14 +9,14 @@
 #define ROS_VOLTAGE_METER_H
 
 // QT
-#include <QQuickPaintedItem>
-#include <QPainter>
+#include <QObject>
+#include <QQuickItem>
 
 // ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
 
-class ROS_Voltage_Meter : public QQuickPaintedItem {
+class ROS_Voltage_Meter : public QQuickItem {
     // make this a Qt Widget
     Q_OBJECT
     // defines a qml value for the topic
@@ -26,7 +26,6 @@ class ROS_Voltage_Meter : public QQuickPaintedItem {
         // Constructor, takes parent widget, which defaults to null
         ROS_Voltage_Meter(QQuickItem * parent = 0);
 
-        void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
 
         // getters and setters
