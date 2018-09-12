@@ -6,7 +6,7 @@ Item {
     ROSVoltageMeter {
         objectName: "voltage_meter"
         id: voltageMeter
-        topic: "/rover/volt"
+        topic: "/sensors/voltmeter"
         // @disable-check M16`
         anchors.bottom: parent.bottom
         // @disable-check M16

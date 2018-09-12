@@ -11,7 +11,7 @@
 
 void ROS_Voltage_Meter::setup(ros::NodeHandle * nh) {
     volt_sub = nh->subscribe(
-        "/rover/volt",
+        "/sensors/voltmeter",
         1,
         &ROS_Voltage_Meter::receive_volt_callback,
         this);
