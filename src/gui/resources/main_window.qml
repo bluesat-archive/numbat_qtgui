@@ -108,19 +108,22 @@ Window {
         objectName: "coord_bearing"
         id: coord_bearing
         // @disable-check M16
-        anchors.bottom: video_pane.bottom
+        anchors.bottom: timerDisplay.top
         // @disable-check M16
         anchors.bottomMargin: 5
         // @disable-check M16
-        anchors.left: video_pane.left
+        anchors.right: video_pane.right
         // @disable-check M16
-        anchors.leftMargin: 10
+        anchors.rightMargin: 5
+        // @disable-check M16
+        focus:true;
         // @disable-check M16
         width: 160
         // @disable-check M16
         height: 80
+
     }
-    Item{
+    Item {
         id: camera_switching_container
         width: 50
         height: 660
