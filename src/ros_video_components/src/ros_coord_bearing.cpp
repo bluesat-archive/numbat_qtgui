@@ -45,8 +45,8 @@ void ROSCoordBearing::paint(QPainter *painter) {
 // convert a transform to coordinates and bearing for display
 void ROSCoordBearing::convert(tf::Transform curr) {
     tf::Vector3 vector = curr.getOrigin();
-    latitude = static_cast<double> vector.getX();
-    longitude = static_cast<double> vector.getY();
+    latitude = static_cast<double>(vector.getX());
+    longitude = static_cast<double>(vector.getY());
 
     tf::Quaternion rotation = curr.getRotation();
     double radian = tf::getYaw(rotation);
