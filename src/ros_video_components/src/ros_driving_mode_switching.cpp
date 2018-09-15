@@ -30,7 +30,7 @@ void ROS_Driving_Mode_Switching::setup(ros::NodeHandle * nh) {
     );
 
     ros_ready = true;
-    //ROS_INFO("Setup of video component complete");
+    //ROS_INFO("Setup of driving mode switching component complete");
 }
 
 

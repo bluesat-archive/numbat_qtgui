@@ -1,3 +1,10 @@
+/*
+ * Date Started: 25/12/16
+ * Original Author: Harry J.E Day
+ * Editors:
+ * Purpose: Widget that renders a video from a ROS sensor_msgs/Image stream.
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2018
+ */
 #ifndef ROS_VIDEO_COMPONENT_H
 #define ROS_VIDEO_COMPONENT_H
 
@@ -6,11 +13,13 @@
 #include <QImage>
 #include <QPainter>
 
+#include <QObject>
+
 //ROS
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
-
+//#include "owr_messages/activeCameras.h"
 
 class ROS_Video_Component : public QQuickPaintedItem {
     //make this a Qt Widget
@@ -25,12 +34,15 @@ class ROS_Video_Component : public QQuickPaintedItem {
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
 
+    protected:
+
         //getters and setters
         void set_topic(const QString &new_value);
         QString get_topic() const;
 
     signals:
         void topic_changed();
+
 
     private:
         void receive_image(const sensor_msgs::Image::ConstPtr & msg);
@@ -45,7 +57,6 @@ class ROS_Video_Component : public QQuickPaintedItem {
         // Used for buffering the image
         QImage * current_image;
         uchar * current_buffer;
-
 };
 
 #endif // ROS_VIDEO_COMPONENT_H
