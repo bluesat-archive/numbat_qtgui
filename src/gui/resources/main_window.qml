@@ -43,76 +43,6 @@ Window {
         }
     }
 
-    /*Rectangle {
-        id: battery_indicator
-        property var charge: 33
-        property var full_charge: 33
-        height: 15
-        width: full_charge
-        color: if (rect.width <= 0) {"Red"} else {"white"}
-        x : 20
-        y : 20
-        border.width: 1
-        focus: true
-        Keys.enabled: true
-        Keys.forwardTo: [rect]
-        Keys.onEscapePressed: {
-            Qt.quit;
-        } 
-        Rectangle {
-            width: 1
-            height: 15
-            x : battery_indicator.full_charge/3
-            color: "black"
-            border.width: 0
-            z: 1
-        }
-        Rectangle {
-            width: 1
-            height: 15
-            x : (battery_indicator.full_charge/3)*2
-            color: "black"
-            border.width: 0
-            z: 1
-        }
-        Rectangle {
-            x: battery_indicator.charge
-            y: 4
-            height:7
-            width: 3
-            color: "black"
-        }
-        Rectangle {
-            id : rect
-            height: 15
-            width: battery_indicator.charge
-            color: if(width > battery_indicator.charge) {"Red"} else if (width > 22) {"Green"} else if (width > 11) {"Yellow"} else {"Red"}
-            border.width: 1
-            Keys.enabled: true
-            Keys.onPressed: {
-                switch(event.key)
-                {
-                case Qt.Key_Left: //when left is pressed, battery indicator decreases by
-                        width -= (battery_indicator.charge)/20
-                        break;
-                case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
-                        width += (battery_indicator.charge)/20
-                        break;
-                }
-            }
-
-            Text {
-                x: battery_indicator.charge + 15
-                text: "%d", Math.round((rect.width/battery_indicator.charge)*100)
-            }
-            Text {
-                x: battery_indicator.charge + 5
-                text: "%"
-            }
-
-
-        }
-}*/
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
@@ -222,6 +152,32 @@ Window {
             anchors.right: video_pane.right
             // @disable-check M16
             anchors.rightMargin: 5
+            // @disable-check M16
+            focus:true;
+/*
+            // @disable-check M16
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: logo.bottom
+            // @disable-check M16
+            anchors.topMargin: 10
+*/
+            // @disable-check M16
+            width: 160
+            // @disable-check M16
+            height: 80
+
+    }
+    ROS_Usb_Reset {
+            // @disable-check M16
+            objectName: "usb devices"
+            id: usb_reset_container
+            /// @disable-check M16
+            anchors.bottom: battery_indicator_container.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 5
             // @disable-check M16
             focus:true;
 /*
