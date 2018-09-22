@@ -13,8 +13,6 @@
 #include "ros_video_components/ros_timer.hpp"
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
-
-//add the new include directory
 #include "ros_video_components/ros_driving_mode_switching.hpp"
 
 void OWR_ROS_Components::registerTypes(const char *uri) {
