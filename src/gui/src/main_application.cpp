@@ -41,10 +41,6 @@ void Main_Application::run() {
     ROS_Battery_Indicator * battery_indicator = this->rootObjects()[0]->findChild<ROS_Battery_Indicator*>(QString("battery_indicator"));
     battery_indicator->setup(&nh); //added
 
-    // setup the stopwatch
-    Stopwatch * stopwatch = this->rootObjects()[0]->findChild<Stopwatch *>(QString("timerDisplay"));
-    connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
-
     ROS_Voltage_Meter * voltage_meter = this->rootObjects()[0]->findChild<ROS_Voltage_Meter*>(QString("voltage_meter"));
     voltage_meter->setup(&nh);
 
