@@ -8,22 +8,20 @@
 #include "ros_video_components/owr_ros_components.hpp"
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_voltage_meter.hpp"
 #include "ros_video_components/ros_camera_switching.hpp"
 #include "ros_video_components/ros_timer.hpp"
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
-
-//add the new include directory
 #include "ros_video_components/ros_driving_mode_switching.hpp"
 
 void OWR_ROS_Components::registerTypes(const char *uri) {
-   
-
-    //new Register Type
+    qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
+    qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
     qmlRegisterType<ROS_Driving_Mode_Switching>("bluesat.owr", 1, 0, "ROSDrivingModeSwitching");
+    qmlRegisterType<ROS_Voltage_Meter>("bluesat.owr", 1, 0, "ROSVoltageMeter");
     qmlRegisterType<ROS_Camera_Switching>("bluesat.owr", 1, 0, "ROSCameraSwitching");
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");
     qmlRegisterType<Ros_Joystick_Listener>("bluesat.owr", 1, 0, "ROSJoystickListener");
     qmlRegisterType<Ros_Drive_Mode>("bluesat.owr", 1, 0, "ROSDriveMode");
-
 }

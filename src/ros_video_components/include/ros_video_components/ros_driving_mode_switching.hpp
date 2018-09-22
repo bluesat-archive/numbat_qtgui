@@ -1,35 +1,25 @@
-/**
+/*
  * Date Started: 28/07/18
- * @author: [Linchuan YANG]
- * @authors: (Editors) [Editor 1], [Editor 2]
+ * @author: Linchuan YANG
+ * @editors:
  * ROS Node Name: not applicable
  * ROS Package: owr_qtgui
  * @description: This code generates a publisher called signal_pub, which will make a variable called a increase by 1
  * when keyA/S/D are pressed and print it out
- * @copyright: This code is released under the MIT [GPL for embeded] License. Copyright BLUEsat UNSW, 2017
+ * @copyright: This code is released under the MIT License. Copyright BLUEsat UNSW, 2018
  */
-
-
-
-
 
 #ifndef ROS_DRIVING_MODE_SWITCHNG_HPP
 #define ROS_DRIVING_MODE_SWITCHNG_HPP
-
 
 //QT
 #include <QQuickPaintedItem>
 #include <QPainter>
 #include <QQmlApplicationEngine>
 
-
 //ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
-
-
-
-
 
 class ROS_Driving_Mode_Switching : public QQuickPaintedItem {
     //make this a Qt Widget
@@ -53,44 +43,15 @@ class ROS_Driving_Mode_Switching : public QQuickPaintedItem {
         void topic_changed();
 
     private:
-        void receive_signal(const std_msgs::Float32::ConstPtr & msg);
+        void receive_drive_mode_command(const std_msgs::Float32::ConstPtr & msg);
 
         // ROS
         ros::NodeHandle * nh;
-        ros::Publisher signal_pub;
+        ros::Publisher drive_mode_pub;
         QString topic_value;
         bool ros_ready;
         int a;
-
-        int data; //the signal strength in decibels
+        int data; //the drive mode switching data
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // ROS_DRIVING_MODE_SWITCHNG_HPP
