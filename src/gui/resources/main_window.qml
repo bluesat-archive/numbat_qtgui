@@ -9,112 +9,12 @@ Window {
     id: main_window
     width: 800
     height: 800
+    opacity: 1
     title: "BLUEsat OWR"
     visible: true
     minimumHeight: 600
     minimumWidth: 600
 
-    //Battery indicator
-    Item {
-        id: battery_indicator_container
-        anchors.left: parent.left
-        anchors.rightMargin: 76
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        anchors.right: logo.left
-        anchors.leftMargin: 0
-        //anchors.bottom: videoStream.top
-        anchors.bottom: video_pane.top
-        anchors.bottomMargin: 90
-        ROSBatteryIndicator {
-            // @disable-check M16
-            objectName: "battery_indicator"
-            id: battery_indicator
-            // @disable-check M16`
-            anchors.bottom: parent.bottom
-            // @disable-check M16
-            anchors.bottomMargin: 0
-            // @disable-check M16
-            anchors.top: parent.top
-            // @disable-check M16
-            anchors.left: parent.left
-            // @disable-check M16
-            anchors.right: parent.right
-            // @disable-check M16
-            topic: qsTr("/rover/signal")
-        }
-    }
-
-    /*Rectangle {
-        id: battery_indicator
-        property var charge: 33
-        property var full_charge: 33
-        height: 15
-        width: full_charge
-        color: if (rect.width <= 0) {"Red"} else {"white"}
-        x : 20
-        y : 20
-        border.width: 1
-        focus: true
-        Keys.enabled: true
-        Keys.forwardTo: [rect]
-        Keys.onEscapePressed: {
-            Qt.quit;
-        } 
-        Rectangle {
-            width: 1
-            height: 15
-            x : battery_indicator.full_charge/3
-            color: "black"
-            border.width: 0
-            z: 1
-        }
-        Rectangle {
-            width: 1
-            height: 15
-            x : (battery_indicator.full_charge/3)*2
-            color: "black"
-            border.width: 0
-            z: 1
-        }
-        Rectangle {
-            x: battery_indicator.charge
-            y: 4
-            height:7
-            width: 3
-            color: "black"
-        }
-        Rectangle {
-            id : rect
-            height: 15
-            width: battery_indicator.charge
-            color: if(width > battery_indicator.charge) {"Red"} else if (width > 22) {"Green"} else if (width > 11) {"Yellow"} else {"Red"}
-            border.width: 1
-            Keys.enabled: true
-            Keys.onPressed: {
-                switch(event.key)
-                {
-                case Qt.Key_Left: //when left is pressed, battery indicator decreases by
-                        width -= (battery_indicator.charge)/20
-                        break;
-                case Qt.Key_Right: //when right is pressed, battery indicator increases by 5
-                        width += (battery_indicator.charge)/20
-                        break;
-                }
-            }
-
-            Text {
-                x: battery_indicator.charge + 15
-                text: "%d", Math.round((rect.width/battery_indicator.charge)*100)
-            }
-            Text {
-                x: battery_indicator.charge + 5
-                text: "%"
-            }
-
-
-        }
-}*/
     Image {
         id: logo
         source: "/images/bluesatLogo.png"
@@ -171,6 +71,36 @@ Window {
             }
         }
 
+    }
+
+    Item {
+        id: battery_indicator_container
+        z: 5
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.left: parent.right
+        anchors.leftMargin: -172
+        anchors.bottom: parent.top
+        anchors.bottomMargin: -100
+        ROSBatteryIndicator {
+            // @disable-check M16
+            objectName: "battery_indicator"
+            id: battery_indicator
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/signal")
+        }
     }
 
     Item {

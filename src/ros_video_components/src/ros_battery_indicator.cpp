@@ -33,7 +33,7 @@ void ROS_Battery_Indicator::setup(ros::NodeHandle * nh) {
 }
 
 void ROS_Battery_Indicator::paint(QPainter * painter) {
-
+    painter->setPen(Qt::white);
     painter->drawRect(RECT_X, RECT_Y, FULL_CHARGE, INDICATOR_HEIGHT); //Draws outer rectangle
     QLinearGradient linearGradient(0, 0, 100, 100);
     linearGradient.setColorAt(0.0, Qt::black);
