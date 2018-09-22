@@ -233,4 +233,29 @@ Window {
         height: 80
 
     }
+
+    /*Item {
+        id: usb_container
+        z: 5
+        x : 40
+        y : 40
+        ROSUsbReset {
+            // @disable-check M16
+            objectName: "signal_strength"
+            id: usb
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/usb")
+        }
+
+    }*/
 }

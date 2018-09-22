@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.2.1, 2018-08-28T22:56:34. -->
+<!-- Written by QtCreator 4.2.1, 2018-09-15T16:20:41. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{87d6e2af-d768-4e25-a852-033ba8fb5a4a}</value>
+  <value type="QByteArray">{1cdd7bd7-53f1-43dd-8e81-2dd8afa72b84}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -19,7 +19,7 @@
    <valuemap type="QVariantMap" key="EditorConfiguration.CodeStyle.0">
     <value type="QString" key="language">Cpp</value>
     <valuemap type="QVariantMap" key="value">
-     <value type="QByteArray" key="CurrentPreferences">CppGlobal</value>
+     <value type="QByteArray" key="CurrentPreferences">ROSProject.CppCodeStyle</value>
     </valuemap>
    </valuemap>
    <valuemap type="QVariantMap" key="EditorConfiguration.CodeStyle.1">
@@ -54,33 +54,21 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.PluginSettings</variable>
-  <valuemap type="QVariantMap">
-   <valuelist type="QVariantList" key="ClangStaticAnalyzer.SuppressedDiagnostics"/>
-  </valuemap>
+  <valuemap type="QVariantMap"/>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{f4cc9e8d-34cc-4663-9466-ea6b16c693b9}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{53a1a275-3cec-4649-8add-1b460e25bc60}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory"></value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
-     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">CatkinMake Step</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSCatkinMakeStep</value>
-      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.CMakeArguments"></value>
-      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.CatkinMakeArguments"></value>
-      <value type="QString" key="ROSProjectManager.ROSCatkinMakeStep.MakeArguments"></value>
-      <value type="int" key="ROSProjectManager.ROSCatkinMakeStep.Target">0</value>
-     </valuemap>
-     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
+     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Build</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Build</value>
@@ -93,28 +81,11 @@
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
-    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
-     <value type="QString">CMAKE_PREFIX_PATH=/home/ros/owr-qtgui/devel:/home/ros/owr_software/rover/devel:/home/ros/ros_deps/devel:/opt/ros/kinetic</value>
-     <value type="QString">LD_LIBRARY_PATH=/home/ros/owr-qtgui/devel/lib:/home/ros/owr_software/rover/devel/lib:/home/ros/ros_deps/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:/opt/qt57/lib/x86_64-linux-gnu:/opt/qt57/lib</value>
-     <value type="QString">PATH=/opt/ros/kinetic/bin:/opt/qt57/bin:/home/ros/bin:/home/ros/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
-     <value type="QString">PKG_CONFIG_PATH=/home/ros/owr-qtgui/devel/lib/pkgconfig:/home/ros/owr_software/rover/devel/lib/pkgconfig:/home/ros/ros_deps/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig:/opt/qt57/lib/pkgconfig</value>
-     <value type="QString">PWD=/home/ros/owr-qtgui</value>
-     <value type="QString">PYTHONPATH=/home/ros/owr-qtgui/devel/lib/python2.7/dist-packages:/home/ros/owr_software/rover/devel/lib/python2.7/dist-packages:/home/ros/ros_deps/devel/lib/python2.7/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages</value>
-     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/ros/owr-qtgui/devel/share/common-lisp:/home/ros/owr_software/rover/devel/share/common-lisp:/home/ros/ros_deps/devel/share/common-lisp</value>
-     <value type="QString">ROS_DISTRO=kinetic</value>
-     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
-     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
-     <value type="QString">ROS_PACKAGE_PATH=/home/ros/owr-qtgui/src:/home/ros/owr_software/rover/src:/home/ros/ros_deps/src:/opt/ros/kinetic/share</value>
-     <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
-     <value type="QString">ROS_VERSION=1</value>
-     <value type="QString">SHLVL=3</value>
-     <value type="QString">TERM=xterm</value>
-     <value type="QString">_=/usr/bin/env</value>
-    </valuelist>
+    <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Debug</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">0</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">61797536</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">0</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
@@ -137,7 +108,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">48753808</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">61797536</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">1</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
@@ -160,7 +131,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Release with Debug Information</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">48753808</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">61797536</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">2</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.3">
@@ -183,7 +154,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Minimum Size Release</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ROSProjectManager.ROSBuildConfiguration</value>
-    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">48753808</value>
+    <value type="int" key="ROSProjectManager.ROSBuildConfiguration.BuildSystem">61797536</value>
     <value type="int" key="ROSProjectManager.ROSBuildConfiguration.CMakeBuildType">3</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">4</value>
