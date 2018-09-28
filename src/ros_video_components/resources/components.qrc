@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>DriveModeWidget.qml</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>VoltageMeterWidget.qml</file>
+    </qresource>
+</RCC>
