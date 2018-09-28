@@ -8,17 +8,17 @@
 #ifndef ROS_SIGNAL_STRENGTH_H
 #define ROS_SIGNAL_STRENGTH_H
 
-//QT
+// QT
 #include <QQuickPaintedItem>
 #include <QPainter>
 
-//ROS
+// ROS
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
 
 
 class ROS_Signal_Strength : public QQuickPaintedItem {
-    //make this a Qt Widget
+    // make this a Qt Widget
     Q_OBJECT
     // defines a qml value for the topic
     Q_PROPERTY(QString topic READ get_topic WRITE set_topic NOTIFY topic_changed)
@@ -30,7 +30,7 @@ class ROS_Signal_Strength : public QQuickPaintedItem {
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
 
-        //getters and setters
+        // getters and setters
         void set_topic(const QString &new_value);
         QString get_topic() const;
 
@@ -45,8 +45,8 @@ class ROS_Signal_Strength : public QQuickPaintedItem {
         ros::Subscriber signal_sub;
         QString topic_value;
         bool ros_ready;
-        
-		int data; //the signal strength in decibels
+
+        int data; // the signal strength in decibels
 };
 
 #endif // ROS_SIGNAL_STRENGTH_H

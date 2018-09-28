@@ -232,6 +232,16 @@ Window {
         anchors.topMargin: 10
     }
 
+    VoltageMeterWidget {
+        id: voltage_meter
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: drive_mode.left
+        anchors.leftMargin: 0
+        anchors.top: drive_mode.bottom
+        anchors.topMargin: 30
+    }
+
     ROSTimer {
         // @disable-check M16
         objectName: "timerDisplay"
