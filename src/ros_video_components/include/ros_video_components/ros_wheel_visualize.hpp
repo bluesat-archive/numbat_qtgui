@@ -9,11 +9,11 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
-#include "owr_messages/board.h"
+#include <owr_messages/board.h>
 
 class ROS_Wheel_Visualize : public QQuickPaintedItem {
     Q_OBJECT
-    
+
     Q_PROPERTY(QString topic READ get_topic WRITE set_topic NOTIFY topic_changed)
 
     public:
@@ -33,7 +33,6 @@ class ROS_Wheel_Visualize : public QQuickPaintedItem {
     private:
         void receive_message(const owr_messages::board::ConstPtr & msg);
 
-        
         ros::NodeHandle * nh;
         ros::Subscriber wheel_sub;
         QString topic_value;

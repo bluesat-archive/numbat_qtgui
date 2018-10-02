@@ -17,7 +17,7 @@ ROS_Wheel_Visualize::ROS_Wheel_Visualize(QQuickItem * parent) :
 
 
 void ROS_Wheel_Visualize::setup(ros::NodeHandle * nh) {
-    
+
     wheel_sub = nh->subscribe<owr_messages::board>("/rover/wheel", 1, &ROS_Wheel_Visualize::receive_message,this);
     ros_ready = true;
     ROS_INFO("Setup of wheel video component complete");
@@ -90,10 +90,8 @@ QString ROS_Wheel_Visualize::get_topic() const {
 }
 
 void ROS_Wheel_Visualize::receive_message(const owr_messages::board::ConstPtr & msg){
-  curr = msg->joints[0].currentPos;
-  targ = msg->joints[0].targetPos;
-
-  //data = msg->data;
+    curr = msg->joints[0].currentPos;
+    targ = msg->joints[0].targetPos;
 
 	ROS_INFO("Received wheel message");
 	update();
