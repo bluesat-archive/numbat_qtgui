@@ -79,6 +79,7 @@ void ROS_Video_Component::paint(QPainter * painter) {
     } else if (topic_value.isEmpty()) {
         painter->drawText(QPoint(10,10), "No Topic Selected");
     }
+    painter->drawRect(0,0,1,10);
 }
 
 void ROS_Video_Component::set_topic(const QString & new_value) {

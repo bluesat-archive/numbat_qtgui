@@ -41,6 +41,8 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin</buildtool_depend>
   <build_depend>qt_build</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>image_transport</build_depend>

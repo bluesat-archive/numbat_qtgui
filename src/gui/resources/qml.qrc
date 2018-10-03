@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main_window.qml</file>
+        <file>Cmd_Vel_Display.qml</file>
+        <file>Arm_Acutator_Display.qml</file>
     </qresource>
 </RCC>

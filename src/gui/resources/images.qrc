@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>bluesatLogo.png</file>
+        <file>actuator.JPG</file>
     </qresource>
 </RCC>
