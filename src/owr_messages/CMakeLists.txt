@@ -52,6 +52,8 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    activeCameras.msg
    stream.msg
+   pwm.msg
+   board.msg
  )
 
 ## Generate services in the 'srv' folder
