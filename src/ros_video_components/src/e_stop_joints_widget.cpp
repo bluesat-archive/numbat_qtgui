@@ -6,13 +6,11 @@
 #include <QGuiApplication>
 
 E_Stop_Joints_Widget::E_Stop_Joints_Widget(QObject *parent) :
-    QObject(parent),
-    nh(NULL){
+    QObject(parent){
 
 }
 
 void E_Stop_Joints_Widget::setup(ros::NodeHandle *nh) {
-      this->nh = nh;
 }
 
 
@@ -31,8 +29,27 @@ bool E_Stop_Joints_Widget::getPress() const {
 }
 
 void E_Stop_Joints_Widget::setPress(const bool &new_value) {
-    ROS_INFO("PRESS");
+   //ROS_INFO("PRESS");
     //Insert any other code here
+
+    ros::NodeHandle nh;
+    pub = nh.advertise<std_msgs::Float64>("/e_stop/test", 1, true);
+
+    std_msgs::Float64 msg;
+
+    if(new_value)
+    {
+    msg.data = 1000;
+    ROS_INFO("EMERGENCY STOP");
+    }
+    else
+    {
+    msg.data = 10;
+    ROS_INFO("OK TO RESUME");
+    }
+
+    pub.publish(msg);
+
     press = new_value;
 }
 

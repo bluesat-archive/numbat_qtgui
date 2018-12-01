@@ -7,6 +7,7 @@
 #include <QQmlExtensionPlugin>
 
 #include <ros/ros.h>
+#include <std_msgs/Float64.h>
 
 class E_Stop_Joints_Widget : public QObject {
     Q_OBJECT
@@ -17,7 +18,6 @@ class E_Stop_Joints_Widget : public QObject {
     public:
         E_Stop_Joints_Widget(QObject *parent = 0);
         void setup(ros::NodeHandle * nh);
-
         bool getPress() const;
         void setPress(const bool &new_value);
 
@@ -32,7 +32,8 @@ class E_Stop_Joints_Widget : public QObject {
     public slots:
 
     private:
-        ros::NodeHandle * nh;
+        //ros::NodeHandle * nh;
+        ros::Publisher pub;
         bool press;
 };
 #endif // E_STOP_JOINTS_WIDGET_H

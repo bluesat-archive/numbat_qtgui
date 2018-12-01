@@ -90,6 +90,8 @@ Window {
     }
     Item {
         id: e_stop_joints_widget_wrapper
+        width: 100
+        height: 100
         anchors.rightMargin: 0
         anchors.bottom: parent.bottom
         anchors.right: parent.right
