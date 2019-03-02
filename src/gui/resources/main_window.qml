@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+import QtQuick.Controls 1.4
 
 
 
@@ -234,15 +235,24 @@ Window {
 
     }
 
-    /*Item {
-        id: usb_container
+
+
+    Item {
+        id: usb_reset_container
         z: 5
-        x : 40
-        y : 40
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 50
+        anchors.left: parent.right
+        anchors.leftMargin: -700
+        anchors.bottom: parent.top
+        anchors.bottomMargin: -100
         ROSUsbReset {
+            signal recieved(int upd)
             // @disable-check M16
-            objectName: "signal_strength"
-            id: usb
+            objectName: "usb_reset"
+            id: usb_reset
             // @disable-check M16`
             anchors.bottom: parent.bottom
             // @disable-check M16
@@ -255,7 +265,39 @@ Window {
             anchors.right: parent.right
             // @disable-check M16
             topic: qsTr("/rover/usb")
+
+            /*Column {
+
+                id: list
+                spacing: 10
+                Repeater {
+                    model: 1
+                    id: repeat
+                    Button {
+                        text: "Reset"
+                        onClicked: {
+                            usb_reset.publish(index)
+                        }
+
+                    }
+                }
+            }*/
+            ListView {
+                model: "myModel"
+                id: list
+                width: 50
+                height: 1000
+                spacing: 10
+                delegate: Button {text: "Reset"
+                    onClicked: {
+                        usb_reset.publish(index)
+                    }
+                }
+                //count: 5
+            }
+            //list.append("");
+
         }
 
-    }*/
+    }
 }

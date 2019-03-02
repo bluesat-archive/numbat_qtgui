@@ -12,6 +12,7 @@
 #include <QQuickPaintedItem>
 #include <QImage>
 #include <QPainter>
+#include <QAbstractListModel>
 
 #include <QObject>
 
@@ -19,11 +20,14 @@
 #include <ros/ros.h>
 #include "std_msgs/String.h"
 
+//other components
+
 class ROS_Usb_Reset : public QQuickPaintedItem {
     //make this a Qt Widget
     Q_OBJECT
     // defines a qml value for the topic
     Q_PROPERTY(QString topic READ get_topic WRITE set_topic NOTIFY topic_changed)
+
 
     public:
         // Constructor, takes parent widget, which defaults to null
@@ -31,6 +35,8 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
 
         void paint(QPainter *painter);
         void setup(ros::NodeHandle * nh);
+        Q_INVOKABLE void publish(int num);
+        Q_INVOKABLE int num_devices();
 
     protected:
 
@@ -40,6 +46,7 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
 
     signals:
         void topic_changed();
+        void device_changed(int upd);
 
 
     private:
@@ -48,11 +55,13 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
         // ROS
         ros::NodeHandle * nh;
         ros::Subscriber usb_sub;
+        ros::Publisher usb_pub;
         QString topic_value;
         bool ros_ready;
 
-        // Used for buffering the image
+        // Used for storing attached devices
         std::string devices;
+        //QStringList buttons;
 };
 
 #endif // ROS_USB_RESET_H

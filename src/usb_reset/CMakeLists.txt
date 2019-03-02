@@ -10,14 +10,14 @@ project(usb_reset)
 ##############################################################################
 
 # qt_build provides the qt cmake glue, roscpp the comms for a default talker
-find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport owr_messages)
+find_package(catkin REQUIRED COMPONENTS qt_build roscpp sensor_msgs image_transport owr_messages) #sensor_msgs image_transport)
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 # Use this to define what the package will export (e.g. libs, headers).
 # Since the default here is to produce only a binary, we don't worry about
 # exporting anything.
 catkin_package(
-    CATKIN_DEPENDS qt_build roscpp owr_messages std_msgs
+    CATKIN_DEPENDS qt_build roscpp owr_messages std_msgs #sensor_msgs image_transport
     INCLUDE_DIRS include
     LIBRARIES UsbReset
 )

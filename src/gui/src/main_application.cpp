@@ -51,7 +51,6 @@ void Main_Application::run() {
     drive_mode->setup(&nh);
 
     ROS_Usb_Reset * usb_reset = this->rootObjects()[0]->findChild<ROS_Usb_Reset*>(QString("usb_reset"));
-    //issue with below line
     usb_reset->setup(&nh);
 
     // setup the timer
