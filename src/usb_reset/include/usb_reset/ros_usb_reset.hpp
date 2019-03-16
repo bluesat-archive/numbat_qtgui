@@ -15,10 +15,19 @@
 #include <QAbstractListModel>
 
 #include <QObject>
+#include <QList>
+#include <QListView>
+#include <QtQuick>
+#include <QVariant>
+#include <QQuickView>
+#include <QQmlContext>
+#include <QQmlEngine>
 
 //ROS
 #include <ros/ros.h>
 #include "std_msgs/String.h"
+#include <iostream>
+#include <std_msgs/Int16.h>
 
 //other components
 
@@ -34,7 +43,7 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
         ROS_Usb_Reset(QQuickItem * parent = 0);
 
         void paint(QPainter *painter);
-        void setup(ros::NodeHandle * nh);
+        void setup(ros::NodeHandle * nh, QQmlContext *ctxt);
         Q_INVOKABLE void publish(int num);
         Q_INVOKABLE int num_devices();
 
@@ -58,6 +67,7 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
         ros::Publisher usb_pub;
         QString topic_value;
         bool ros_ready;
+        QQmlContext *curr_ctxt;
 
         // Used for storing attached devices
         std::string devices;

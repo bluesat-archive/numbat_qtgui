@@ -265,25 +265,8 @@ Window {
             anchors.right: parent.right
             // @disable-check M16
             topic: qsTr("/rover/usb")
-
-            /*Column {
-
-                id: list
-                spacing: 10
-                Repeater {
-                    model: 1
-                    id: repeat
-                    Button {
-                        text: "Reset"
-                        onClicked: {
-                            usb_reset.publish(index)
-                        }
-
-                    }
-                }
-            }*/
             ListView {
-                model: "myModel"
+                model: myModel
                 id: list
                 width: 50
                 height: 1000
@@ -293,10 +276,7 @@ Window {
                         usb_reset.publish(index)
                     }
                 }
-                //count: 5
             }
-            //list.append("");
-
         }
 
     }

@@ -51,7 +51,7 @@ void Main_Application::run() {
     drive_mode->setup(&nh);
 
     ROS_Usb_Reset * usb_reset = this->rootObjects()[0]->findChild<ROS_Usb_Reset*>(QString("usb_reset"));
-    usb_reset->setup(&nh);
+    usb_reset->setup(&nh, this->rootContext());
 
     // setup the timer
     ROSTimer * stopwatch = this->rootObjects()[0]->findChild<ROSTimer *>(QString("timerDisplay"));

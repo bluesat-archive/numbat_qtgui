@@ -1,15 +1,4 @@
 #include "usb_reset/ros_usb_reset.hpp"
-#include <iostream>
-#include <std_msgs/Int16.h>
-#include <std_msgs/String.h>
-#include <QObject>
-#include <QList>
-#include <QListView>
-#include <QtQuick>
-#include <QVariant>
-#include <QQuickView>
-#include <QQmlContext>
-#include <QQmlEngine>
 
 int num = 0;
 
@@ -21,7 +10,7 @@ ROS_Usb_Reset::ROS_Usb_Reset(QQuickItem * parent) :
 
 }
 
-void ROS_Usb_Reset::setup(ros::NodeHandle * nh) {
+void ROS_Usb_Reset::setup(ros::NodeHandle * nh, QQmlContext *ctxt) {
 
     //TODO: make these parameters of the component
       usb_sub = nh->subscribe(
@@ -37,12 +26,13 @@ void ROS_Usb_Reset::setup(ros::NodeHandle * nh) {
             );
 
     ros_ready = true;
+    curr_ctxt = ctxt;
     ROS_INFO("Setup of usb component complete");
 }
 
 void ROS_Usb_Reset::receive_msg(const std_msgs::String::ConstPtr &msg) {
     devices = msg->data;
-    ROS_INFO("Received usb message");
+    //ROS_INFO("Received usb message");
     update();
 }
 
@@ -54,25 +44,11 @@ void ROS_Usb_Reset::paint(QPainter * painter) {
   int i = 0;
   QString dev = QString::fromStdString(devices);
   QStringList list = dev.split("#/#/");
-  QQmlEngine engine;
-  QListView *qlist = this->findChild<QListView*>("list");
-  QQuickView view;
-  view.setSource(QUrl("qrc:main_window.qml")); //says driver mode widget is not registered
-  QQmlContext *ctxt = view.rootContext();
-  int num = list.size();
-  ctxt->setContextProperty("myModel", QVariant::fromValue(list));
+  curr_ctxt->setContextProperty("myModel", (list.size() - 1));
   for (; i < list.size(); i++) {
       painter->drawText(75,(i*35) + 15, list[i]);
   }
-  //ROS_INFO("Got to this point");
-  /*int diff = num - i;
-  int j  =0;
-  if (diff < 0) {
-    diff = diff * -1;
-  } else if (diff > 0) {
-    
-  }*/
-  //view.show();
+
 }
 
 void ROS_Usb_Reset::set_topic(const QString & new_value) {
