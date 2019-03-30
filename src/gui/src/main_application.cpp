@@ -50,6 +50,7 @@ void Main_Application::run() {
     Ros_Drive_Mode * drive_mode = this->rootObjects()[0]->findChild<Ros_Drive_Mode*>(QString("drive_mode"));
     drive_mode->setup(&nh);
 
+    //this->rootContext passes the root context of main_window.qml
     ROS_Usb_Reset * usb_reset = this->rootObjects()[0]->findChild<ROS_Usb_Reset*>(QString("usb_reset"));
     usb_reset->setup(&nh, this->rootContext());
 

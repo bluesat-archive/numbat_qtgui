@@ -44,8 +44,13 @@ void ROS_Usb_Reset::paint(QPainter * painter) {
   int i = 0;
   QString dev = QString::fromStdString(devices);
   QStringList list = dev.split("#/#/");
+  /*for (int j = 0; j < list.size(); j++) {
+      std::cout<<list[j]<<std::endl;
+  }*/
+  //create the neccessary number of buttons
   curr_ctxt->setContextProperty("myModel", (list.size() - 1));
-  for (; i < list.size(); i++) {
+  for (; i < list.size() - 1; i++) {
+      //write the name of the usb device
       painter->drawText(75,(i*35) + 15, list[i]);
   }
 

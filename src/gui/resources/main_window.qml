@@ -74,6 +74,7 @@ Window {
 
     Item {
         id: signal_strength_container
+        width: 173
         z: 4
         anchors.right: parent.right
         anchors.rightMargin: 0
@@ -243,11 +244,11 @@ Window {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.top: parent.top
-        anchors.topMargin: 50
+        anchors.topMargin: 150
         anchors.left: parent.right
         anchors.leftMargin: -700
         anchors.bottom: parent.top
-        anchors.bottomMargin: -100
+        anchors.bottomMargin: -300
         ROSUsbReset {
             signal recieved(int upd)
             // @disable-check M16
@@ -268,7 +269,7 @@ Window {
             ListView {
                 model: myModel
                 id: list
-                width: 50
+                width: 500
                 height: 1000
                 spacing: 10
                 delegate: Button {text: "Reset"
