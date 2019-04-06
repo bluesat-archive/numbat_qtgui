@@ -244,7 +244,7 @@ Window {
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.top: parent.top
-        anchors.topMargin: 150
+        anchors.topMargin: 80
         anchors.left: parent.right
         anchors.leftMargin: -700
         anchors.bottom: parent.top

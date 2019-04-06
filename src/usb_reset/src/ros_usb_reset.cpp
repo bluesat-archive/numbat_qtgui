@@ -32,7 +32,6 @@ void ROS_Usb_Reset::setup(ros::NodeHandle * nh, QQmlContext *ctxt) {
 
 void ROS_Usb_Reset::receive_msg(const std_msgs::String::ConstPtr &msg) {
     devices = msg->data;
-    //ROS_INFO("Received usb message");
     update();
 }
 
@@ -44,9 +43,6 @@ void ROS_Usb_Reset::paint(QPainter * painter) {
   int i = 0;
   QString dev = QString::fromStdString(devices);
   QStringList list = dev.split("#/#/");
-  /*for (int j = 0; j < list.size(); j++) {
-      std::cout<<list[j]<<std::endl;
-  }*/
   //create the neccessary number of buttons
   curr_ctxt->setContextProperty("myModel", (list.size() - 1));
   for (; i < list.size() - 1; i++) {

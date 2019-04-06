@@ -71,7 +71,6 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
 
         // Used for storing attached devices
         std::string devices;
-        //QStringList buttons;
 };
 
 #endif // ROS_USB_RESET_H
