@@ -10,9 +10,7 @@
   <maintainer email="ros@todo.todo">ros</maintainer>
 
 
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <!-- This code is released under the MIT License. Copyright BLUEsat UNSW, 2019 -->
   <license>TODO</license>
 
 

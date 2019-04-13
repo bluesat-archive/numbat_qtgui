@@ -3,7 +3,7 @@
  * Original Author: Lasindu Shanil de Silva
  * Editors:
  * Purpose: Widget to create buttons to reset usb devices
- * This code is released under the MIT License. Copyright BLUEsat UNSW, 2018
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2019
  */
 #ifndef ROS_USB_RESET_H
 #define ROS_USB_RESET_H
@@ -28,8 +28,7 @@
 #include "std_msgs/String.h"
 #include <iostream>
 #include <std_msgs/Int16.h>
-
-//other components
+#include "owr_messages/devices.h"
 
 class ROS_Usb_Reset : public QQuickPaintedItem {
     //make this a Qt Widget
@@ -55,11 +54,9 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
 
     signals:
         void topic_changed();
-        void device_changed(int upd);
-
 
     private:
-        void receive_msg(const std_msgs::String::ConstPtr & msg);
+        void receive_msg(const owr_messages::devices::ConstPtr & msg);
 
         // ROS
         ros::NodeHandle * nh;
@@ -70,7 +67,9 @@ class ROS_Usb_Reset : public QQuickPaintedItem {
         QQmlContext *curr_ctxt;
 
         // Used for storing attached devices
-        std::string devices;
+        std::string devices[100];
+        // Holds number of attached devices
+        int num;
 };
 
 #endif // ROS_USB_RESET_H

@@ -51,7 +51,19 @@ find_package(catkin REQUIRED COMPONENTS
  add_message_files(
    FILES
    activeCameras.msg
+   camera_angle.msg
+   motor.msg
+   status.msg
    stream.msg
+   position.msg
+   voltage.msg
+   ultrasonic.msg
+   heading.msg
+   pwm.msg
+   board.msg
+   adc.msg
+   stop.msg
+   devices.msg
  )
 
 ## Generate services in the 'srv' folder

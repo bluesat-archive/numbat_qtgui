@@ -6,13 +6,14 @@ ROS_Usb_Reset::ROS_Usb_Reset(QQuickItem * parent) :
     QQuickPaintedItem(parent),
     topic_value(),
     ros_ready(false),
-    devices("no devices") {
+    num(0),
+    devices() {
 
 }
 
 void ROS_Usb_Reset::setup(ros::NodeHandle * nh, QQmlContext *ctxt) {
       usb_sub = nh->subscribe(
-            topic_value.toStdString(),
+            "rover/usb",
             1,
             &ROS_Usb_Reset::receive_msg,
             this
@@ -28,24 +29,25 @@ void ROS_Usb_Reset::setup(ros::NodeHandle * nh, QQmlContext *ctxt) {
     ROS_INFO("Setup of usb component complete");
 }
 
-void ROS_Usb_Reset::receive_msg(const std_msgs::String::ConstPtr &msg) {
-    devices = msg->data;
+void ROS_Usb_Reset::receive_msg(const owr_messages::devices::ConstPtr & msg) {
+    int i = 0;
+    for(; i < msg->devices.size(); i++) {
+        devices[i] = msg->devices[i];
+    }
+    num = i;
     update();
 }
 
-void ROS_Usb_Reset::paint(QPainter * painter) {
-  QLinearGradient linearGradient(0, 0, 100, 100);
+void ROS_Usb_Reset::paint(QPainter * painter) {QLinearGradient linearGradient(0, 0, 100, 100);
   linearGradient.setColorAt(0.2, Qt::yellow);
   painter->setBrush(linearGradient);
   painter->setPen(Qt::green);
   int i = 0;
-  QString dev = QString::fromStdString(devices);
-  QStringList list = dev.split("#/#/");
   //create the neccessary number of buttons
-  curr_ctxt->setContextProperty("usbDevices", (list.size() - 1));
-  for (; i < list.size() - 1; i++) {
+  curr_ctxt->setContextProperty("usbDevices", (num - 1));
+  for (; i < num - 1; i++) {
       //write the name of the usb device
-      painter->drawText(75,(i*35) + 15, list[i]);
+      painter->drawText(75,(i*35) + 15, QString::fromStdString(devices[i]));
   }
 
 }

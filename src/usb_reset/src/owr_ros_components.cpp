@@ -1,9 +1,9 @@
 /*
- * Date Started: 25/07/16
- * Original Author: Harry J.E Day
+ * Date Started: 11/08/18
+ * Original Author: Lasindu Shanil de Silva
  * Editors:
  * Purpose: C++ code representation of the QML package
- * This code is released under the MIT License. Copyright BLUEsat UNSW, 2017
+ * This code is released under the MIT License. Copyright BLUEsat UNSW, 2019
  */
 #include "usb_reset/owr_ros_components.hpp"
 #include "usb_reset/ros_usb_reset.hpp"
