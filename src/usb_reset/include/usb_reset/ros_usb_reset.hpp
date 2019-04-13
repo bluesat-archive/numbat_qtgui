@@ -1,8 +1,8 @@
 /*
- * Date Started: 25/12/16
- * Original Author: Harry J.E Day
+ * Date Started: 11/08/18
+ * Original Author: Lasindu Shanil de Silva
  * Editors:
- * Purpose: Widget that renders a video from a ROS sensor_msgs/Image stream.
+ * Purpose: Widget to create buttons to reset usb devices
  * This code is released under the MIT License. Copyright BLUEsat UNSW, 2018
  */
 #ifndef ROS_USB_RESET_H

@@ -267,7 +267,7 @@ Window {
             // @disable-check M16
             topic: qsTr("/rover/usb")
             ListView {
-                model: myModel
+                model: usbDevices
                 id: list
                 width: 500
                 height: 1000

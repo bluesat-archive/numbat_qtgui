@@ -11,8 +11,6 @@ ROS_Usb_Reset::ROS_Usb_Reset(QQuickItem * parent) :
 }
 
 void ROS_Usb_Reset::setup(ros::NodeHandle * nh, QQmlContext *ctxt) {
-
-    //TODO: make these parameters of the component
       usb_sub = nh->subscribe(
             topic_value.toStdString(),
             1,
@@ -44,7 +42,7 @@ void ROS_Usb_Reset::paint(QPainter * painter) {
   QString dev = QString::fromStdString(devices);
   QStringList list = dev.split("#/#/");
   //create the neccessary number of buttons
-  curr_ctxt->setContextProperty("myModel", (list.size() - 1));
+  curr_ctxt->setContextProperty("usbDevices", (list.size() - 1));
   for (; i < list.size() - 1; i++) {
       //write the name of the usb device
       painter->drawText(75,(i*35) + 15, list[i]);
