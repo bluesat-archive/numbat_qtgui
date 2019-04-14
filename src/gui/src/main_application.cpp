@@ -8,6 +8,7 @@
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
 #include "gui/main_application.hpp"
+#include "usb_reset/ros_usb_reset.hpp"
 
 Main_Application::Main_Application() {}
 
@@ -19,6 +20,7 @@ void Main_Application::run() {
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");
     qmlRegisterType<Ros_Joystick_Listener>("bluesat.owr", 1, 0, "ROSJoystickListener");
     qmlRegisterType<Ros_Drive_Mode>("bluesat.owr", 1, 0, "ROSDriveMode");
+    qmlRegisterType<ROS_Usb_Reset>("bluesat.owr", 1, 0, "ROSUsbReset");
 
     // this loads the qml file we are about to create
     this->load(QUrl(QStringLiteral("qrc:/main_window.qml")));
@@ -47,6 +49,10 @@ void Main_Application::run() {
 
     Ros_Drive_Mode * drive_mode = this->rootObjects()[0]->findChild<Ros_Drive_Mode*>(QString("drive_mode"));
     drive_mode->setup(&nh);
+
+    //this->rootContext passes the root context of main_window.qml
+    ROS_Usb_Reset * usb_reset = this->rootObjects()[0]->findChild<ROS_Usb_Reset*>(QString("usb_reset"));
+    usb_reset->setup(&nh, this->rootContext());
 
     // setup the timer
     ROSTimer * stopwatch = this->rootObjects()[0]->findChild<ROSTimer *>(QString("timerDisplay"));
