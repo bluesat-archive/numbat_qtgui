@@ -47,6 +47,8 @@
     <build_depend>sensor_msgs</build_depend>
     <build_depend>libqt4-dev</build_depend>
     <build_depend>ros_video_components</build_depend>
+    <build_depend>usb_reset</build_depend>
+    <run_depend>usb_reset</run_depend>
     <run_depend>ros_video_components</run_depend>
     <run_depend>qt_build</run_depend>
     <run_depend>image_transport</run_depend>

@@ -1,3 +1,3 @@
-Vector3     angle
-Int32       feed_number
+geometry_msgs/Vector3     angle
+int32       feed_number
                                                                                                                      
