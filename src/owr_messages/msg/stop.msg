@@ -1,0 +1,2 @@
+bool stopP
+bool stopN
