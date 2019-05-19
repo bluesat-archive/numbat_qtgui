@@ -8,6 +8,7 @@ Window {
     id: main_window
     width: 800
     height: 800
+    property alias map: map
     title: "BLUEsat OWR"
     visible: true
     minimumHeight: 600
@@ -26,6 +27,18 @@ Window {
         anchors.topMargin: 0
         opacity: 0.5
         anchors.top: parent.top
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: map
+        width: 200
+        height: 151
+        source: "qrc:/images/placeholderMap.png"
+        anchors.bottom: timerDisplay.top
+        anchors.bottomMargin: 20
+        anchors.right: video_pane.right
+        anchors.rightMargin: 25
         fillMode: Image.PreserveAspectFit
     }
 
