@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>bluesatLogo.png</file>
+        <file>placeholderMap.png</file>
     </qresource>
 </RCC>
