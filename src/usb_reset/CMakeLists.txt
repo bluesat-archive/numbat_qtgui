@@ -8,10 +8,27 @@ find_package(catkin REQUIRED COMPONENTS
   owr_messages
   roscpp
   std_msgs
+  qt_build
 )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
+
+###################################
+## catkin specific configuration ##
+###################################
+## The catkin_package macro generates cmake config files for your package
+## Declare things to be passed to dependent projects
+include_directories(include ${catkin_INCLUDE_DIRS})
+## LIBRARIES: libraries you create in this project that dependent projects also need
+## CATKIN_DEPENDS: catkin_packages dependent projects also need
+## DEPENDS: system dependencies of this project that dependent projects also need
+catkin_package(
+   INCLUDE_DIRS include
+   LIBRARIES UsbReset
+   CATKIN_DEPENDS owr_messages roscpp std_msgs qt_build
+#  DEPENDS system_lib
+)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -70,6 +87,30 @@ find_package(catkin REQUIRED COMPONENTS
 #   std_msgs
 # )
 
+##############################################################################
+# Qt Environment
+##############################################################################
+
+# this comes from qt_build's qt-ros.cmake which is automatically
+# included via the dependency ca ll in package.xml
+find_package(Qt5 COMPONENTS Core Qml Widgets Quick REQUIRED)
+
+##############################################################################
+# Sections
+##############################################################################
+
+file(GLOB QT_RESOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/*.qrc)
+file(GLOB_RECURSE QT_MOC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS include/usb_reset/*.hpp)
+
+QT5_ADD_RESOURCES(QT_RESOURCES_CPP ${QT_RESOURCES})
+QT5_WRAP_CPP(QT_MOC_HPP ${QT_MOC})
+
+##############################################################################
+# Sources
+##############################################################################
+
+file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINKS src/*.cpp)
+
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
@@ -90,22 +131,6 @@ find_package(catkin REQUIRED COMPONENTS
 #   cfg/DynReconf2.cfg
 # )
 
-###################################
-## catkin specific configuration ##
-###################################
-## The catkin_package macro generates cmake config files for your package
-## Declare things to be passed to dependent projects
-## INCLUDE_DIRS: uncomment this if you package contains header files
-## LIBRARIES: libraries you create in this project that dependent projects also need
-## CATKIN_DEPENDS: catkin_packages dependent projects also need
-## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES usb_reset
-#  CATKIN_DEPENDS owr_messages roscpp std_msgs
-#  DEPENDS system_lib
-)
-
 ###########
 ## Build ##
 ###########
@@ -113,20 +138,20 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-  include
-)
+#include_directories(
+#  ${catkin_INCLUDE_DIRS}
+#  include usb_reset
+#)
 
 ## Declare a C++ library
-# add_library(usb_reset
-#   src/${PROJECT_NAME}/usb_reset.cpp
-# )
+#  add_library(usb_reset
+#    src/${usb_reset}/usb_reset.cpp
+#  )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(usb_reset ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#  add_dependencies(usb_reset ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
 # add_executable(usb_reset_node src/usb_reset_node.cpp)
@@ -187,3 +212,11 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+##############################################################################
+# Binaries
+##############################################################################
+add_library(UsbReset ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
+qt5_use_modules(UsbReset Quick Core Widgets)
+target_link_libraries(UsbReset ${QT_LIBRARIES} ${catkin_LIBRARIES})
+target_include_directories(UsbReset PUBLIC include)

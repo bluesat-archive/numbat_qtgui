@@ -8,9 +8,16 @@
 #ifndef ROS_USB_RESET_H
 #define ROS_USB_RESET_H
 
+//ROS
+#include <ros/ros.h>
+#include "std_msgs/String.h"
+#include <iostream>
+#include <std_msgs/Int16.h>
+#include "owr_messages/devices.h"
+
 //QT
-#include <QQuickPaintedItem>
-#include <QImage>
+//#include <QQuickPaintedItem>
+//#include <QImage>
 #include <QPainter>
 #include <QAbstractListModel>
 
@@ -22,13 +29,6 @@
 #include <QQuickView>
 #include <QQmlContext>
 #include <QQmlEngine>
-
-//ROS
-#include <ros/ros.h>
-#include "std_msgs/String.h"
-#include <iostream>
-#include <std_msgs/Int16.h>
-#include "owr_messages/devices.h"
 
 class ROS_Usb_Reset : public QQuickPaintedItem {
     //make this a Qt Widget

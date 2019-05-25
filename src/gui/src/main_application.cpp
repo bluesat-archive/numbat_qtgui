@@ -8,7 +8,7 @@
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
 #include "gui/main_application.hpp"
-#include "usb_reset/ros_usb_reset.hpp"
+#include "usb_reset/usb_reset.hpp"
 
 Main_Application::Main_Application() {}
 
