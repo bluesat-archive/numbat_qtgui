@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_battery_indicator.hpp" //added
 #include "ros_video_components/ros_voltage_meter.hpp"
 #include "ros_video_components/ros_camera_switching.hpp"
 #include "ros_video_components/ros_timer.hpp"
@@ -14,6 +15,7 @@ Main_Application::Main_Application() {}
 void Main_Application::run() {
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
+    qmlRegisterType<ROS_Battery_Indicator>("bluesat.owr", 1, 0, "ROSBatteryIndicator"); //added
     qmlRegisterType<ROS_Voltage_Meter>("bluesat.owr", 1, 0, "ROSVoltageMeter");
     qmlRegisterType<ROS_Camera_Switching>("bluesat.owr", 1, 0, "ROSCameraSwitching");
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");
@@ -35,6 +37,9 @@ void Main_Application::run() {
 
     ROS_Signal_Strength * signal_strength = this->rootObjects()[0]->findChild<ROS_Signal_Strength*>(QString("signal_strength"));
     signal_strength->setup(&nh);
+
+    ROS_Battery_Indicator * battery_indicator = this->rootObjects()[0]->findChild<ROS_Battery_Indicator*>(QString("battery_indicator"));
+    battery_indicator->setup(&nh); //added
 
     ROS_Voltage_Meter * voltage_meter = this->rootObjects()[0]->findChild<ROS_Voltage_Meter*>(QString("voltage_meter"));
     voltage_meter->setup(&nh);

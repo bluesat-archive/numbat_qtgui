@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
 import bluesat.owr 1.0
+//import bluesat.owr.singleton 1.0
 
 
 
@@ -8,6 +9,7 @@ Window {
     id: main_window
     width: 800
     height: 800
+    opacity: 1
     title: "BLUEsat OWR"
     visible: true
     minimumHeight: 600
@@ -69,6 +71,36 @@ Window {
             }
         }
 
+    }
+
+    Item {
+        id: battery_indicator_container
+        z: 5
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.left: parent.right
+        anchors.leftMargin: -172
+        anchors.bottom: parent.top
+        anchors.bottomMargin: -100
+        ROSBatteryIndicator {
+            // @disable-check M16
+            objectName: "battery_indicator"
+            id: battery_indicator
+            // @disable-check M16`
+            anchors.bottom: parent.bottom
+            // @disable-check M16
+            anchors.bottomMargin: 0
+            // @disable-check M16
+            anchors.top: parent.top
+            // @disable-check M16
+            anchors.left: parent.left
+            // @disable-check M16
+            anchors.right: parent.right
+            // @disable-check M16
+            topic: qsTr("/rover/signal")
+        }
     }
 
     Item {
