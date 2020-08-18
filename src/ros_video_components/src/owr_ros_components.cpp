@@ -13,10 +13,12 @@
 #include "ros_video_components/ros_timer.hpp"
 #include "ros_video_components/ros_joystick_listener.hpp"
 #include "ros_video_components/ros_drive_mode.hpp"
+#include "ros_video_components/ros_driving_mode_switching.hpp"
 
 void OWR_ROS_Components::registerTypes(const char *uri) {
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
+    qmlRegisterType<ROS_Driving_Mode_Switching>("bluesat.owr", 1, 0, "ROSDrivingModeSwitching");
     qmlRegisterType<ROS_Voltage_Meter>("bluesat.owr", 1, 0, "ROSVoltageMeter");
     qmlRegisterType<ROS_Camera_Switching>("bluesat.owr", 1, 0, "ROSCameraSwitching");
     qmlRegisterType<ROSTimer>("bluesat.owr", 1, 0, "ROSTimer");

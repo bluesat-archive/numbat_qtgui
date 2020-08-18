@@ -19,7 +19,7 @@
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
-#include "owr_messages/activeCameras.h"
+//#include "owr_messages/activeCameras.h"
 
 class ROS_Video_Component : public QQuickPaintedItem {
     //make this a Qt Widget
