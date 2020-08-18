@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "ros_video_components/ros_video_component.hpp"
 #include "ros_video_components/ros_signal_strength.hpp"
+#include "ros_video_components/ros_coord_bearing.hpp"
 #include "ros_video_components/ros_voltage_meter.hpp"
 #include "ros_video_components/ros_camera_switching.hpp"
 #include "ros_video_components/ros_timer.hpp"
@@ -12,6 +13,7 @@
 Main_Application::Main_Application() {}
 
 void Main_Application::run() {
+    qmlRegisterType<ROSCoordBearing>("bluesat.owr", 1, 0, "ROSCoordBearing");
     qmlRegisterType<ROS_Video_Component>("bluesat.owr", 1, 0, "ROSVideoComponent");
     qmlRegisterType<ROS_Signal_Strength>("bluesat.owr", 1, 0, "ROSSignalStrength");
     qmlRegisterType<ROS_Voltage_Meter>("bluesat.owr", 1, 0, "ROSVoltageMeter");
@@ -56,6 +58,9 @@ void Main_Application::run() {
         connect(stopwatch, SIGNAL(valueChanged(QString)), this, SLOT(handle(QString)));
     }
     */
+
+    // coordinates and bearing readouts
+    ROSCoordBearing * cbreads = this->rootObjects()[0]->findChild<ROSCoordBearing *>(QString("coord_bearing"));
 }
 
 void Main_Application::main_loop() {
